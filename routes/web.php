@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingPage\Banner\ManageBannerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard.main');
+});
+
+Route::group(['prefix' => 'banner'], function(){
+    Route::get('manage', [ManageBannerController::class, 'getManageBannerPage'])->name('admin.get.manage.banner.page');
 });

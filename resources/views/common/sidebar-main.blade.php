@@ -18,7 +18,7 @@
         <div class="app-sidebar__user">
             <div class="dropdown user-pro-body text-center">
                 <div class="user-pic">
-                    <img src="assets/img/faces/6.jpg" alt="user-img" class="rounded-circle mCS_img_loaded">
+                    <img src="{{asset('assets/img/faces/6.jpg')}}" alt="user-img" class="rounded-circle mCS_img_loaded">
                 </div>
                 <div class="user-info">
                     <h6 class=" mb-0 text-dark">Peaceworc</h6>
@@ -76,7 +76,7 @@
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="cards.html">Manage Banner</a></li>
+                    <li><a class="slide-item" href="{{route('admin.get.manage.banner.page')}}">Manage Banner</a></li>
                     <li><a class="slide-item" href="darggablecards.html">Manage About</a></li>
                     <li><a class="slide-item" href="rangeslider.html">Manage Services</a></li>
                     <li><a class="slide-item" href="calendar.html">Manage Become Caregiver</a></li>
