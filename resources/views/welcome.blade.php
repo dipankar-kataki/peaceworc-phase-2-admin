@@ -88,7 +88,7 @@
 											</svg>
 										</div>
 										<div class="project-content">
-											<h6>Invoices</h6>
+											<h6>Caregivers</h6>
 											<ul>
 												<li>
 													<strong>Processing</strong>
@@ -121,7 +121,7 @@
 											</svg>
 										</div>
 										<div class="project-content">
-											<h6>Tasks</h6>
+											<h6>Agencies</h6>
 											<ul>
 												<li>
 													<strong>Processing</strong>
@@ -1090,11 +1090,7 @@
 		<!--/Sidebar-right-->
 
         <!-- Footer opened -->
-		<div class="main-footer ht-40">
-			<div class="container-fluid pd-t-0-f ht-100p">
-				<span>Copyright © <?php echo date('Y'); ?> <a href="peaceworc.com">PEACEWORC</a>. Designed by <a href="https://www.ekodus.com/">Ekodus Technologies Pvt. Ltd.</a> All rights reserved.</span>
-			</div>
-		</div>
+		@include('common.footer')
 		<!-- Footer closed -->
 
 		<!-- Back-to-top -->
