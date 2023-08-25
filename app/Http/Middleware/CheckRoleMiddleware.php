@@ -18,17 +18,22 @@ class CheckRoleMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->email != null){
+        try{
+            if($request->email != null){
 
-            $check_user_role = User::where('email', $request->email)->first();
-            if($check_user_role->role == Role::Web_Admin || $check_user_role == Role::Web_Operator){
-                return $next($request);
+                $check_user_role = User::where('email', $request->email)->first();
+                if($check_user_role->role == Role::Web_Admin || $check_user_role == Role::Web_Operator){
+                    return $next($request);
+                }else{
+                    return redirect('/');
+                }
             }else{
                 return redirect('/');
             }
-        }else{
-            return redirect('/');
+        }catch(\Exception $e){
+            return response()->json(['message' => 'Invalid Credentials', 'status' => 0 ]);
         }
+        
         
     }
 }

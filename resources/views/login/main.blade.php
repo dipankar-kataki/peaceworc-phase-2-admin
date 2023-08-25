@@ -18,6 +18,9 @@
 
 		<!--- Animations css -->
 		<link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+
+		<!--- Toastr Notification-->
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 	</head>
 	
 	<body class="main-body">
@@ -63,6 +66,8 @@
 			</div>
 			</div>
 		</div>
+
+		@include('common.footer')
 		<!-- /main-signin-wrapper -->
 		
 
@@ -74,6 +79,7 @@
 
 		<!--- Custom js -->
 		<script src="{{asset('assets/js/custom.js')}}"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 		<script>
 			$('#loginForm').on('submit', function(e){
@@ -104,6 +110,12 @@
 
 							
 						}else{
+							toastr.error(response.message, 'Error', {
+								positionClass: 'toast-top-right',
+								closeButton: true,
+								progressBar: true,
+								timeOut: 3000
+							});
 							$('.signin-btn').attr('disabled', false);
 							$('.signin-btn').text('Sign In');
 						}
