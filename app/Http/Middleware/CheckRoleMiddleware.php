@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Common\Role;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -17,9 +19,15 @@ class CheckRoleMiddleware
     public function handle(Request $request, Closure $next)
     {
         if($request->email != null){
-            return response($request->all() );
+
+            $check_user_role = User::where('email', $request->email)->first();
+            if($check_user_role->role == Role::Web_Admin || $check_user_role == Role::Web_Operator){
+                return $next($request);
+            }else{
+                return redirect('/');
+            }
         }else{
-            return $next($request);
+            return redirect('/');
         }
         
     }

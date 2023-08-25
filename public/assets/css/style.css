@@ -21632,7 +21632,9 @@ input.parsley-error:focus, textarea.parsley-error:focus, input.parsley-success:f
 
 .authentication-pages {
   position: relative;
-  z-index: 99; }
+  z-index: 99; 
+  top: 20%;
+}
 
 @media (min-width: 992px) {
   .page-signin-style {
