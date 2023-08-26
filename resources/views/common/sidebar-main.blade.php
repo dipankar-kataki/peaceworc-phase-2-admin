@@ -54,7 +54,7 @@
     <div class="main-sidebar-body">
         <ul class="side-menu ">
             <li class="slide">
-                <a class="side-menu__item" href="/">
+                <a class=" {{Request::segment(1) == 'dashboard' ? 'side-menu__item active' : 'side-menu__item'}} " href="/">
                     <i class="side-menu__icon fe fe-airplay"></i>
                     <span class="side-menu__label">Dashboard</span>
                 </a>
