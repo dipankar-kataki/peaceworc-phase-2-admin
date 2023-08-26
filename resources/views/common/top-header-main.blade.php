@@ -282,7 +282,7 @@
                     <div class="dropdown-menu">
                         <div class="main-header-profile header-img">
                             <div class="main-img-user"><img alt="" src="{{asset('assets/img/faces/6.jpg')}}"></div>
-                            <h6>Petey Cruiser</h6><span>Premium Member</span>
+                            <h6>{{Auth::user()->name}}</h6><span>{{Auth::user()->role}}</span>
                         </div>
                         <a class="dropdown-item" href="#"><i class="far fa-user"></i> My Profile</a>
                         <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit Profile</a>
