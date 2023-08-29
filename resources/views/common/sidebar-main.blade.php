@@ -18,11 +18,11 @@
         <div class="app-sidebar__user">
             <div class="dropdown user-pro-body text-center">
                 <div class="user-pic">
-                    <img src="{{asset('assets/img/faces/6.jpg')}}" alt="user-img" class="rounded-circle mCS_img_loaded">
+                    <img src="{{asset('assets/img/photos/user-headset.jpg')}}" alt="user-img" class="rounded-circle mCS_img_loaded">
                 </div>
                 <div class="user-info">
                     <h6 class=" mb-0 text-dark">{{Auth::user()->name}}</h6>
-                    <span class="text-muted app-sidebar__user-name text-sm">{{Auth::user()->role}}</span>
+                    <span class="text-muted app-sidebar__user-name text-sm">{{Auth::user()->role == 1 ? 'Web-Administrator' : ((Auth::user()->role == 6) ? 'Web-Operator' : 'Unknown')}}</span>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
     <div class="main-sidebar-body">
         <ul class="side-menu ">
             <li class="slide">
-                <a class=" {{Request::segment(1) == 'dashboard' ? 'side-menu__item active' : 'side-menu__item'}} " href="/">
+                <a class=" {{Request::segment(1) == 'dashboard' ? 'side-menu__item active' : 'side-menu__item'}} " href="{{route('admin.get.dashboard')}}">
                     <i class="side-menu__icon fe fe-airplay"></i>
                     <span class="side-menu__label">Dashboard</span>
                 </a>

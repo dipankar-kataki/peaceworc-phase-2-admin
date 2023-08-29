@@ -17,8 +17,20 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = [];
-
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role',
+        'otp',
+        'otp_validity',
+        'is_otp_verified',
+        'is_agreed_to_terms',
+        'fcm_token',
+        'lat',
+        'long',
+        'email_verified_at'
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -39,17 +51,17 @@ class User extends Authenticatable
     ];
 
 
-    public function getRoleAttribute($value){
+    // public function getRoleAttribute($value){
         
-        if($value == 1){
-            return 'Web Administrator';
-        }
-        if($value == 6){
-            return 'Web Operator';
-        }
+    //     if($value == 1){
+    //         return 'Web Administrator';
+    //     }
+    //     if($value == 6){
+    //         return 'Web Operator';
+    //     }
 
        
-    }
+    // }
 }
 
 

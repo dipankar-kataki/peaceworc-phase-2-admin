@@ -3,8 +3,21 @@
         <h4 class="content-title mb-2">Hi, welcome back!</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Project</li>
+                <li class="breadcrumb-item">
+                    <a href="#">
+                        <i class="side-menu__icon fe fe-home"></i>
+                    </a>
+                    
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#" style="text-transform:capitalize;">{{Request::segment(1)}}</a>
+                </li>
+                @if (Request::segment(2) != null)
+                    <li class="breadcrumb-item active" aria-current="page" style="text-transform:capitalize;">
+                        {{Request::segment(2)}}
+                    </li>
+                @endif
+                
             </ol>
         </nav>
     </div>

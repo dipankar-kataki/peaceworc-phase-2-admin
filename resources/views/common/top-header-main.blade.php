@@ -277,17 +277,20 @@
                 </div>
                 <div class="dropdown main-profile-menu nav nav-item nav-link">
 
-                    <a class="profile-user d-flex" href="#"><img src="{{asset('assets/img/faces/6.jpg')}}" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
+                    <a class="profile-user d-flex" href="#"><img src="{{asset('assets/img/photos/user-headset.jpg')}}" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
 
                     <div class="dropdown-menu">
                         <div class="main-header-profile header-img">
-                            <div class="main-img-user"><img alt="" src="{{asset('assets/img/faces/6.jpg')}}"></div>
-                            <h6>{{Auth::user()->name}}</h6><span>{{Auth::user()->role}}</span>
+                            <div class="main-img-user"><img alt="" src="{{asset('assets/img/photos/user-headset.jpg')}}"></div>
+                            <h6>{{Auth::user()->name}}</h6>
+                            <span>{{Auth::user()->role == 1 ? 'Web-Administrator' : ((Auth::user()->role == 6) ? 'Web-Operator' : 'Unknown')}}</span>
                         </div>
-                        <a class="dropdown-item" href="#"><i class="far fa-user"></i> My Profile</a>
-                        <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit Profile</a>
-                        <a class="dropdown-item" href="#"><i class="far fa-clock"></i> Activity Logs</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-sliders-h"></i> Account Settings</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-key"></i>Change Password</a>
+                        @if (Auth::user()->role == 1)
+                            <a class="dropdown-item" href="#"><i class="far fa-clock"></i> Activity Logs</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-sliders-h"></i> Account Settings</a>
+                        @endif
+                        
                         <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                     </div>
                 </div>

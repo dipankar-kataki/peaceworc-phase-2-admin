@@ -27,7 +27,7 @@ class LoginController extends Controller
                     return response()->json(['message' => 'Great! Login Successful.', 'url' => "/dashboard", 'status' => 1]);
                 }
             }catch(\Exception $e){
-                return response()->json(['message' => 'Oops! Something Went Wrong.',  'status' => 0]);
+                return response()->json(['message' => 'Oops! Something Went Wrong. ' . $e->getMessage(),  'status' => 0]);
             }
         }
     }
