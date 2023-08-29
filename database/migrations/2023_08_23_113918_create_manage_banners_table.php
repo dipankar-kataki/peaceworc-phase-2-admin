@@ -15,6 +15,10 @@ class CreateManageBannersTable extends Migration
     {
         Schema::create('manage_banners', function (Blueprint $table) {
             $table->id();
+            $table->text('main_text')->nullable();
+            $table->text('sub_text')->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

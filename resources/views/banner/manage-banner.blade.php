@@ -7,13 +7,34 @@
     <div class="col-lg-12 col-md-12">
         <div class="card">
             <div class="card-body">
-                <div>
-                    <h6 class="card-title mb-1">Multiple Select Styles</h6>
-                    <p class="text-muted card-sub-title">First import a latest version of jquery in your page. Then the jquery.sumoselect.min.js and its css (sumoselect.css)</p>
+                <div class="mb-4">
+                    <h6 class="card-title mb-1">Edit Banner</h6>
                 </div>
                 <div class="mb-4">
-                    <p class="mg-b-10">Multiple Select-1</p>
-                    <input type="text" class="form-control">
+                    <form id="bannerForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="bannerMainImage">Edit Main Image</label>
+
+                            <div class="form-group img-prev-div bg-gray-100 ht-100p text-center p-4 bd">
+                                <img id="imagePreview" src="{{asset('assets/img/photos/img-preview.png')}}" class="ht-200" alt="Image Preview">
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input form-control" name="bannerMainImage" id="bannerMainImage" accept=".png, .jpg, .jpeg">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bannerMainText">Enter Main Text</label>
+                            <input type="text" class="form-control" name="bannerMainText" id="bannerMainText" placeholder="Type here..." maxlength="45">
+                        </div>
+                        <div class="form-group">
+                            <label for="bannerSubText">Enter Sub Text</label>
+                            <input type="text" class="form-control" name="bannerSubText" id="bannerSubText" placeholder="Type here..." maxlength="140">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-main-primary pd-x-20">Submit</button>
+                        </div>
+                    </form>
                 </div>
                 
             </div>
@@ -22,4 +43,22 @@
 </div>
 @endsection
 @section('custom-scripts')
+    <script>
+        const imageInput = document.getElementById('bannerMainImage');
+        const imagePreview = document.getElementById('imagePreview');
+
+        imageInput.addEventListener('change', function() {
+            const selectedImage = imageInput.files[0];
+
+            if (selectedImage) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                imagePreview.src = event.target.result;
+                };
+
+                reader.readAsDataURL(selectedImage);
+            }
+        });
+    </script>
 @endsection
