@@ -50,7 +50,7 @@
 		
 		<!-- Loader -->
 		<div id="global-loader">
-			{{-- @include('about.manage-about') --}}
+			@include('common.custom-loader')
 			{{-- <img src="{{asset('assets/img/loaders/loader-4.svg')}}" class="loader-img" alt="Loader"> --}}
 		</div>
 		<!-- /Loader -->

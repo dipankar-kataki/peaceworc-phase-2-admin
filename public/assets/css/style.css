@@ -47782,6 +47782,8 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   background-color: #d3d3d3;
   border-radius: 10px;
   height: 20px;
+
+  animation: shimmer 2s infinite alternate;
 }
 .main-loader-div .loader-sidebar .user-desig-area{
   padding:20px;
@@ -47803,6 +47805,8 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   border-radius:10px;
   height:10px;
   background-color: #d3d3d3;
+
+  animation: shimmer 2s infinite alternate;
 }
 
 .main-loader-div .loader-sidebar .user-content{
@@ -47814,6 +47818,8 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   border-radius:10px;
   height:10px;
   background-color: #d3d3d3;
+
+  animation: shimmer 2s infinite alternate;
 }
 
 .main-loader-div .loader-sidebar .user-content p:nth-child(2n-1){
@@ -47840,11 +47846,13 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   width: 40px;
   border-radius:50%;
   margin-right:15px;
+
+  animation: shimmer 2s infinite alternate;
 }
 
 .main-loader-div .loader-content-area .bread-crumb-area{
   background-color: #f3f3f3;
-  height: 150px;
+  height: auto;
   width: 100%;
   margin-top: 15px;
   border-radius:10px;
@@ -47852,6 +47860,8 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-wrap:wrap;
+  padding:20px;
 }
 
 .main-loader-div .loader-content-area .bread-crumb-area .overview-card{
@@ -47861,6 +47871,8 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   margin-top: 15px;
   border-radius: 10px;
   margin-right: 20px;
+
+  animation: shimmer 2s infinite alternate;
 }
 
 .main-loader-div .loader-content-area .card-area{
@@ -47877,6 +47889,8 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   height:10px;
   background-color: #d3d3d3;
   width:90%;
+
+  animation: shimmer 2s infinite alternate;
 }
 
 .main-loader-div .loader-content-area .card-area p:nth-child(2n+1){
@@ -47887,7 +47901,25 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
 
 .main-loader-div .loader-content-area .card-area .card-text-area{
   border-radius:10px;
-  height:200px;
+  height:300px;
   background-color: #d3d3d3;
   width:90%;
+  margin-top:20px;
+
+  animation: shimmer 3s infinite alternate ease-in-out;
+}
+
+
+@keyframes shimmer{
+  0% {
+    background-color:#d3d3d3;
+  }
+
+  50%{
+    background-color:#e1dfdf;
+  }
+
+  100%{
+    background-color:#bbbaba;
+  }
 }

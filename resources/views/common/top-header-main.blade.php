@@ -296,7 +296,7 @@
                 </div>
                 <div class="dropdown main-header-message right-toggle">
                     <a class="nav-link pr-0" data-toggle="sidebar-right" data-target=".sidebar-right">
-                        <i class="ion ion-md-menu tx-20 bg-transparent"></i>
+                        <i class="ion ion-md-time tx-20 bg-transparent"></i>
                     </a>
                 </div>
             </div>
