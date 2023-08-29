@@ -11,7 +11,8 @@
                     <h6 class="card-title mb-1">Edit Banner</h6>
                 </div>
                 <div class="mb-4">
-                    <form id="bannerForm" class="form-horizontal">
+                    <form id="bannerForm" class="form-horizontal" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
                             <label for="bannerMainImage">Edit Main Image</label>
 
@@ -32,7 +33,7 @@
                             <input type="text" class="form-control" name="bannerSubText" id="bannerSubText" placeholder="Type here..." maxlength="140">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-main-primary pd-x-20">Submit</button>
+                            <button class="btn btn-main-primary pd-x-20 bannerSubmitBtn" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -59,6 +60,57 @@
 
                 reader.readAsDataURL(selectedImage);
             }
+        });
+    </script>
+
+    <script>
+        $('#bannerForm').on('submit', function(e){
+            e.preventDefault();
+
+            
+
+            $('.bannerSubmitBtn').attr('disabled', true);
+            $('.bannerSubmitBtn').text('Please Wait...');
+
+            const bannerMainImage = $("#bannerMainImage")[0].files[0];
+            const formData = new FormData(this);
+            formData.append('bannerMainImage', bannerMainImage);
+
+            $.ajax({
+                url: "{{route('admin.save.banner.details')}}",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data:formData,
+                success:function(response){
+                    if(response.status == 1){
+
+                        toastr.success(response.message, 'Great', {
+                            positionClass: 'toast-top-right',
+                            closeButton: true,
+                            progressBar: true,
+                            timeOut: 3000
+                        });
+
+                        $('.bannerSubmitBtn').attr('disabled', false);
+                        $('.bannerSubmitBtn').text('Submit');
+                    }else{
+                        toastr.error(response.message, 'Error', {
+                            positionClass: 'toast-top-right',
+                            closeButton: true,
+                            progressBar: true,
+                            timeOut: 3000
+                        });
+
+                        $('.bannerSubmitBtn').attr('disabled', false);
+                        $('.bannerSubmitBtn').text('Submit');
+                    }
+                },error:function(xhr, error, status){
+                    $('.bannerSubmitBtn').attr('disabled', false);
+                    $('.bannerSubmitBtn').text('Submit');
+                    console.log(error)
+                }
+            });
         });
     </script>
 @endsection

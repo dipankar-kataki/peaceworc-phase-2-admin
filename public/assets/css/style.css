@@ -47750,3 +47750,144 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   width: 100vw; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+/*
+|--------------------------------------------------------------------------
+|Dipankar's Custom Css
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+.main-loader-div{
+  display:flex;
+  flex-direction: row;
+}
+.main-loader-div .loader-sidebar{
+  height: 95vh;
+  width: 350px;
+  background-color: #f6f5ff;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.main-loader-div .loader-sidebar .brand-logo-area{
+  height: 60px;
+  border: 1px solid #ebebeb;
+  padding:20px;
+}
+
+.main-loader-div .loader-sidebar .brand-logo-area p{
+  background-color: #d3d3d3;
+  border-radius: 10px;
+  height: 20px;
+}
+.main-loader-div .loader-sidebar .user-desig-area{
+  padding:20px;
+}
+.main-loader-div .loader-sidebar .user-desig-area .user-image-area{
+  padding:20px;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  
+}
+.main-loader-div .loader-sidebar .user-desig-area  .img{
+  height:85px;
+  width:85px;
+  border-radius:50%;
+  background-color: #d3d3d3;
+}
+.main-loader-div .loader-sidebar .user-desig-area p{
+  border-radius:10px;
+  height:10px;
+  background-color: #d3d3d3;
+}
+
+.main-loader-div .loader-sidebar .user-content{
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.main-loader-div .loader-sidebar .user-content p{
+  border-radius:10px;
+  height:10px;
+  background-color: #d3d3d3;
+}
+
+.main-loader-div .loader-sidebar .user-content p:nth-child(2n-1){
+  width:50%;
+}
+
+.main-loader-div .loader-content-area{
+  background-color: #f6f5ff;
+  height: 60px;
+  width: 100%;
+  padding:10px;
+ 
+}
+
+.main-loader-div .loader-content-area .top-nav{
+  display: flex;
+  flex-direction:row;
+  justify-content: end;
+}
+
+.main-loader-div .loader-content-area .top-nav .top-nav-icon{
+  background-color: #d3d3d3;
+  height: 40px;
+  width: 40px;
+  border-radius:50%;
+  margin-right:15px;
+}
+
+.main-loader-div .loader-content-area .bread-crumb-area{
+  background-color: #f3f3f3;
+  height: 150px;
+  width: 100%;
+  margin-top: 15px;
+  border-radius:10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-loader-div .loader-content-area .bread-crumb-area .overview-card{
+  background-color: #d3d3d3;
+  height: 80px;
+  width: 200px;
+  margin-top: 15px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.main-loader-div .loader-content-area .card-area{
+  background-color: #f3f3f3;
+  height: 70vh;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+  padding:20px;
+}
+
+.main-loader-div .loader-content-area .card-area p{
+  border-radius:10px;
+  height:10px;
+  background-color: #d3d3d3;
+  width:90%;
+}
+
+.main-loader-div .loader-content-area .card-area p:nth-child(2n+1){
+  width:50%;
+  height:20px;
+  margin-top:20px;
+}
+
+.main-loader-div .loader-content-area .card-area .card-text-area{
+  border-radius:10px;
+  height:200px;
+  background-color: #d3d3d3;
+  width:90%;
+}

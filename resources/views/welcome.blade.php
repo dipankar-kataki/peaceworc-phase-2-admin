@@ -40,6 +40,9 @@
 		<link href="{{asset('assets/switcher/css/switcher.css')}}" rel="stylesheet">
 		<link href="{{asset('assets/switcher/demo.css')}}" rel="stylesheet">	
 
+		<!--- Toastr Notification-->
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
         @yield('custom-css')
     </head>
 
@@ -47,7 +50,8 @@
 		
 		<!-- Loader -->
 		<div id="global-loader">
-			<img src="{{asset('assets/img/loaders/loader-4.svg')}}" class="loader-img" alt="Loader">
+			{{-- @include('about.manage-about') --}}
+			{{-- <img src="{{asset('assets/img/loaders/loader-4.svg')}}" class="loader-img" alt="Loader"> --}}
 		</div>
 		<!-- /Loader -->
 
@@ -1032,8 +1036,8 @@
 		<!--- Custom js -->
 		<script src="{{asset('assets/js/custom.js')}}"></script>
 		
-		<!--- Switcher js -->
-		{{-- <script src="{{asset('assets/switcher/js/switcher.js')}}"></script> --}}
+		<!--- Toastr js -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
         @yield('custom-scripts')

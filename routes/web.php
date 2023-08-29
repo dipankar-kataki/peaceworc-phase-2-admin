@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\LandingPage\About\ManageAboutController;
 use App\Http\Controllers\LandingPage\Banner\ManageBannerController;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Logout\LogoutController;
@@ -33,6 +34,11 @@ Route::group(['middleware' => 'auth'], function(){
     });
     Route::group(['prefix' => 'banner'], function(){
         Route::get('manage', [ManageBannerController::class, 'getManageBannerPage'])->name('admin.get.manage.banner.page');
+        Route::post('save-details', [ManageBannerController::class, 'saveBannerDetails'])->name('admin.save.banner.details');
+    });
+
+    Route::group(['prefix' => 'about'], function(){
+        Route::get('', [ManageAboutController::class, 'getManageAboutPage'])->name('admin.get.manage.about.page');
     });
 
     Route::get('logout', [LogoutController::class, 'logout'])->name('admin.logout');

@@ -77,7 +77,7 @@
                 </a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{route('admin.get.manage.banner.page')}}">Manage Banner</a></li>
-                    <li><a class="slide-item" href="darggablecards.html">Manage About</a></li>
+                    <li><a class="slide-item" href="{{route('admin.get.manage.about.page')}}">Manage About</a></li>
                     <li><a class="slide-item" href="rangeslider.html">Manage Services</a></li>
                     <li><a class="slide-item" href="calendar.html">Manage Become Caregiver</a></li>
                     <li><a class="slide-item" href="contacts.html">Manage Become Agency</a></li>
