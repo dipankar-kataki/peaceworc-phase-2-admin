@@ -38,7 +38,7 @@ class ManageServiceController extends Controller
             return response()->json(['message' => 'Details submitted successfully', 'status' => 1]);
 
         }catch(\Exception $e){
-            return response()->json(['message' => 'Oops! Something Went Wrong.'.$e->getMessage(), 'status' => 0]);
+            return response()->json(['message' => 'Oops! Something Went Wrong.', 'status' => 0]);
         }
     }
 }

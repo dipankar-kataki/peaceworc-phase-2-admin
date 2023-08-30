@@ -93,6 +93,8 @@
 
                         $('.serviceSubmitBtn').attr('disabled', false);
                         $('.serviceSubmitBtn').text('Submit');
+
+                        $("#serviceForm").trigger("reset");
                     }else{
                         toastr.error(response.message, 'Error', {
                             positionClass: 'toast-top-right',

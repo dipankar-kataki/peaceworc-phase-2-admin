@@ -102,6 +102,8 @@
 
                         $('.aboutSubmitBtn').attr('disabled', false);
                         $('.aboutSubmitBtn').text('Submit');
+
+                        $("#aboutForm").trigger("reset");
                     }else{
                         toastr.error(response.message, 'Error', {
                             positionClass: 'toast-top-right',

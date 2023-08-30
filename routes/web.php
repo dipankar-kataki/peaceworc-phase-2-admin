@@ -3,9 +3,11 @@
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LandingPage\About\ManageAboutController;
 use App\Http\Controllers\LandingPage\Banner\ManageBannerController;
+use App\Http\Controllers\LandingPage\Caregiver\BecomeCaregiverController;
 use App\Http\Controllers\LandingPage\Service\ManageServiceController;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Logout\LogoutController;
+use App\Models\BecomeCaregiver;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +48,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'services'], function(){
         Route::get('manage', [ManageServiceController::class, 'getManageServicePage'])->name('admin.get.manage.service.page');
         Route::post('save-details', [ManageServiceController::class, 'saveServiceDetails'])->name('admin.save.service.details');
+    });
+
+    Route::group(['prefix' => 'become-caregiver'], function(){
+        Route::get('manage', [BecomeCaregiverController::class, 'getBecomeCaregiverPage'])->name('admin.get.become.caregiver.page');
+        Route::post('save-details', [BecomeCaregiverController::class, 'saveBecomeCaregiverDetails'])->name('admin.save.become.caregiver.details');
     });
 
     Route::get('logout', [LogoutController::class, 'logout'])->name('admin.logout');
