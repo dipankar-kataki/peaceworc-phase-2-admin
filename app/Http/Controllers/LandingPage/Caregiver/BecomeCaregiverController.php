@@ -15,30 +15,19 @@ class BecomeCaregiverController extends Controller
     public function saveBecomeCaregiverDetails(Request $request){
         try{
 
-            $url = url('/');
             $becomeCaregiver_name = $request->becomeCaregiverName;
-            $becomeCaregiver_details = $request->becomeCaregiverDetails;
+            $becomeCaregiverDuties = $request->becomeCaregiverDuties;
 
-            $main_image = $request->becomeCaregiverMainImage;
-
-            // Upload file to folder
-            $file = null;
-            if($request->hasFile('becomeCaregiverMainImage')){
-                $new_name = date('d-m-Y-H-i-s') . '_' . $main_image->getClientOriginalName();
-                $main_image->move(public_path('admin/uploads/image/becomeCaregiver/'), $new_name);
-                $file = $url . '/admin/uploads/image/becomeCaregiver/' . $new_name;    
-            }
             
             BecomeCaregiver::create([
-                'name' => $becomeCaregiver_name,
-                'image' => $file,
-                'details' => $becomeCaregiver_details,
+                'main_text' => $becomeCaregiver_name,
+                'duties_and_responsibilities' => json_encode($becomeCaregiverDuties),
             ]);
 
             return response()->json(['message' => 'Details submitted successfully', 'status' => 1]);
 
         }catch(\Exception $e){
-            return response()->json(['message' => 'Oops! Something Went Wrong.'.$e->getMessage(), 'status' => 0]);
+            return response()->json(['message' => 'Oops! Something Went Wrong.', 'status' => 0]);
         }
     }
 }

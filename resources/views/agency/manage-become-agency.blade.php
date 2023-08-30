@@ -7,20 +7,20 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-4">
-                        <h6 class="card-title mb-1">Edit Become Caregiver</h6>
+                        <h6 class="card-title mb-1">Edit Become Agency</h6>
                     </div>
                     <div class="mb-4">
-                        <form id="becomeCaregiverForm" class="form-horizontal">
+                        <form id="becomeAgencyForm" class="form-horizontal">
                             @csrf
                             <div class="form-group">
-                                <label for="becomeCaregiverName">Enter Main Text</label>
-                                <textarea type="text" class="form-control" name="becomeCaregiverName" id="becomeCaregiverName" placeholder="Type here... Max characters allowed 300" maxlength="300" rows="5" style="resize: none;"></textarea>
+                                <label for="becomeAgencyName">Enter Main Text</label>
+                                <textarea type="text" class="form-control" name="becomeAgencyName" id="becomeAgencyName" placeholder="Type here... Max characters allowed 300" maxlength="300" rows="5" style="resize: none;"></textarea>
                             </div>
                             <div class="form-group" >
-                                <label for="becomeCaregiverDuties">Enter Duties And Responsibilities</label>
+                                <label for="becomeAgencyDuties">Enter Duties And Responsibilities</label>
                                 <div class="form-group inputDutiesDiv">
                                     <div class="d-flex flex-row justify-content-between align-items-center mb-2">
-                                        <input type="text" class="form-control" name="becomeCaregiverDuties[]" id="becomeCaregiverDuties" placeholder="Type here... Max characters allowed  350" maxlength="350">
+                                        <input type="text" class="form-control" name="becomeAgencyDuties[]" id="becomeAgencyDuties" placeholder="Type here... Max characters allowed  350" maxlength="350">
                                         <button type="button" class="btn btn-danger d-none removeBtn" >Remove</button>
                                     </div>
                                 </div>
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-main-primary pd-x-20 becomeCaregiverSubmitBtn" type="submit">Submit</button>
+                                <button class="btn btn-main-primary pd-x-20 becomeAgencySubmitBtn" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -41,7 +41,7 @@
 @endsection
 @section('custom-scripts')
     {{-- <script>
-        const imageInput = document.getElementById('becomeCaregiverMainImage');
+        const imageInput = document.getElementById('becomeAgencyMainImage');
         const imagePreview = document.getElementById('imagePreview');
 
         imageInput.addEventListener('change', function() {
@@ -70,7 +70,7 @@
 
             const newInputField = `
                 <div class="d-flex flex-row justify-content-between align-items-center  mb-2">
-                    <input type="text" class="form-control" name="becomeCaregiverDuties[]" id="becomeCaregiverDuties" placeholder="Type here... Max characters allowed  350" maxlength="350">
+                    <input type="text" class="form-control" name="becomeAgencyDuties[]" id="becomeAgencyDuties" placeholder="Type here... Max characters allowed  350" maxlength="350">
                     <button type="button" class="btn btn-danger removeBtn">Remove</button> 
                 </div>
             `;
@@ -108,20 +108,20 @@
     </script>
 
     <script>
-        $('#becomeCaregiverForm').on('submit', function(e){
+        $('#becomeAgencyForm').on('submit', function(e){
             e.preventDefault();
 
             
 
-            $('.becomeCaregiverSubmitBtn').attr('disabled', true);
-            $('.becomeCaregiverSubmitBtn').text('Please Wait...');
+            $('.becomeAgencySubmitBtn').attr('disabled', true);
+            $('.becomeAgencySubmitBtn').text('Please Wait...');
 
-            // const becomeCaregiverMainImage = $("#becomeCaregiverMainImage")[0].files[0];
+            // const becomeAgencyMainImage = $("#becomeAgencyMainImage")[0].files[0];
             const formData = new FormData(this);
-            // formData.append('becomeCaregiverMainImage', becomeCaregiverMainImage);
+            // formData.append('becomeAgencyMainImage', becomeAgencyMainImage);
 
             $.ajax({
-                url: "{{route('admin.save.become.caregiver.details')}}",
+                url: "{{route('admin.save.become.agency.details')}}",
                 type: "POST",
                 contentType: false,
                 processData: false,
@@ -136,8 +136,8 @@
                             timeOut: 3000
                         });
 
-                        $('.becomeCaregiverSubmitBtn').attr('disabled', false);
-                        $('.becomeCaregiverSubmitBtn').text('Submit');
+                        $('.becomeAgencySubmitBtn').attr('disabled', false);
+                        $('.becomeAgencySubmitBtn').text('Submit');
 
                         window.location.reload(true);
 
@@ -150,8 +150,8 @@
                             timeOut: 3000
                         });
 
-                        $('.becomeCaregiverSubmitBtn').attr('disabled', false);
-                        $('.becomeCaregiverSubmitBtn').text('Submit');
+                        $('.becomeAgencySubmitBtn').attr('disabled', false);
+                        $('.becomeAgencySubmitBtn').text('Submit');
                     }
                 },error:function(xhr, error, status){
 
@@ -162,8 +162,8 @@
                         timeOut: 3000
                     });
 
-                    $('.becomeCaregiverSubmitBtn').attr('disabled', false);
-                    $('.becomeCaregiverSubmitBtn').text('Submit');
+                    $('.becomeAgencySubmitBtn').attr('disabled', false);
+                    $('.becomeAgencySubmitBtn').text('Submit');
                 }
             });
         });

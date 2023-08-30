@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBecomeCaregiversTable extends Migration
+class CreateBecomeAgenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBecomeCaregiversTable extends Migration
      */
     public function up()
     {
-        Schema::create('become_caregivers', function (Blueprint $table) {
+        Schema::create('become_agencies', function (Blueprint $table) {
             $table->id();
             $table->text('main_text');
             $table->longText('duties_and_responsibilities');
@@ -29,6 +29,6 @@ class CreateBecomeCaregiversTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('become_caregivers');
+        Schema::dropIfExists('become_agencies');
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LandingPage\About\ManageAboutController;
+use App\Http\Controllers\LandingPage\Agency\BecomeAgencyController;
 use App\Http\Controllers\LandingPage\Banner\ManageBannerController;
 use App\Http\Controllers\LandingPage\Caregiver\BecomeCaregiverController;
 use App\Http\Controllers\LandingPage\Service\ManageServiceController;
@@ -53,6 +54,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'become-caregiver'], function(){
         Route::get('manage', [BecomeCaregiverController::class, 'getBecomeCaregiverPage'])->name('admin.get.become.caregiver.page');
         Route::post('save-details', [BecomeCaregiverController::class, 'saveBecomeCaregiverDetails'])->name('admin.save.become.caregiver.details');
+    });
+
+    Route::group(['prefix' => 'become-agency'], function(){
+        Route::get('manage', [BecomeAgencyController::class, 'getBecomeAgencyPage'])->name('admin.get.become.agency.page');
+        Route::post('save-details', [BecomeAgencyController::class, 'saveBecomeAgencyDetails'])->name('admin.save.become.agency.details');
     });
 
     Route::get('logout', [LogoutController::class, 'logout'])->name('admin.logout');
