@@ -47906,7 +47906,7 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   width:90%;
   margin-top:20px;
 
-  animation: shimmer 3s infinite alternate ease-in-out;
+  animation: shimmer 1s infinite alternate ease-in-out;
 }
 
 
@@ -47916,7 +47916,7 @@ button.bg-purple-gradient:hover, button.bg-purple-gradient:focus {
   }
 
   50%{
-    background-color:#e1dfdf;
+    background-color:#fcfcfc;
   }
 
   100%{

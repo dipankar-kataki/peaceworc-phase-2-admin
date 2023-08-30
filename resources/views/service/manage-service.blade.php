@@ -7,40 +7,32 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-4">
-                        <h6 class="card-title mb-1">Edit About</h6>
+                        <h6 class="card-title mb-1">Edit Service</h6>
                     </div>
                     <div class="mb-4">
-                        <form id="aboutForm" class="form-horizontal" enctype="multipart/form-data">
+                        <form id="serviceForm" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="aboutMainImage">Edit Main Image</label>
+                                <label for="serviceMainImage">Edit Service Image</label>
 
                                 <div class="form-group img-prev-div bg-gray-100 ht-100p text-center p-4 bd">
                                     <img id="imagePreview" src="{{asset('assets/img/photos/img-preview.png')}}" class="ht-200" alt="Image Preview">
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input form-control" name="aboutMainImage" id="aboutMainImage" accept=".png, .jpg, .jpeg">
+                                    <input type="file" class="custom-file-input form-control" name="serviceMainImage" id="serviceMainImage" accept=".png, .jpg, .jpeg">
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="aboutMainText">Enter Main Text</label>
-                                <input type="text" class="form-control" name="aboutMainText" id="aboutMainText" placeholder="Type here..." maxlength="40">
+                                <label for="serviceName">Enter Service Name</label>
+                                <input type="text" class="form-control" name="serviceName" id="serviceName" placeholder="Type here..." maxlength="40">
                             </div>
                             <div class="form-group">
-                                <label for="aboutSubText">Enter Sub Text - 1</label>
-                                <textarea type="text" class="form-control" name="aboutSubText1" id="aboutSubText1" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;"></textarea>
+                                <label for="serviceDetails">Enter Service Details</label>
+                                <textarea type="text" class="form-control" name="serviceDetails" id="serviceDetails" placeholder="Type here... Max characters allowed  520" maxlength="520" rows="5" style="resize: none;"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="aboutSubText">Enter Sub Text - 2</label>
-                                <textarea type="text" class="form-control" name="aboutSubText2" id="aboutSubText2" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="aboutSubText">Enter Sub Text - 3</label>
-                                <textarea type="text" class="form-control" name="aboutSubText3" id="aboutSubText3" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-main-primary pd-x-20 aboutSubmitBtn" type="submit">Submit</button>
+                                <button class="btn btn-main-primary pd-x-20 serviceSubmitBtn" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -52,7 +44,7 @@
 @endsection
 @section('custom-scripts')
     <script>
-        const imageInput = document.getElementById('aboutMainImage');
+        const imageInput = document.getElementById('serviceMainImage');
         const imagePreview = document.getElementById('imagePreview');
 
         imageInput.addEventListener('change', function() {
@@ -70,22 +62,21 @@
         });
     </script>
 
-
     <script>
-        $('#aboutForm').on('submit', function(e){
+        $('#serviceForm').on('submit', function(e){
             e.preventDefault();
 
             
 
-            $('.aboutSubmitBtn').attr('disabled', true);
-            $('.aboutSubmitBtn').text('Please Wait...');
+            $('.serviceSubmitBtn').attr('disabled', true);
+            $('.serviceSubmitBtn').text('Please Wait...');
 
-            const aboutMainImage = $("#aboutMainImage")[0].files[0];
+            const serviceMainImage = $("#serviceMainImage")[0].files[0];
             const formData = new FormData(this);
-            formData.append('aboutMainImage', aboutMainImage);
+            formData.append('serviceMainImage', serviceMainImage);
 
             $.ajax({
-                url: "{{route('admin.save.about.details')}}",
+                url: "{{route('admin.save.service.details')}}",
                 type: "POST",
                 contentType: false,
                 processData: false,
@@ -100,8 +91,8 @@
                             timeOut: 3000
                         });
 
-                        $('.aboutSubmitBtn').attr('disabled', false);
-                        $('.aboutSubmitBtn').text('Submit');
+                        $('.serviceSubmitBtn').attr('disabled', false);
+                        $('.serviceSubmitBtn').text('Submit');
                     }else{
                         toastr.error(response.message, 'Error', {
                             positionClass: 'toast-top-right',
@@ -110,12 +101,20 @@
                             timeOut: 3000
                         });
 
-                        $('.aboutSubmitBtn').attr('disabled', false);
-                        $('.aboutSubmitBtn').text('Submit');
+                        $('.serviceSubmitBtn').attr('disabled', false);
+                        $('.serviceSubmitBtn').text('Submit');
                     }
                 },error:function(xhr, error, status){
-                    $('.aboutSubmitBtn').attr('disabled', false);
-                    $('.aboutSubmitBtn').text('Submit');
+
+                    toastr.error(error, 'Error', {
+                            positionClass: 'toast-top-right',
+                            closeButton: true,
+                            progressBar: true,
+                            timeOut: 3000
+                    });
+
+                    $('.serviceSubmitBtn').attr('disabled', false);
+                    $('.serviceSubmitBtn').text('Submit');
                     console.log(error)
                 }
             });

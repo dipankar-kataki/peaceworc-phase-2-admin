@@ -20,12 +20,15 @@ class ManageBannerController extends Controller
             $sub_text = $request->bannerSubText;
 
             $main_image = $request->bannerMainImage;
-            $extension = $request->file('bannerMainImage')->extension();
 
+            $file = null;
             // Upload file to folder
-            $new_name = date('d-m-Y-H-i-s') . '_' . $main_image->getClientOriginalName();
-            $main_image->move(public_path('admin/uploads/image/'), $new_name);
-            $file = $url . '/admin/uploads/image/' . $new_name;
+            if($request->hasFile('bannerMainImage')){
+                $new_name = date('d-m-Y-H-i-s') . '_' . $main_image->getClientOriginalName();
+                $main_image->move(public_path('admin/uploads/image/'), $new_name);
+                $file = $url . '/admin/uploads/image/' . $new_name;
+            }
+            
 
             ManageBanner::create([
                 'main_text' => $main_text,
@@ -36,7 +39,7 @@ class ManageBannerController extends Controller
             return response()->json(['message' => 'Details submitted successfully', 'status' => 1]);
 
         }catch(\Exception $e){
-            return response()->json(['message' => 'Oops! Something Went Wrong.'.$e->getMessage(), 'status' => 0]);
+            return response()->json(['message' => 'Oops! Something Went Wrong.', 'status' => 0]);
         }
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LandingPage\About\ManageAboutController;
 use App\Http\Controllers\LandingPage\Banner\ManageBannerController;
+use App\Http\Controllers\LandingPage\Service\ManageServiceController;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Logout\LogoutController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,13 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
     Route::group(['prefix' => 'about'], function(){
-        Route::get('', [ManageAboutController::class, 'getManageAboutPage'])->name('admin.get.manage.about.page');
+        Route::get('manage', [ManageAboutController::class, 'getManageAboutPage'])->name('admin.get.manage.about.page');
+        Route::post('save-details', [ManageAboutController::class, 'saveAboutDetails'])->name('admin.save.about.details');
+    });
+
+    Route::group(['prefix' => 'services'], function(){
+        Route::get('manage', [ManageServiceController::class, 'getManageServicePage'])->name('admin.get.manage.service.page');
+        Route::post('save-details', [ManageServiceController::class, 'saveServiceDetails'])->name('admin.save.service.details');
     });
 
     Route::get('logout', [LogoutController::class, 'logout'])->name('admin.logout');
