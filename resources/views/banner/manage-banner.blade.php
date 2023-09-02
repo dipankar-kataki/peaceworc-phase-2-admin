@@ -18,7 +18,10 @@
 
                             <div class="form-group img-prev-div bg-gray-100 ht-100p text-center p-4 bd">
                                 <span class="text-muted text-small  img-prev-info d-none" style="float:right;">Choose File To Change Preview</span>
-                                <img id="imagePreview" src="{{asset('assets/img/photos/img-preview.png')}}" class="ht-200" alt="Image Preview">
+
+                                {{-- <img id="imagePreview" src="{{asset('assets/img/photos/img-preview.png')}}" class="ht-200" alt="Image Preview"> --}}
+
+                                <img id="imagePreview" src="{{asset($banner_details->image)}}" class="ht-200" alt="Image Preview">
                             </div>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input form-control" name="bannerMainImage" id="bannerMainImage" accept=".png, .jpg, .jpeg">
@@ -27,11 +30,11 @@
                         </div>
                         <div class="form-group">
                             <label for="bannerMainText">Enter Main Text</label>
-                            <input type="text" class="form-control" name="bannerMainText" id="bannerMainText" placeholder="Type here..." maxlength="45">
+                            <input type="text" class="form-control" name="bannerMainText" id="bannerMainText" value="{{$banner_details->main_text}}" placeholder="Type here..." maxlength="45">
                         </div>
                         <div class="form-group">
                             <label for="bannerSubText">Enter Sub Text</label>
-                            <input type="text" class="form-control" name="bannerSubText" id="bannerSubText" placeholder="Type here..." maxlength="140">
+                            <input type="text" class="form-control" name="bannerSubText" id="bannerSubText"value="{{$banner_details->sub_text}}" placeholder="Type here..." maxlength="140">
                         </div>
                         <div class="form-group">
                             <button class="btn btn-main-primary pd-x-20 bannerSubmitBtn" type="submit">Submit</button>
