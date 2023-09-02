@@ -26,7 +26,7 @@ class ManageBannerController extends Controller
             if($request->hasFile('bannerMainImage')){
                 $new_name = date('d-m-Y-H-i-s') . '_' . $main_image->getClientOriginalName();
                 $main_image->move(public_path('admin/uploads/image/'), $new_name);
-                $file = $url . '/admin/uploads/image/' . $new_name;
+                $file = '/admin/uploads/image/' . $new_name;
             }
             
 
