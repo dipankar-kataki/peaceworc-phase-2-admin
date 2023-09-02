@@ -17,6 +17,7 @@
                             <label for="bannerMainImage">Edit Main Image</label>
 
                             <div class="form-group img-prev-div bg-gray-100 ht-100p text-center p-4 bd">
+                                <span class="text-muted text-small  img-prev-info d-none" style="float:right;">Choose File To Change Preview</span>
                                 <img id="imagePreview" src="{{asset('assets/img/photos/img-preview.png')}}" class="ht-200" alt="Image Preview">
                             </div>
                             <div class="custom-file">
@@ -59,6 +60,8 @@
                 };
 
                 reader.readAsDataURL(selectedImage);
+
+                $('.img-prev-info').removeClass('d-none');
             }
         });
     </script>
