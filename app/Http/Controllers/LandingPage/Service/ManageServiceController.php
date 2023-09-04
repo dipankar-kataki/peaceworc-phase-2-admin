@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class ManageServiceController extends Controller
 {
     public function getManageServicePage(){
-        return view('service.manage-service');
+        $service_details = ManageService::where('status', 1)->first();
+        return view('service.manage-service')->with(['service_details' => $service_details]);
     }
 
     public function saveServiceDetails(Request $request){

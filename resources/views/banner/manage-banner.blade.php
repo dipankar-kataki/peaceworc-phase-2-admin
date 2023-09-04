@@ -101,7 +101,7 @@
                         $('.bannerSubmitBtn').attr('disabled', false);
                         $('.bannerSubmitBtn').text('Submit');
                         
-                        $("#bannerForm").trigger("reset");
+                        // $("#bannerForm").trigger("reset");
                     }else{
                         toastr.error(response.message, 'Error', {
                             positionClass: 'toast-top-right',

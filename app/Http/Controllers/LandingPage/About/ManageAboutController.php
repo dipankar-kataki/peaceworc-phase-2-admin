@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class ManageAboutController extends Controller
 {
     public function getManageAboutPage(){
-        return view('about.manage-about');
+        $about_details = ManageAbout::where('status', 1)->first();
+        return view('about.manage-about')->with(['about_details' => $about_details]);
     }
 
     public function saveAboutDetails(Request $request){
