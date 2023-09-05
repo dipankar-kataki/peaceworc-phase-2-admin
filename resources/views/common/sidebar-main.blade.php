@@ -70,13 +70,13 @@
                 </ul>
             </li> --}}
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="index-2.html#">
+                <a class="side-menu__item" data-toggle="slide">
                     <i class="side-menu__icon fe fe-layout"></i>
                     <span class="side-menu__label">Landing Page</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{route('admin.get.manage.banner.page')}}">Manage Layout</a></li>
+                    <li><a class="slide-item" href="{{route('admin.get.landing.page.layout')}}">Manage Layout</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.manage.banner.page')}}">Manage Banner</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.manage.about.page')}}">Manage About</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.manage.service.page')}}">Manage Services</a></li>

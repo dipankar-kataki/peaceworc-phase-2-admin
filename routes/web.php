@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingPage\About\ManageAboutController;
 use App\Http\Controllers\LandingPage\Agency\BecomeAgencyController;
 use App\Http\Controllers\LandingPage\Banner\ManageBannerController;
 use App\Http\Controllers\LandingPage\Caregiver\BecomeCaregiverController;
+use App\Http\Controllers\LandingPage\Layout\ManageLayoutController;
 use App\Http\Controllers\LandingPage\Service\ManageServiceController;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Logout\LogoutController;
@@ -60,6 +61,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('manage', [BecomeAgencyController::class, 'getBecomeAgencyPage'])->name('admin.get.become.agency.page');
         Route::post('save-details', [BecomeAgencyController::class, 'saveBecomeAgencyDetails'])->name('admin.save.become.agency.details');
     });
+
+    Route::group(['prefix' => 'landing-page-layout'], function(){
+        Route::get('manage', [ManageLayoutController::class, 'getLandingPageLayout'])->name('admin.get.landing.page.layout');
+        // Route::post('save-details', [BecomeAgencyController::class, 'saveBecomeAgencyDetails'])->name('admin.save.become.agency.details');
+    });
+
 
     Route::get('logout', [LogoutController::class, 'logout'])->name('admin.logout');
 });
