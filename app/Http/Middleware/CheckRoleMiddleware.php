@@ -31,7 +31,7 @@ class CheckRoleMiddleware
                 return redirect('/');
             }
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Invalid Credentials' . $e->getMessage(), 'status' => 0]);
+            return response()->json(['message' => 'Oops! Invalid Credentials', 'status' => 0]);
         } 
     }
 }

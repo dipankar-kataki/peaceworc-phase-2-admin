@@ -12,4 +12,8 @@ class BecomeCaregiver extends Model
     protected $table = 'become_caregivers';
 
     protected $guarded = [];
+
+    public function getDutiesAndResponsibilitiesAttribute($value){
+        return json_decode($value);
+    }
 }

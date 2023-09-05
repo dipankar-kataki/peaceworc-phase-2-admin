@@ -9,21 +9,26 @@
                     <div class="mb-4">
                         <h6 class="card-title mb-1">Edit Become Caregiver</h6>
                     </div>
+                    {{-- @dd($become_caregiver_details) --}}
                     <div class="mb-4">
                         <form id="becomeCaregiverForm" class="form-horizontal">
                             @csrf
                             <div class="form-group">
                                 <label for="becomeCaregiverName">Enter Main Text</label>
-                                <textarea type="text" class="form-control" name="becomeCaregiverName" id="becomeCaregiverName" placeholder="Type here... Max characters allowed 300" maxlength="300" rows="5" style="resize: none;"></textarea>
+                                <textarea type="text" class="form-control" name="becomeCaregiverName" id="becomeCaregiverName" placeholder="Type here... Max characters allowed 300" maxlength="300" rows="5" style="resize: none;">{{$become_caregiver_details->main_text}}</textarea>
                             </div>
                             <div class="form-group" >
                                 <label for="becomeCaregiverDuties">Enter Duties And Responsibilities</label>
-                                <div class="form-group inputDutiesDiv">
-                                    <div class="d-flex flex-row justify-content-between align-items-center mb-2">
-                                        <input type="text" class="form-control" name="becomeCaregiverDuties[]" id="becomeCaregiverDuties" placeholder="Type here... Max characters allowed  350" maxlength="350">
-                                        <button type="button" class="btn btn-danger d-none removeBtn" >Remove</button>
+                                    <div class="form-group inputDutiesDiv">
+                                        @foreach ($become_caregiver_details->duties_and_responsibilities as $item)
+                                            <div class="d-flex flex-row justify-content-between align-items-center mb-2">
+                                                <input type="text" class="form-control" name="becomeCaregiverDuties[]" value="{{$item}}" id="becomeCaregiverDuties" placeholder="Type here... Max characters allowed  350" maxlength="350">   
+                                            
+                                                <button type="button" class="btn btn-danger removeBtn" >Remove</button>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                </div>
+                                
                                 <div class="form-group">
                                     <button type="button" class="btn btn-success" id="addMoreBtn"><i class="fe fe-plus me-2"></i> Add More</button>
                                 </div>
@@ -64,9 +69,9 @@
             const max_field = 10;
             const addMoreBtn = $('#addMoreBtn');
             const inputDutiesDiv = $('.inputDutiesDiv');
-            var count = 1;
+            var count = "{{sizeof($become_caregiver_details->duties_and_responsibilities)}}";
 
-            
+            // console.info('Duties Size', ('{{sizeof($become_caregiver_details->duties_and_responsibilities)}}'))
 
             const newInputField = `
                 <div class="d-flex flex-row justify-content-between align-items-center  mb-2">
@@ -89,6 +94,8 @@
 
             $(inputDutiesDiv).on('click', '.removeBtn', function(e){
                 e.preventDefault();
+
+                console.log('Count -->', count)
 
                 if(count > 1){
                     $(this).parent('div').remove();

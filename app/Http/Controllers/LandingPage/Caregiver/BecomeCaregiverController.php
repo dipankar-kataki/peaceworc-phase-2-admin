@@ -9,7 +9,15 @@ use Illuminate\Http\Request;
 class BecomeCaregiverController extends Controller
 {
     public function getBecomeCaregiverPage(){
-        return view('caregiver.manage-become-caregiver');
+        try{
+            
+            $become_caregiver_details =  BecomeCaregiver::where('status', 1)->first();
+            return view('caregiver.manage-become-caregiver')->with(['become_caregiver_details' => $become_caregiver_details]);
+
+        }catch(\Exception $e){
+            echo 'Oops! Something Went Wrong.';
+        }
+        
     }
 
     public function saveBecomeCaregiverDetails(Request $request){
