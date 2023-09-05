@@ -12,4 +12,8 @@ class BecomeAgency extends Model
     protected $table = 'become_agencies';
 
     protected $guarded = [];
+
+    public function getDutiesAndResponsibilitiesAttribute($value){
+        return json_decode($value);
+    }
 }

@@ -9,7 +9,13 @@ use Illuminate\Http\Request;
 class BecomeAgencyController extends Controller
 {
     public function getBecomeAgencyPage(){
-        return view('agency.manage-become-agency');
+        try{
+            $become_agency_details =  BecomeAgency::where('status', 1)->first();
+
+            return view('agency.manage-become-agency')->with(['become_agency_details' => $become_agency_details]);
+        }catch(\Exception $e){
+            echo 'Oops! Something Went Wrong';
+        }
     }
 
     public function saveBecomeAgencyDetails(Request $request){
