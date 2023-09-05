@@ -76,6 +76,7 @@
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
                 <ul class="slide-menu">
+                    <li><a class="slide-item" href="{{route('admin.get.manage.banner.page')}}">Manage Layout</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.manage.banner.page')}}">Manage Banner</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.manage.about.page')}}">Manage About</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.manage.service.page')}}">Manage Services</a></li>
