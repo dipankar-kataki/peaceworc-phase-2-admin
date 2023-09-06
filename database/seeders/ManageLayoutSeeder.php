@@ -14,14 +14,22 @@ class ManageLayoutSeeder extends Seeder
      */
     public function run()
     {
-        ManageLayout::create([
-            'banner' => 1,
-            'about' => 1,
-            'service' => 1,
-            'become_caregiver' => 1,
-            'become_agency' => 1,
-            'testimonial' => 1,
-            'contact_us' => 1
-        ]);
+        $layout_modules = new \stdClass();
+        $layout_modules->banner = 1;
+        $layout_modules->about = 1;
+        $layout_modules->service = 1;
+        $layout_modules->become_caregiver = 1;
+        $layout_modules->become_agency = 1;
+        $layout_modules->testimonial = 1;
+        $layout_modules->contact_us = 1;
+
+        foreach($layout_modules  as $key => $item){
+            
+            ManageLayout::create([
+                'module' => $key,
+                'status' => $item,
+            ]);
+        }
+        
     }
 }

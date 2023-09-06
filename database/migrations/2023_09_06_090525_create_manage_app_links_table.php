@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateManageLayoutsTable extends Migration
+class CreateManageAppLinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateManageLayoutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('manage_layouts', function (Blueprint $table) {
+        Schema::create('manage_app_links', function (Blueprint $table) {
             $table->id();
-            $table->string('module');
+            $table->string('caregiver_android_link')->nullable();
+            $table->string('caregiver_ios_link')->nullable();
+            $table->string('agency_android_link')->nullable();
+            $table->string('agency_ios_link')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
@@ -28,6 +31,6 @@ class CreateManageLayoutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manage_layouts');
+        Schema::dropIfExists('manage_app_links');
     }
 }

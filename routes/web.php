@@ -3,13 +3,13 @@
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LandingPage\About\ManageAboutController;
 use App\Http\Controllers\LandingPage\Agency\BecomeAgencyController;
+use App\Http\Controllers\LandingPage\AppLink\ManageAppLinkController;
 use App\Http\Controllers\LandingPage\Banner\ManageBannerController;
 use App\Http\Controllers\LandingPage\Caregiver\BecomeCaregiverController;
 use App\Http\Controllers\LandingPage\Layout\ManageLayoutController;
 use App\Http\Controllers\LandingPage\Service\ManageServiceController;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Logout\LogoutController;
-use App\Models\BecomeCaregiver;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,7 +64,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'landing-page-layout'], function(){
         Route::get('manage', [ManageLayoutController::class, 'getLandingPageLayout'])->name('admin.get.landing.page.layout');
-        // Route::post('save-details', [BecomeAgencyController::class, 'saveBecomeAgencyDetails'])->name('admin.save.become.agency.details');
+        Route::post('change-status', [ManageLayoutController::class, 'changeLayoutVisibilityStatus'])->name('admin.change.layout.visibility.status');
+    });
+
+    Route::group(['prefix' => 'app-links'], function(){
+        Route::get('manage', [ManageAppLinkController::class, 'getManageAppLinkPage'])->name('admin.get.manage.app.link.page');
+        // Route::post('change-status', [ManageLayoutController::class, 'changeLayoutVisibilityStatus'])->name('admin.change.layout.visibility.status');
     });
 
 

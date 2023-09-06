@@ -82,7 +82,18 @@
                     <li><a class="slide-item" href="{{route('admin.get.manage.service.page')}}">Manage Services</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.become.caregiver.page')}}">Manage Become Caregiver</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.become.agency.page')}}">Manage Become Agency</a></li>
-                    {{-- <li><a class="slide-item" href="image-compare.html">Manage Testimonial</a></li> --}}
+                    <li><a class="slide-item" href="{{route('admin.get.manage.app.link.page')}}">Manage App Links</a></li>
+                </ul>
+            </li>
+
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide">
+                    <i class="side-menu__icon fe fe-speaker"></i>
+                    <span class="side-menu__label">Agency</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li><a class="slide-item" href="{{route('admin.get.landing.page.layout')}}">List</a></li>
                 </ul>
             </li>
            
