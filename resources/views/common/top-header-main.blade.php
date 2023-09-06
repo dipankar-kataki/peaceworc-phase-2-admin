@@ -288,7 +288,7 @@
                         <a class="dropdown-item" href="#"><i class="fas fa-key"></i>Change Password</a>
                         @if (Auth::user()->role == 1)
                             <a class="dropdown-item" href="{{route('admin.get.activity.logs.page')}}"><i class="far fa-clock"></i> Activity Logs</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-sliders-h"></i> Account Settings</a>
+                            <a class="dropdown-item" href="{{route('admin.get.add.account.user.page')}}"><i class="fas fa-sliders-h"></i> Account Settings</a>
                         @endif
                         
                         <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a>

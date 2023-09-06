@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountUser\AddAccountUserController;
 use App\Http\Controllers\ActivityLog\ActivityLogController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LandingPage\About\ManageAboutController;
@@ -75,6 +76,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'activity'], function(){
         Route::get('logs', [ActivityLogController::class, 'getActivityLogsPage'])->name('admin.get.activity.logs.page');
+    });
+
+    Route::group(['prefix' => 'account'], function(){
+        Route::get('manage', [AddAccountUserController::class, 'addAccountUserPage'])->name('admin.get.add.account.user.page');
     });
 
 
