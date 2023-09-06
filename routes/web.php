@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityLog\ActivityLogController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LandingPage\About\ManageAboutController;
 use App\Http\Controllers\LandingPage\Agency\BecomeAgencyController;
@@ -70,6 +71,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'app-links'], function(){
         Route::get('manage', [ManageAppLinkController::class, 'getManageAppLinkPage'])->name('admin.get.manage.app.link.page');
         // Route::post('change-status', [ManageLayoutController::class, 'changeLayoutVisibilityStatus'])->name('admin.change.layout.visibility.status');
+    });
+
+    Route::group(['prefix' => 'activity'], function(){
+        Route::get('logs', [ActivityLogController::class, 'getActivityLogsPage'])->name('admin.get.activity.logs.page');
     });
 
 
