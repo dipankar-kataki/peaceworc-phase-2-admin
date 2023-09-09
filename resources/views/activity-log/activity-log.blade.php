@@ -11,8 +11,8 @@
                         <h6 class="card-title mb-1">Activity Logs</h6>
                     </div>
                     <div class="mb-4">
-                        <div class="table-responsive">
-                            <table class="table table-bordered mg-b-1 text-md-nowrap">
+                        <div class="table-responsive" >
+                            <table id="activityLogTable" class="table table-bordered mg-b-1 text-md-nowrap">
                                 <thead>
                                     <tr>
                                         <th>Sl. No.</th>
@@ -44,7 +44,7 @@
 @section('custom-scripts')
     <script>
         $(document).ready(function() {
-            $('#basic_datatable').DataTable({
+            $('#activityLogTable').dataTable({
                 dom: 'Bfrtip',
                 buttons: [
                     'pdf',

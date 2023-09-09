@@ -77,7 +77,7 @@
                 </a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{route('admin.get.landing.page.layout')}}">Manage Layout</a></li>
-                    <li><a class="slide-item" href="{{route('admin.get.manage.banner.page')}}">Manage Banner</a></li>
+                    {{-- <li><a class="slide-item" href="{{route('admin.get.manage.banner.page')}}">Manage Banner</a></li> --}}
                     <li><a class="slide-item" href="{{route('admin.get.manage.about.page')}}">Manage About</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.manage.service.page')}}">Manage Services</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.become.caregiver.page')}}">Manage Become Caregiver</a></li>
@@ -93,7 +93,7 @@
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{route('admin.get.landing.page.layout')}}">List</a></li>
+                    <li><a class="slide-item" href="#">List</a></li>
                 </ul>
             </li>
            

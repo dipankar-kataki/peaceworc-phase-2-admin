@@ -14,7 +14,6 @@
                             <table class="table table-striped mg-b-1 text-md-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>Sl. No.</th>
                                         <th>Layout Name</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -22,24 +21,25 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($get_layout as $key => $item)
-                                        <tr>
-                                            <th scope="row">{{$key + 1}}</th>
-                                            <td style="text-transform: uppercase;font-weight:bold;">{{$item->module}}</td>
-                                            <td>
-                                                @if ($item->status == 1)
-                                                    <div class="badge bg-success-gradient text-white" >Active</div>
-                                                @else
-                                                    <div class="badge bg-danger-gradient text-white" >Hidden</div>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($item->status == 1)
-                                                    <button type="button" class="btn btn-sm btn-danger w-xs mb-1 change-visibility" data-status="0" data-id="{{$item->id}}">Make Private</button>
-                                                @else
-                                                    <button type="button" class="btn btn-sm btn-primary w-xs mb-1 change-visibility" data-status="1" data-id="{{$item->id}}">Make Public</button>
-                                                @endif
-                                            </td>
-                                        </tr>
+                                        @if ($item->module != 'banner')
+                                            <tr>
+                                                <td style="text-transform: uppercase;font-weight:bold;">{{$item->module}}</td> 
+                                                <td>
+                                                    @if ($item->status == 1)
+                                                        <div class="badge bg-success-gradient text-white" >Active</div>
+                                                    @else
+                                                        <div class="badge bg-danger-gradient text-white" >Hidden</div>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($item->status == 1)
+                                                        <button type="button" class="btn btn-sm btn-danger w-xs mb-1 change-visibility" data-status="0" data-id="{{$item->id}}">Make Private</button>
+                                                    @else
+                                                        <button type="button" class="btn btn-sm btn-primary w-xs mb-1 change-visibility" data-status="1" data-id="{{$item->id}}">Make Public</button>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

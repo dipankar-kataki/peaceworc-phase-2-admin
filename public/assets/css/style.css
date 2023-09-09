@@ -8560,7 +8560,7 @@ a.text-dark:hover, a.text-dark:focus {
   width: 36px;
   height: 38px;
   border-width: 0;
-  background-color: #dedcfb;
+  background-color: transparent;
   margin-left: 0;
   font-weight: 500; }
   .page-link i {
@@ -8568,7 +8568,8 @@ a.text-dark:hover, a.text-dark:focus {
     line-height: 0; }
   .page-link:hover, .page-link:focus {
     color: #5e597d;
-    background-color: #bbb8e2; }
+    background-color: #bbb8e2; 
+  }
 
 .pagination-dark .page-item.active .page-link {
   background-color: #3858f9;

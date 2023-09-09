@@ -122,7 +122,12 @@
 							$('.signin-btn').text('Sign In');
 						}
 					},error:function(xhr, status, error){
-						console.log(error);
+						toastr.error('Oops! Something Went Wrong.', 'Error', {
+							positionClass: 'toast-top-right',
+							closeButton: true,
+							progressBar: true,
+							timeOut: 3000
+						});
 
 						$('.signin-btn').attr('disabled', false);
 						$('.signin-btn').text('Sign In');
