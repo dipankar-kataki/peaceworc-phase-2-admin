@@ -10,7 +10,7 @@ class ManageServiceController extends Controller
 {
     public function getManageServicePage(){
         $service_details = ManageService::where('status', 1)->first();
-        return view('service.manage-service')->with(['service_details' => $service_details]);
+        return view('landing-page.service.manage-service')->with(['service_details' => $service_details]);
     }
 
     public function saveServiceDetails(Request $request){

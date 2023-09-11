@@ -11,7 +11,7 @@ class ManageBannerController extends Controller
     public function getManageBannerPage(){
         try{
             $get_banner = ManageBanner::where('status', 1)->first();
-            return view('banner.manage-banner')->with(['banner_details' => $get_banner]);
+            return view('landing-page.banner.manage-banner')->with(['banner_details' => $get_banner]);
         }catch(\Exception $e){
             echo 'Oops! Something Went Wrong.';
         }

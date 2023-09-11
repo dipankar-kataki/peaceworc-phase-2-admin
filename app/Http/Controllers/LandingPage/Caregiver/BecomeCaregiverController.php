@@ -12,7 +12,7 @@ class BecomeCaregiverController extends Controller
         try{
             
             $become_caregiver_details =  BecomeCaregiver::where('status', 1)->first();
-            return view('caregiver.manage-become-caregiver')->with(['become_caregiver_details' => $become_caregiver_details]);
+            return view('landing-page.become-caregiver.manage-become-caregiver')->with(['become_caregiver_details' => $become_caregiver_details]);
 
         }catch(\Exception $e){
             echo 'Oops! Something Went Wrong.';

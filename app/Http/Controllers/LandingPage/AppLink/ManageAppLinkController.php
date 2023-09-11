@@ -9,7 +9,7 @@ class ManageAppLinkController extends Controller
 {
     public function getManageAppLinkPage(){
         try{
-            return view('app-link.manage-app-link');
+            return view('landing-page.app-link.manage-app-link');
         }catch(\Exception $e){
             echo 'Oops! Something Went Wrong';
         }

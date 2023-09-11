@@ -10,7 +10,7 @@ class ManageAboutController extends Controller
 {
     public function getManageAboutPage(){
         $about_details = ManageAbout::where('status', 1)->first();
-        return view('about.manage-about')->with(['about_details' => $about_details]);
+        return view('landing-page.about.manage-about')->with(['about_details' => $about_details]);
     }
 
     public function saveAboutDetails(Request $request){

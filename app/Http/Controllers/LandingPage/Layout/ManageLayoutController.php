@@ -11,7 +11,7 @@ class ManageLayoutController extends Controller
     public function getLandingPageLayout(){
         try{
             $get_layout = ManageLayout::get();
-            return view('manage-layout.manage-layout')->with(['get_layout' => $get_layout]);
+            return view('landing-page.manage-layout.manage-layout')->with(['get_layout' => $get_layout]);
         }catch(\Exception $e){
             echo 'Oops! Something Went Wrong.';
         }
