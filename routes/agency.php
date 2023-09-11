@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Agency\AgencyListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function(){
   
-    // Route::get('list')->name('admin.get.agency.list');
+    Route::get('list', [AgencyListController::class, 'getAgencyList'])->name('admin.get.agency.list');
 });

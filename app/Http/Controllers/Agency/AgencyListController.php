@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Agency\List;
+namespace App\Http\Controllers\Agency;
 
 use App\Common\Role;
 use App\Http\Controllers\Controller;
@@ -11,12 +11,10 @@ class AgencyListController extends Controller
 {
     public function getAgencyList(){
         try{
-            $get_agency_list = User::where('role', Role::Agency_Admin)->orWhere('role', Role::Agency_Owner)->orWhere('role', Role::Agency_Operator)->get();
-
+            $get_agency_list = User::where('role', Role::Agency_Admin)->orWhere('role', Role::Agency_Operator)->orWhere('role', Role::Agency_Owner)->get();
             return view('agency.list.agency-list')->with(['get_agency_list' => $get_agency_list]);
         }catch(\Exception $e){
             echo 'Oops! Something Went Wrong';
         }
     }
-    
 }
