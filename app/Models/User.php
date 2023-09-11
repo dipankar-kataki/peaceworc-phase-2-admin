@@ -50,18 +50,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    // public function getRoleAttribute($value){
-        
-    //     if($value == 1){
-    //         return 'Web Administrator';
-    //     }
-    //     if($value == 6){
-    //         return 'Web Operator';
-    //     }
-
-       
-    // }
+    public function agencyProfile(){
+        return $this->hasOne(AgencyProfileRegistration::class, 'user_id', 'id');
+    }
 }
 
 
