@@ -96,7 +96,6 @@
                     <li><a class="slide-item" href="#">List</a></li>
                 </ul>
             </li>
-           
         </ul>
     </div>
 </aside>

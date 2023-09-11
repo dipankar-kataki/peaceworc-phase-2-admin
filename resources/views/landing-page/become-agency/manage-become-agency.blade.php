@@ -1,4 +1,5 @@
 @extends('welcome')
+@section('page-title', 'Manage Become Agency')
 @section('custom-css')
 @endsection
 @section('content')

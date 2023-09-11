@@ -1,4 +1,5 @@
 @extends('welcome')
+@section('page-title', 'Add User Account')
 @section('custom-css')
 @endsection
 @section('content')

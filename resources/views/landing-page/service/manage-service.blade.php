@@ -1,4 +1,5 @@
 @extends('welcome')
+@section('page-title', 'Manage Service')
 @section('custom-css')
 @endsection
 @section('content')

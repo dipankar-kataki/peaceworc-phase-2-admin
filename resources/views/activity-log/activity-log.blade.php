@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('page-title', 'Manage Banner')
+@section('page-title', 'Account Activity Log')
 @section('custom-css')
 @endsection
 @section('content')

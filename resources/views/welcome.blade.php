@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<!-- Title -->
-		<title> {{ Request::segment(1) }} | Peaceworc - Admin Panel </title>
+		<title> @yield('page-title') | Peaceworc - Admin Panel </title>
 
 		<!--- Favicon -->
 		<link rel="icon" href="{{asset('assets/img/brand/peaceworc-favicon.png')}}" type="image/x-icon"/>
