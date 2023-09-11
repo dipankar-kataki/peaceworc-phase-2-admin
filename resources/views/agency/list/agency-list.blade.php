@@ -30,7 +30,7 @@
                                     <tr>
                                         <th scope="row"># {{$key + 1}}</th>
                                         <td>
-                                            <a href="">{{ $item->agencyProfile->company_name ?? 'Not Found' }}</a>
+                                            <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->id) ])}}">{{ $item->agencyProfile->company_name ?? 'Not Found' }}</a>
                                         </td>
                                         <td>{{ $item->agencyProfile->email ?? 'Not Found' }}</td>
                                         <td>{{ $item->agencyProfile->phone ?? 'Not Found' }}</td>
@@ -38,7 +38,7 @@
                                         <td>{{ $item->email ?? 'Not Found' }}</td>
                                         <td>{{ $item->phone ?? 'Not Found' }}</td>
                                         <td>
-                                            <button class="btn btn-info btn-sm">View Profile</button>
+                                            <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->id) ])}}" class="btn btn-info btn-sm">View Profile</a>
                                         </td>
                                     </tr>
                                 @endforeach
