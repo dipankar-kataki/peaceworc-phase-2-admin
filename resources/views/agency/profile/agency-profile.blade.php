@@ -45,6 +45,10 @@
         svg.radial-progress:nth-of-type(6n+2) circle {
             stroke: #83e4e2;
         }
+
+        .main-profile-social-list .media + .media {
+            margin-top: 10px;
+        }
     </style>
 @endsection
 @section('content')
@@ -65,15 +69,16 @@
                                 <div class="d-flex justify-content-between mg-b-20 ml-3">
                                     <div>
                                         <h5 class="main-profile-name">
-                                            {{ $get_agency_detail->agencyProfile->company_name ?? 'Not Found' }}</h5>
-                                        <p class="main-profile-name-text">Web Designer</p>
+                                            {{ $get_agency_detail->agencyProfile->company_name ?? 'Not Found' }}
+                                        </h5>
+                                        <p class="main-profile-name-text">Agency</p>
                                     </div>
                                 </div>
                             </div>
-                            <h6>Bio</h6>
+                            {{-- <h6>Bio</h6>
                             <div class="main-profile-bio">
                                 {{ $get_agency_detail->agencyProfile->about_company ?? 'Not Found' }}
-                            </div>
+                            </div> --}}
                             <h6>Profile Completion Status</h6>
                             <div class="main-profile-progress-bar d-flex flex-row flex-wrap justify-content-center align-items-center">
                                 <svg class="radial-progress" data-percentage="75" viewBox="0 0 80 80">
@@ -223,273 +228,281 @@
         <div class="col-lg-8">
             <div class="main-content-body main-content-body-profile">
                 <nav class="nav main-nav-line card">
-                    <a class="nav-link active" data-toggle="tab" href="#">Timeline</a>
-                    <a class="nav-link" data-toggle="tab" href="#">Gallery</a>
-                    <a class="nav-link" data-toggle="tab" href="#">Friends</a>
+                    <a class="nav-link show active" data-toggle="tab" href="#about_company">About Company</a>
+                    <a class="nav-link" data-toggle="tab" href="#company_owner_information">Company Owner Information</a>
+                    <a class="nav-link" data-toggle="tab" href="#authorized_officers">Authorized Officers</a>
                     <a class="nav-link" data-toggle="tab" href="#">Following</a>
                     <a class="nav-link" data-toggle="tab" href="#">Account Settings</a>
-                </nav><!-- main-profile-body -->
+                </nav>
+                <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
                     <div class="row row-sm">
                         <div class="col-12">
-                            <div class="card mg-b-20">
-                                <div class="card-body">
-                                    <div class="card-header">
-                                        <div class="media">
-                                            <div class="media-user mr-2">
-                                                <div class="main-img-user avatar-md"><img alt=""
-                                                        class="rounded-circle" src="{{ asset('assets/img/faces/6.jpg') }}">
+                            <div class="tab-content">
+                                <div class="card mg-b-20 tab-pane fade show active" id="about_company">
+                                    <div class="card-body">
+                                        {{-- <div class="card-header">
+                                            <div class="media">
+                                                <div class="media-user mr-2">
+                                                    <div class="main-img-user avatar-md"><img alt=""
+                                                            class="rounded-circle" src="{{ asset('assets/img/faces/6.jpg') }}">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 mg-t-9">Petey Cruiser Pechon</h6><span
-                                                    class="text-primary">just now</span>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <div class="dropdown show">
-                                                    <a class="new" data-toggle="dropdown" href="JavaScript:void(0);"><i
-                                                            class="fas fa-ellipsis-v"></i></a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Edit Post</a> <a
-                                                            class="dropdown-item" href="#">Delete Post</a> <a
-                                                            class="dropdown-item" href="#">Personal Settings</a>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0 mg-t-9">About Company</h6><span
+                                                        class="text-primary">just now</span>
+                                                </div>
+                                                <div class="ml-auto">
+                                                    <div class="dropdown show">
+                                                        <a class="new" data-toggle="dropdown" href="JavaScript:void(0);"><i
+                                                                class="fas fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#">Edit Post</a> <a
+                                                                class="dropdown-item" href="#">Delete Post</a> <a
+                                                                class="dropdown-item" href="#">Personal Settings</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div> --}}
+                                        <h6>Bio</h6>
+                                        <div class="main-profile-bio">
+                                            {{ $get_agency_detail->agencyProfile->about_company ?? 'Not Found' }}
                                         </div>
-                                    </div>
-                                    <p class="mg-t-10">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable.</p>
-                                    <div><img alt="img" class="w-100" src="{{ asset('assets/img/photos/1.jpg') }}">
-                                    </div>
-                                    <div class="media mg-t-15 profile-footer">
-                                        <div class="media-user mr-2">
-                                            <div class="demo-avatar-group">
-                                                <div class="demo-avatar-group main-avatar-list-stacked">
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="{{ asset('assets/img/faces/12.jpg') }}"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="{{ asset('assets/img/faces/12.jpg') }}"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="{{ asset('assets/img/faces/13.jpg') }}"></div>
-                                                    <div class="main-img-user online"><img alt=""
-                                                            class="rounded-circle"
-                                                            src="{{ asset('assets/img/faces/13.jpg') }}"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="{{ asset('assets/img/faces/14.jpg') }}"></div>
-                                                    <div class="main-avatar">
-                                                        +23
-                                                    </div>
-                                                </div><!-- demo-avatar-group -->
-                                            </div><!-- demo-avatar-group -->
+                                        <hr>
+                                        <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
+                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
+                                            <div class="media">
+                                                <div class="media-icon bg-primary-transparent text-primary">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Phone</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->phone ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-success-transparent text-success">
+                                                    <i class="fa fa-envelope"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Email</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->email ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-warning-transparent text-warning">
+                                                    <i class="fa fa-map"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Address</span>
+                                                    <a href="#">
+                                                        {{ $get_agency_detail->agencyProfile->appartment_or_unit ? $get_agency_detail->agencyProfile->appartment_or_unit.', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->floor_no ? $get_agency_detail->agencyProfile->floor_no.', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->street ? $get_agency_detail->agencyProfile->street.', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->city_or_district ? $get_agency_detail->agencyProfile->city_or_district.', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->zip_code ? $get_agency_detail->agencyProfile->zip_code.', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->state ? $get_agency_detail->agencyProfile->state.', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->country ? $get_agency_detail->agencyProfile->country : '' }}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="media-body">
-                                            <h6 class="mb-0 mg-t-10">28 people like your photo</h6>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <div class="dropdown show">
-                                                <a class="new" href="JavaScript:void(0);"><i
-                                                        class="far fa-heart"></i></a> <a class="new"
-                                                    href="JavaScript:void(0);"><i class="far fa-comment"></i></a> <a
-                                                    class="new" href="JavaScript:void(0);"><i
-                                                        class="far fa-share-square"></i></a>
+                                        <hr>
+                                        <label class="main-content-label tx-13 mg-b-20">Other Information</label>
+                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
+                                            <div class="media">
+                                                <div class="media-icon bg-primary-transparent text-primary">
+                                                    <i class="fas fa-file-contract"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Legal Structure</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->legal_structure ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-success-transparent text-success">
+                                                    <i class="fas fa-sitemap"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Organization Type</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->organization_type ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-warning-transparent text-warning">
+                                                    <i class="fas fa-id-card"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Tax Id / EIN Id</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->tax_id_or_ein_id ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-info-transparent text-info">
+                                                    <i class="fas fa-user-cog"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Total Employee</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->number_of_employee ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-danger-transparent text-danger">
+                                                    <i class="far fa-calendar-alt"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Active Years</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->years_in_business ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-primary-transparent text-primary">
+                                                    <i class="fas fa-globe"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Country Of Business</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->country_of_business ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-success-transparent text-success">
+                                                    <i class="fas fa-hand-holding-usd"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Annual Revenue</span>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->annual_business_revenue ?? 'Not Found' }}</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card mg-b-20">
-                                <div class="card-body h-100">
-                                    <div class="card-header">
-                                        <div class="media">
-                                            <div class="media-user mr-2">
-                                                <div class="main-img-user avatar-md"><img alt=""
-                                                        class="rounded-circle" src="assets/img/faces/6.jpg"></div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 mg-t-9">Petey Cruiser Pechon</h6><span
-                                                    class="text-dark">Sep 26 2019, 10:14am</span>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <div class="dropdown show">
-                                                    <a class="new" data-toggle="dropdown"
-                                                        href="JavaScript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Edit Post</a> <a
-                                                            class="dropdown-item" href="#">Delete Post</a> <a
-                                                            class="dropdown-item" href="#">Personal Settings</a>
+                                <div class="card mg-b-20 tab-pane fade" id="company_owner_information">
+                                    <div class="card-body h-100">
+                                        <div class="card-header">
+                                            <div class="media">
+                                                <div class="media-user mr-2">
+                                                    <div class="main-img-user avatar-md"><img alt=""
+                                                            class="rounded-circle" src="assets/img/faces/6.jpg"></div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0 mg-t-9">Company Owner</h6><span
+                                                        class="text-dark">Sep 26 2019, 10:14am</span>
+                                                </div>
+                                                <div class="ml-auto">
+                                                    <div class="dropdown show">
+                                                        <a class="new" data-toggle="dropdown"
+                                                            href="JavaScript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#">Edit Post</a> <a
+                                                                class="dropdown-item" href="#">Delete Post</a> <a
+                                                                class="dropdown-item" href="#">Personal Settings</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <p class="mg-t-10">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable.</p>
-                                    <div class="d-flex"><img alt="img" class="wd-45p m-1"
-                                            src="assets/img/photos/2.jpg"> <img alt="img" class="wd-45p m-1"
-                                            src="assets/img/photos/3.jpg"></div>
-                                    <div class="media mg-t-15 profile-footer">
-                                        <div class="media-user mr-2">
-                                            <div class="demo-avatar-group">
-                                                <div class="demo-avatar-group main-avatar-list-stacked">
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/12.jpg"></div>
-                                                    <div class="main-img-user online"><img alt=""
-                                                            class="rounded-circle" src="assets/img/faces/12.jpg"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/13.jpg"></div>
-                                                    <div class="main-img-user online"><img alt=""
-                                                            class="rounded-circle" src="assets/img/faces/13.jpg"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/14.jpg"></div>
-                                                    <div class="main-avatar">
-                                                        +23
-                                                    </div>
+                                        <p class="mg-t-10">There are many variations of passages of Lorem Ipsum available, but
+                                            the majority have suffered alteration in some form, by injected humour, or
+                                            randomised words which don't look even slightly believable.</p>
+                                        <div class="d-flex"><img alt="img" class="wd-45p m-1"
+                                                src="assets/img/photos/2.jpg"> <img alt="img" class="wd-45p m-1"
+                                                src="assets/img/photos/3.jpg"></div>
+                                        <div class="media mg-t-15 profile-footer">
+                                            <div class="media-user mr-2">
+                                                <div class="demo-avatar-group">
+                                                    <div class="demo-avatar-group main-avatar-list-stacked">
+                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
+                                                                src="assets/img/faces/12.jpg"></div>
+                                                        <div class="main-img-user online"><img alt=""
+                                                                class="rounded-circle" src="assets/img/faces/12.jpg"></div>
+                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
+                                                                src="assets/img/faces/13.jpg"></div>
+                                                        <div class="main-img-user online"><img alt=""
+                                                                class="rounded-circle" src="assets/img/faces/13.jpg"></div>
+                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
+                                                                src="assets/img/faces/14.jpg"></div>
+                                                        <div class="main-avatar">
+                                                            +23
+                                                        </div>
+                                                    </div><!-- demo-avatar-group -->
                                                 </div><!-- demo-avatar-group -->
-                                            </div><!-- demo-avatar-group -->
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mb-0 mg-t-10">28 people like your photo</h6>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <div class="dropdown show">
-                                                <a class="new" href="JavaScript:void(0);"><i
-                                                        class="far fa-heart"></i></a> <a class="new"
-                                                    href="JavaScript:void(0);"><i class="far fa-comment"></i></a> <a
-                                                    class="new" href="JavaScript:void(0);"><i
-                                                        class="far fa-share-square"></i></a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="mb-0 mg-t-10">28 people like your photo</h6>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <div class="dropdown show">
+                                                    <a class="new" href="JavaScript:void(0);"><i
+                                                            class="far fa-heart"></i></a> <a class="new"
+                                                        href="JavaScript:void(0);"><i class="far fa-comment"></i></a> <a
+                                                        class="new" href="JavaScript:void(0);"><i
+                                                            class="far fa-share-square"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card mg-b-20">
-                                <div class="card-body">
-                                    <div class="card-header">
-                                        <div class="media">
-                                            <div class="media-user mr-2">
-                                                <div class="main-img-user avatar-md"><img alt=""
-                                                        class="rounded-circle" src="assets/img/faces/6.jpg"></div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 mg-t-9">Petey Cruiser Pechon</h6><span
-                                                    class="text-dark">Sep 22 2019, 10:14am</span>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <div class="dropdown show">
-                                                    <a class="new" data-toggle="dropdown"
-                                                        href="JavaScript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Edit Post</a> <a
-                                                            class="dropdown-item" href="#">Delete Post</a> <a
-                                                            class="dropdown-item" href="#">Personal Settings</a>
+                                <div class="card mg-b-20 tab-pane fade" id="authorized_officers">
+                                    <div class="card-body">
+                                        <div class="card-header">
+                                            <div class="media">
+                                                <div class="media-user mr-2">
+                                                    <div class="main-img-user avatar-md"><img alt=""
+                                                            class="rounded-circle" src="assets/img/faces/6.jpg"></div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0 mg-t-9">Authorized Officers</h6><span
+                                                        class="text-dark">Sep 22 2019, 10:14am</span>
+                                                </div>
+                                                <div class="ml-auto">
+                                                    <div class="dropdown show">
+                                                        <a class="new" data-toggle="dropdown"
+                                                            href="JavaScript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#">Edit Post</a> <a
+                                                                class="dropdown-item" href="#">Delete Post</a> <a
+                                                                class="dropdown-item" href="#">Personal Settings</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <p class="mg-t-10">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable.</p>
-
-                                    <div class="media mg-t-15 profile-footer">
-                                        <div class="media-user mr-2">
-                                            <div class="demo-avatar-group">
-                                                <div class="demo-avatar-group main-avatar-list-stacked">
-                                                    <div class="main-img-user online"><img alt=""
-                                                            class="rounded-circle" src="assets/img/faces/12.jpg"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/12.jpg"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/13.jpg"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/13.jpg"></div>
-                                                    <div class="main-img-user online"><img alt=""
-                                                            class="rounded-circle" src="assets/img/faces/14.jpg"></div>
-                                                    <div class="main-avatar">
-                                                        +23
-                                                    </div>
-                                                </div><!-- demo-avatar-group -->
-                                            </div><!-- demo-avatar-group -->
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mb-0 mg-t-10">28 people like your photo</h6>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <div class="dropdown show">
-                                                <a class="new" href="JavaScript:void(0);"><i
-                                                        class="far fa-heart"></i></a> <a class="new"
-                                                    href="JavaScript:void(0);"><i class="far fa-comment"></i></a> <a
-                                                    class="new" href="JavaScript:void(0);"><i
-                                                        class="far fa-share-square"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body h-100">
-                                    <div class="card-header">
-                                        <div class="media">
+                                        <p class="mg-t-10">There are many variations of passages of Lorem Ipsum available, but
+                                            the majority have suffered alteration in some form, by injected humour, or
+                                            randomised words which don't look even slightly believable.</p>
+    
+                                        <div class="media mg-t-15 profile-footer">
                                             <div class="media-user mr-2">
-                                                <div class="main-img-user avatar-md"><img alt=""
-                                                        class="rounded-circle" src="assets/img/faces/15.jpg"></div>
+                                                <div class="demo-avatar-group">
+                                                    <div class="demo-avatar-group main-avatar-list-stacked">
+                                                        <div class="main-img-user online"><img alt=""
+                                                                class="rounded-circle" src="assets/img/faces/12.jpg"></div>
+                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
+                                                                src="assets/img/faces/12.jpg"></div>
+                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
+                                                                src="assets/img/faces/13.jpg"></div>
+                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
+                                                                src="assets/img/faces/13.jpg"></div>
+                                                        <div class="main-img-user online"><img alt=""
+                                                                class="rounded-circle" src="assets/img/faces/14.jpg"></div>
+                                                        <div class="main-avatar">
+                                                            +23
+                                                        </div>
+                                                    </div><!-- demo-avatar-group -->
+                                                </div><!-- demo-avatar-group -->
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="mb-0 mg-t-9">Petey Cruiser</h6><span class="text-dark">Sep 21
-                                                    2019, 10:14am</span>
+                                                <h6 class="mb-0 mg-t-10">28 people like your photo</h6>
                                             </div>
                                             <div class="ml-auto">
                                                 <div class="dropdown show">
-                                                    <a class="new" data-toggle="dropdown"
-                                                        href="JavaScript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Edit Post</a> <a
-                                                            class="dropdown-item" href="#">Delete Post</a> <a
-                                                            class="dropdown-item" href="#">Personal Settings</a>
-                                                    </div>
+                                                    <a class="new" href="JavaScript:void(0);"><i
+                                                            class="far fa-heart"></i></a> <a class="new"
+                                                        href="JavaScript:void(0);"><i class="far fa-comment"></i></a> <a
+                                                        class="new" href="JavaScript:void(0);"><i
+                                                            class="far fa-share-square"></i></a>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="mg-t-10">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable.</p>
-                                    <div class="d-flex"><img alt="img" class="wd-45p m-1"
-                                            src="assets/img/photos/2.jpg"> <img alt="img" class="wd-45p m-1"
-                                            src="assets/img/photos/3.jpg"></div>
-                                    <div class="media mg-t-15 profile-footer">
-                                        <div class="media-user mr-2">
-                                            <div class="demo-avatar-group">
-                                                <div class="demo-avatar-group main-avatar-list-stacked">
-                                                    <div class="main-img-user online"><img alt=""
-                                                            class="rounded-circle" src="assets/img/faces/11.jpg"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/12.jpg"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/13.jpg"></div>
-                                                    <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                            src="assets/img/faces/4.jpg"></div>
-                                                    <div class="main-img-user online"><img alt=""
-                                                            class="rounded-circle" src="assets/img/faces/5.jpg"></div>
-                                                    <div class="main-avatar">
-                                                        +23
-                                                    </div>
-                                                </div><!-- demo-avatar-group -->
-                                            </div><!-- demo-avatar-group -->
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mb-0 mg-t-10">28 people like your photo</h6>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <div class="dropdown show">
-                                                <a class="new" href="JavaScript:void(0);"><i
-                                                        class="far fa-heart"></i></a> <a class="new"
-                                                    href="JavaScript:void(0);"><i class="far fa-comment"></i></a> <a
-                                                    class="new" href="JavaScript:void(0);"><i
-                                                        class="far fa-share-square"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -497,7 +510,8 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- main-profile-body -->
+                </div>
+                <!-- main-profile-body -->
             </div>
         </div>
     </div>
