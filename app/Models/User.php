@@ -53,6 +53,11 @@ class User extends Authenticatable
     public function agencyProfile(){
         return $this->hasOne(AgencyProfileRegistration::class, 'user_id', 'id');
     }
+
+    
+    public function agencyProfileStatus(){
+        return $this->hasOne(AgencyInformationStatus::class, 'user_id', 'id')->select(['user_id', 'is_business_info_complete', 'is_other_info_added', 'is_authorize_info_added', 'is_profile_approved']);
+    }
 }
 
 

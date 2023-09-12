@@ -5,7 +5,7 @@
         svg.radial-progress {
             height: auto;
             max-width: 170px;
-            padding: 0px;
+            padding: 10px;
             transform: rotate(-90deg);
             width: 100%;
         }
@@ -49,6 +49,14 @@
         .main-profile-social-list .media + .media {
             margin-top: 10px;
         }
+
+        .profile-main-card-header{
+            max-height:120px;
+        }
+        .main-img-user {
+            height:65px;
+            width:65px;
+        }
     </style>
 @endsection
 @section('content')
@@ -57,29 +65,30 @@
     <div class="row row-sm">
         <div class="col-lg-4">
             <div class="card mg-b-20">
+                <div class="card-header profile-main-card-header bg-gray-900">
+                    <div class="d-flex flex-row flex-wrap align-items-center">
+                        <div class="main-img-user profile-user">
+                            <img alt="agency company image" src="{{ asset($get_agency_detail->agencyProfile->photo) }}">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between align-items-center mg-b-20 ml-3">
+                            <h1 class="main-profile-name text-white mb-2">
+                                {{ $get_agency_detail->agencyProfile->company_name ?? 'Not Found' }}
+                            </h1>
+
+                            @if ( $get_agency_detail->agencyProfileStatus->is_profile_approved === 1 )
+                                <span class="badge  bg-success text-white">Profile Active</span>  
+                            @else
+                                <span class="badge bg-danger text-white">Approval Pending</span>
+                            @endif 
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="pl-0">
                         <div class="main-profile-overview">
-                            <div class="d-flex flex-row flex-wrap align-items-center">
-                                <div class="main-img-user profile-user">
-                                    <img alt="agency company image"
-                                        src="{{ asset($get_agency_detail->agencyProfile->photo) }}">
-                                    {{-- <a class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a> --}}
-                                </div>
-                                <div class="d-flex justify-content-between mg-b-20 ml-3">
-                                    <div>
-                                        <h5 class="main-profile-name">
-                                            {{ $get_agency_detail->agencyProfile->company_name ?? 'Not Found' }}
-                                        </h5>
-                                        <p class="main-profile-name-text">Agency</p>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- <h6>Bio</h6>
-                            <div class="main-profile-bio">
-                                {{ $get_agency_detail->agencyProfile->about_company ?? 'Not Found' }}
-                            </div> --}}
-                            <h6>Profile Completion Status</h6>
+
+                            <h6>Agency Profile Completion Status</h6>
+
                             <div class="main-profile-progress-bar d-flex flex-row flex-wrap justify-content-center align-items-center">
                                 <svg class="radial-progress" data-percentage="75" viewBox="0 0 80 80">
                                     <circle class="incomplete" cx="40" cy="40" r="35"></circle>
@@ -91,34 +100,41 @@
 
                                 <div class="d-flex flex-column p-3"> 
                                     <label class="ckbox  pb-3">
-                                        <input checked="" type="checkbox">
+                                        @if ( $get_agency_detail->agencyProfileStatus->is_business_info_complete === 1 )
+                                            <input checked type="checkbox">   
+                                        @else
+                                            <input  type="checkbox">
+                                        @endif  
                                         <span>Business Information Added</span>
                                     </label>
 
                                     <label class="ckbox pb-3">
-                                        <input checked="" type="checkbox">
+                                        @if ( $get_agency_detail->agencyProfileStatus->is_other_info_added === 1 )
+                                            <input checked type="checkbox">   
+                                        @else
+                                            <input  type="checkbox">
+                                        @endif  
                                         <span>Other Information Added</span>
                                     </label>
 
                                     <label class="ckbox pb-3">
-                                        <input checked="" type="checkbox">
+                                        @if ( $get_agency_detail->agencyProfileStatus->is_authorize_info_added === 1 )
+                                            <input checked type="checkbox">   
+                                        @else
+                                            <input  type="checkbox">
+                                        @endif
                                         <span>Authorize Officer Added</span>
                                     </label>
 
                                     <label class="ckbox pb-3">
-                                        <input checked="" type="checkbox">
+                                        @if ( $get_agency_detail->agencyProfileStatus->is_profile_approved === 1 )
+                                            <input checked type="checkbox">   
+                                        @else
+                                            <input  type="checkbox">
+                                        @endif
                                         <span>Profile Approved</span>
                                     </label>
                                 </div>
-                                {{-- <div class="d-flex p-3 border-top"> 
-                                    
-                                </div>
-                                <div class="d-flex p-3 border-top"> 
-                                    
-                                </div>
-                                <div class="d-flex p-3 border-top"> 
-                                    
-                                </div> --}}
                             </div>
                             <!-- main-profile-bio -->
                             {{-- <div class="main-profile-work-list">
@@ -273,7 +289,7 @@
                                         <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
                                         <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
                                             <div class="media">
-                                                <div class="media-icon bg-primary-transparent text-primary">
+                                                <div class="media-icon bg-gray-100 text-primary">
                                                     <i class="fa fa-phone"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -282,7 +298,7 @@
                                                 </div>
                                             </div>
                                             <div class="media ml-3">
-                                                <div class="media-icon bg-success-transparent text-success">
+                                                <div class="media-icon bg-gray-100 text-success">
                                                     <i class="fa fa-envelope"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -291,7 +307,7 @@
                                                 </div>
                                             </div>
                                             <div class="media ml-3">
-                                                <div class="media-icon bg-warning-transparent text-warning">
+                                                <div class="media-icon bg-gray-100 text-warning">
                                                     <i class="fa fa-map"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -311,8 +327,8 @@
                                         <hr>
                                         <label class="main-content-label tx-13 mg-b-20">Other Information</label>
                                         <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
-                                            <div class="media">
-                                                <div class="media-icon bg-primary-transparent text-primary">
+                                            <div class="media mr-4 mt-2">
+                                                <div class="media-icon bg-gray-100 text-primary">
                                                     <i class="fas fa-file-contract"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -320,8 +336,8 @@
                                                     <a href="#">{{ $get_agency_detail->agencyProfile->legal_structure ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-success-transparent text-success">
+                                            <div class="media mr-4 mt-2">
+                                                <div class="media-icon bg-gray-100 text-success">
                                                     <i class="fas fa-sitemap"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -329,8 +345,8 @@
                                                     <a href="#">{{ $get_agency_detail->agencyProfile->organization_type ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-warning-transparent text-warning">
+                                            <div class="media mr-4 mt-2">
+                                                <div class="media-icon bg-gray-100 text-warning">
                                                     <i class="fas fa-id-card"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -338,8 +354,8 @@
                                                     <a href="#">{{ $get_agency_detail->agencyProfile->tax_id_or_ein_id ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-info-transparent text-info">
+                                            <div class="media mr-4 mt-2">
+                                                <div class="media-icon bg-gray-100 text-info">
                                                     <i class="fas fa-user-cog"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -347,8 +363,8 @@
                                                     <a href="#">{{ $get_agency_detail->agencyProfile->number_of_employee ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-danger-transparent text-danger">
+                                            <div class="media mr-4 mt-2">
+                                                <div class="media-icon bg-gray-100 text-danger">
                                                     <i class="far fa-calendar-alt"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -356,8 +372,8 @@
                                                     <a href="#">{{ $get_agency_detail->agencyProfile->years_in_business ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-primary-transparent text-primary">
+                                            <div class="media mr-4 mt-4">
+                                                <div class="media-icon bg-gray-100 text-primary">
                                                     <i class="fas fa-globe"></i>
                                                 </div>
                                                 <div class="media-body">
@@ -365,13 +381,13 @@
                                                     <a href="#">{{ $get_agency_detail->agencyProfile->country_of_business ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-success-transparent text-success">
+                                            <div class="media mr-4 mt-4">
+                                                <div class="media-icon bg-gray-100 text-success">
                                                     <i class="fas fa-hand-holding-usd"></i>
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Annual Revenue</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->annual_business_revenue ?? 'Not Found' }}</a>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->annual_business_revenue ? '$ '.$get_agency_detail->agencyProfile->annual_business_revenue . ' USD' : 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -379,65 +395,45 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="company_owner_information">
                                     <div class="card-body h-100">
-                                        <div class="card-header">
+                                        <div class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
                                             <div class="media">
                                                 <div class="media-user mr-2">
-                                                    <div class="main-img-user avatar-md"><img alt=""
-                                                            class="rounded-circle" src="assets/img/faces/6.jpg"></div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-0 mg-t-9">Company Owner</h6><span
-                                                        class="text-dark">Sep 26 2019, 10:14am</span>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <div class="dropdown show">
-                                                        <a class="new" data-toggle="dropdown"
-                                                            href="JavaScript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
-                                                        <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="#">Edit Post</a> <a
-                                                                class="dropdown-item" href="#">Delete Post</a> <a
-                                                                class="dropdown-item" href="#">Personal Settings</a>
-                                                        </div>
+                                                    <div class="main-img-user avatar-md">
+                                                        <img alt="agency owner image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">
                                                     </div>
                                                 </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-0 mg-t-9">{{ $get_agency_detail->name }}</h6>
+                                                    <span class="text-muted">Account created on : {{ Carbon\Carbon::parse($get_agency_detail->created_at)->format('M d Y, h:i A') }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="user-status-btn">
+                                                @if ($get_agency_detail->status == 1)
+                                                    <a href="javascript:void(0);" class="btn btn-success">User Active</a>
+                                                @else
+                                                    <a href="javascript:void(0);" class="btn btn-danger">User Inactive</a>
+                                                @endif
                                             </div>
                                         </div>
-                                        <p class="mg-t-10">There are many variations of passages of Lorem Ipsum available, but
-                                            the majority have suffered alteration in some form, by injected humour, or
-                                            randomised words which don't look even slightly believable.</p>
-                                        <div class="d-flex"><img alt="img" class="wd-45p m-1"
-                                                src="assets/img/photos/2.jpg"> <img alt="img" class="wd-45p m-1"
-                                                src="assets/img/photos/3.jpg"></div>
-                                        <div class="media mg-t-15 profile-footer">
-                                            <div class="media-user mr-2">
-                                                <div class="demo-avatar-group">
-                                                    <div class="demo-avatar-group main-avatar-list-stacked">
-                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                                src="assets/img/faces/12.jpg"></div>
-                                                        <div class="main-img-user online"><img alt=""
-                                                                class="rounded-circle" src="assets/img/faces/12.jpg"></div>
-                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                                src="assets/img/faces/13.jpg"></div>
-                                                        <div class="main-img-user online"><img alt=""
-                                                                class="rounded-circle" src="assets/img/faces/13.jpg"></div>
-                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                                src="assets/img/faces/14.jpg"></div>
-                                                        <div class="main-avatar">
-                                                            +23
-                                                        </div>
-                                                    </div><!-- demo-avatar-group -->
-                                                </div><!-- demo-avatar-group -->
+                                        <hr>
+                                        <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
+                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
+                                            <div class="media">
+                                                <div class="media-icon bg-gray-100 text-primary">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Phone</span>
+                                                    <a href="#">{{ $get_agency_detail->phone ?? 'Not Found' }}</a>
+                                                </div>
                                             </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 mg-t-10">28 people like your photo</h6>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <div class="dropdown show">
-                                                    <a class="new" href="JavaScript:void(0);"><i
-                                                            class="far fa-heart"></i></a> <a class="new"
-                                                        href="JavaScript:void(0);"><i class="far fa-comment"></i></a> <a
-                                                        class="new" href="JavaScript:void(0);"><i
-                                                            class="far fa-share-square"></i></a>
+                                            <div class="media ml-3">
+                                                <div class="media-icon bg-gray-100 text-success">
+                                                    <i class="fa fa-envelope"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Email</span>
+                                                    <a href="#">{{ $get_agency_detail->email ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                         </div>
