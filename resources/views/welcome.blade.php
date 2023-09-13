@@ -1013,6 +1013,13 @@
         <!--- Index js -->
         <script src="{{asset('assets/js/index.js')}}"></script>
 
+		<!--- Ionicons js -->
+		<script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
+		<!--- Select2 js -->
+		<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+		<!--- Internal Chartjs js -->
+		<script src="{{asset('assets/js/chart.chartjs.js')}}"></script>
+
 		<!--- Moment js -->
 		<script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
 

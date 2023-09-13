@@ -14,12 +14,12 @@
                         <h6>Caregivers</h6>
                         <ul>
                             <li>
-                                <strong>Active</strong>
+                                <strong>Approved</strong>
                                 <span>5</span>
                             </li>
 
                             <li>
-                                <strong>Processing</strong>
+                                <strong>Pending</strong>
                                 <span>56</span>
                             </li>
                         </ul>
@@ -42,12 +42,12 @@
                         <h6>Agencies</h6>
                         <ul>
                             <li>
-                                <strong>Active</strong>
+                                <strong>Approved</strong>
                                 <span>42</span>
                             </li>
 
                             <li>
-                                <strong>Processing</strong>
+                                <strong>Pending</strong>
                                 <span>23</span>
                             </li>
                         </ul>
@@ -107,11 +107,11 @@
                         <h6>Revenue</h6>
                         <ul>
                             <li>
-                                <strong>Earnings</strong>
+                                <strong>Total Earnings</strong>
                                 <span>$15,425</span>
                             </li>
                             <li>
-                                <strong>Dispatched</strong>
+                                <strong>Total Dispatched</strong>
                                 <span>$8,147</span>
                             </li>
                         </ul>

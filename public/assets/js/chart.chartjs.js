@@ -4,10 +4,10 @@ $(function() {
 	new Chart(ctx1, {
 		type: 'bar',
 		data: {
-			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 			datasets: [{
-				label: '# of Votes',
-				data: [12, 39, 20, 10, 25, 18],
+				label: '# of Caregivers',
+				data: [120, 390, 20, 610, 250, 18, 12, 709, 20, 100, 205, 182],
 				backgroundColor: '#285cf7'
 			}]
 		},
@@ -25,7 +25,7 @@ $(function() {
 					ticks: {
 						beginAtZero: true,
 						fontSize: 10,
-						max: 80,
+						max: 1000,
 						fontColor: "rgb(171, 167, 167,0.9)",
 					},
 					gridLines: {
@@ -54,10 +54,10 @@ $(function() {
 	new Chart(ctx2, {
 		type: 'bar',
 		data: {
-			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 			datasets: [{
-				label: '# of Votes',
-				data: [12, 39, 20, 10, 25, 18],
+				label: '# of Agencies',
+				data: [120, 390, 20, 610, 250, 18, 12, 709, 20, 100, 205, 182],
 				backgroundColor: 'rgba(0,123,255,.5)'
 			}]
 		},
@@ -75,7 +75,7 @@ $(function() {
 					ticks: {
 						beginAtZero: true,
 						fontSize: 10,
-						max: 80,
+						max: 1000,
 						fontColor: "rgb(171, 167, 167,0.9)",
 					},
 					gridLines: {

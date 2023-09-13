@@ -68,7 +68,11 @@
                 <div class="card-header profile-main-card-header bg-gray-900">
                     <div class="d-flex flex-row flex-wrap align-items-center">
                         <div class="main-img-user profile-user">
-                            <img alt="agency company image" src="{{ asset($get_agency_detail->agencyProfile->photo) }}">
+                            @if ($get_agency_detail->agencyProfile->photo == null)
+                                <img alt="agency company image" src="{{ asset($get_agency_detail->agencyProfile->photo) }}">
+                            @else
+                                <img alt="agency company image" src="{{ asset('assets/img/photos/10.jpg') }}">
+                            @endif
                         </div>
                         <div class="d-flex flex-column justify-content-between align-items-center mg-b-20 ml-3">
                             <h1 class="main-profile-name text-white mb-2">
@@ -247,7 +251,7 @@
                     <a class="nav-link show active" data-toggle="tab" href="#about_company">About Company</a>
                     <a class="nav-link" data-toggle="tab" href="#company_owner_information">Company Owner Information</a>
                     <a class="nav-link" data-toggle="tab" href="#authorized_officers">Authorized Officers</a>
-                    <a class="nav-link" data-toggle="tab" href="#">Following</a>
+                    {{-- <a class="nav-link" data-toggle="tab" href="#">Following</a> --}}
                     <a class="nav-link" data-toggle="tab" href="#">Account Settings</a>
                 </nav>
                 <!-- main-profile-body -->
