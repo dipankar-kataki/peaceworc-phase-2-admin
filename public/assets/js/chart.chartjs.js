@@ -58,7 +58,7 @@ $(function() {
 			datasets: [{
 				label: '# of Agencies',
 				data: [120, 390, 20, 610, 250, 18, 12, 709, 20, 100, 205, 182],
-				backgroundColor: 'rgba(0,123,255,.5)'
+				backgroundColor: '#0c5059'
 			}]
 		},
 		options: {

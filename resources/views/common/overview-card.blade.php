@@ -111,7 +111,7 @@
                                 <span>$15,425</span>
                             </li>
                             <li>
-                                <strong>Total Dispatched</strong>
+                                <strong>Total Disbursed</strong>
                                 <span>$8,147</span>
                             </li>
                         </ul>

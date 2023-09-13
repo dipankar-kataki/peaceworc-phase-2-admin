@@ -26,7 +26,7 @@
             <div class="d-flex justify-content-center mr-5">
                 <div class="">
                     <span class="d-block">
-                        <span class="label ">EXPENSES</span>
+                        <span class="label ">PROFIT</span>
                     </span>
                     <span class="value">
                         $53,000
@@ -34,19 +34,6 @@
                 </div>
                 <div class="ml-3 mt-2">
                     <span class="sparkline_bar"></span>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center">
-                <div class="">
-                    <span class="d-block">
-                        <span class="label">PROFIT</span>
-                    </span>
-                    <span class="value">
-                        $34,000
-                    </span>
-                </div>
-                <div class="ml-3 mt-2">
-                    <span class="sparkline_bar31"></span>
                 </div>
             </div>
         </div>
