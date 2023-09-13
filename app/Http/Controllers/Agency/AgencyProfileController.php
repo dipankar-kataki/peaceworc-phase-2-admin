@@ -12,7 +12,7 @@ class AgencyProfileController extends Controller
         try{
             $agency_id = decrypt($id);
 
-            $get_agency_detail = User::with('agencyProfile', 'agencyProfileStatus')->where('id', $agency_id)->first();
+            $get_agency_detail = User::with('agencyProfile', 'agencyProfileStatus', 'authOfficer')->where('id', $agency_id)->first();
 
             return view('agency.profile.agency-profile')->with(['get_agency_detail' => $get_agency_detail]);
         }catch(\Exception $e){

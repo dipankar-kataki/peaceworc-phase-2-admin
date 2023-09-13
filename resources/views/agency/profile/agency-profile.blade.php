@@ -419,6 +419,11 @@
                                                 @endif
                                             </div>
                                         </div>
+
+                                        <hr>
+                                        <label class="main-content-label tx-13 mg-b-20">Access Level</label>
+                                        <a href="#" class="d-block">{{ $get_agency_detail->role == 1 ? 'Web-Administrator' : (($get_agency_detail->role == 6) ? 'Web-Operator' : 'USER')}}</a>
+
                                         <hr>
                                         <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
                                         <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
@@ -445,65 +450,61 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="authorized_officers">
                                     <div class="card-body">
-                                        <div class="card-header">
-                                            <div class="media">
-                                                <div class="media-user mr-2">
-                                                    <div class="main-img-user avatar-md"><img alt=""
-                                                            class="rounded-circle" src="assets/img/faces/6.jpg"></div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-0 mg-t-9">Authorized Officers</h6><span
-                                                        class="text-dark">Sep 22 2019, 10:14am</span>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <div class="dropdown show">
-                                                        <a class="new" data-toggle="dropdown"
-                                                            href="JavaScript:void(0);"><i class="fas fa-ellipsis-v"></i></a>
-                                                        <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="#">Edit Post</a> <a
-                                                                class="dropdown-item" href="#">Delete Post</a> <a
-                                                                class="dropdown-item" href="#">Personal Settings</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p class="mg-t-10">There are many variations of passages of Lorem Ipsum available, but
-                                            the majority have suffered alteration in some form, by injected humour, or
-                                            randomised words which don't look even slightly believable.</p>
-    
-                                        <div class="media mg-t-15 profile-footer">
-                                            <div class="media-user mr-2">
-                                                <div class="demo-avatar-group">
-                                                    <div class="demo-avatar-group main-avatar-list-stacked">
-                                                        <div class="main-img-user online"><img alt=""
-                                                                class="rounded-circle" src="assets/img/faces/12.jpg"></div>
-                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                                src="assets/img/faces/12.jpg"></div>
-                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                                src="assets/img/faces/13.jpg"></div>
-                                                        <div class="main-img-user"><img alt="" class="rounded-circle"
-                                                                src="assets/img/faces/13.jpg"></div>
-                                                        <div class="main-img-user online"><img alt=""
-                                                                class="rounded-circle" src="assets/img/faces/14.jpg"></div>
-                                                        <div class="main-avatar">
-                                                            +23
-                                                        </div>
-                                                    </div><!-- demo-avatar-group -->
-                                                </div><!-- demo-avatar-group -->
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-0 mg-t-10">28 people like your photo</h6>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <div class="dropdown show">
-                                                    <a class="new" href="JavaScript:void(0);"><i
-                                                            class="far fa-heart"></i></a> <a class="new"
-                                                        href="JavaScript:void(0);"><i class="far fa-comment"></i></a> <a
-                                                        class="new" href="JavaScript:void(0);"><i
-                                                            class="far fa-share-square"></i></a>
-                                                </div>
-                                            </div>
+                                        <div class="table-responsive mb-0">
+                                            <table
+                                                class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Role</th>
+                                                        <th>Status</th>
+                                                        <th>Created At</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($get_agency_detail->authOfficer as $key => $officer)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="project-contain">
+                                                                    <h6 class="mb-1 tx-13">{{$key + 1}}</h6>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="project-contain">
+                                                                    <h6 class="mb-1 tx-13">{{$officer->name}}</h6>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                {{$officer->email}}
+                                                            </td>
+                                                            <td>{{$officer->phone}}</td>
+                                                            <td>{{$officer->role}}</td>
+                                                            <td>
+                                                                @if ($officer->status == 1)
+                                                                    <span class="badge bg-success-gradient text-white">Active</span>                                                                    
+                                                                @else
+                                                                    <span class="badge bg-danger-gradient text-white">Inactive</span> 
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                {{\Carbon\Carbon::parse($officer->created_at)->format('M d Y')}}
+                                                            </td>
+                                                            <td>
+                                                                @if ($officer->status == 1)
+                                                                    <button class="btn btn-primary btn-sm">Make Active</button> 
+                                                                @else
+                                                                    <button class="btn btn-primary btn-sm">Make Deactive</button>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
