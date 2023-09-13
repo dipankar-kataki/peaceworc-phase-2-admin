@@ -27,19 +27,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="aboutMainText">Enter Main Text</label>
-                                <input type="text" class="form-control" name="aboutMainText" id="aboutMainText"  value="{{$about_details->main_text ?? ''}}" placeholder="Type here..." maxlength="40">
+                                <input type="text" class="form-control" name="aboutMainText" id="aboutMainText"  value="{{$about_details->main_text}}" placeholder="Type here..." maxlength="40">
                             </div>
                             <div class="form-group">
                                 <label for="aboutSubText">Enter Sub Text - 1</label>
-                                <textarea type="text" class="form-control" name="aboutSubText1" id="aboutSubText1" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;">{{$about_details->sub_text_1 ?? ''}}</textarea>
+                                <textarea type="text" class="form-control" name="aboutSubText1" id="aboutSubText1" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;">{{$about_details->sub_text_1}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="aboutSubText">Enter Sub Text - 2</label>
-                                <textarea type="text" class="form-control" name="aboutSubText2" id="aboutSubText2" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;">{{$about_details->sub_text_2 ?? ''}}</textarea>
+                                <textarea type="text" class="form-control" name="aboutSubText2" id="aboutSubText2" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;">{{$about_details->sub_text_2}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="aboutSubText">Enter Sub Text - 3</label>
-                                <textarea type="text" class="form-control" name="aboutSubText3" id="aboutSubText3" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;">{{$about_details->sub_text_3 ?? ''}}</textarea>
+                                <textarea type="text" class="form-control" name="aboutSubText3" id="aboutSubText3" placeholder="Type here... Max characters allowed  320" maxlength="320" rows="3" style="resize: none;">{{$about_details->sub_text_3}}</textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-main-primary pd-x-20 aboutSubmitBtn" type="submit">Submit</button>
