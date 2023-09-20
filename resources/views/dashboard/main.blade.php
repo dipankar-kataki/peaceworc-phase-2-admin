@@ -6,14 +6,26 @@
     @include('common.overview-card')
 
     <div class="row row-sm">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="card mg-b-20 text-center">
+                <div class="card-body h-100"> 
+                    <img src="../assets/img/svgicons/imac.svg" alt="" class="wd-40p ht-80">
+                    <h5 class="mg-b-10 mg-t-15 tx-18">15 New Disputes</h5> 
+                    <a href="javascript:void(0);" class="text-dark">Check The Dispute Section To Resolve.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-sm">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card overflow-hidden">
                 <div class="card-body pb-3">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-10">Quick Payout Table</h4> 
+                        <h4 class="card-title mg-b-10">Quick Payout Table</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
-                    <p class="tx-12 text-muted mb-3"> Latest 5 Jobs Are Displayed Here. For More Payout <a href=""> Go To PAYOUT SECTION</a></p>
+                    <p class="tx-12 text-muted mb-3"> Latest 5 Jobs Are Displayed Here. For More <a href=""> Go To
+                            PAYOUT SECTION</a></p>
                     <div class="table-responsive mb-0">
                         <table
                             class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped ">

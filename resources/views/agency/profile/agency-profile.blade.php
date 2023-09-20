@@ -94,12 +94,12 @@
                             <h6>Agency Profile Completion Status</h6>
 
                             <div class="main-profile-progress-bar d-flex flex-row flex-wrap justify-content-center align-items-center">
-                                <svg class="radial-progress" data-percentage="75" viewBox="0 0 80 80">
+                                <svg class="radial-progress" data-percentage="{{$total_percentage}}" viewBox="0 0 80 80">
                                     <circle class="incomplete" cx="40" cy="40" r="35"></circle>
                                     <circle class="complete" cx="40" cy="40" r="35"
                                         style="stroke-dashoffset: 39.58406743523136;"></circle>
                                     <text class="percentage" x="50%" y="57%"
-                                        transform="matrix(0, 1, -1, 0, 80, 0)">82%</text>
+                                        transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_percentage}}%</text>
                                 </svg>
 
                                 <div class="d-flex flex-column p-3"> 
@@ -112,14 +112,14 @@
                                         <span>Business Information Added</span>
                                     </label>
 
-                                    <label class="ckbox pb-3">
+                                    {{-- <label class="ckbox pb-3">
                                         @if ( $get_agency_detail->agencyProfileStatus->is_other_info_added === 1 )
                                             <input checked type="checkbox">   
                                         @else
                                             <input  type="checkbox">
                                         @endif  
                                         <span>Other Information Added</span>
-                                    </label>
+                                    </label> --}}
 
                                     <label class="ckbox pb-3">
                                         @if ( $get_agency_detail->agencyProfileStatus->is_authorize_info_added === 1 )
@@ -249,10 +249,10 @@
             <div class="main-content-body main-content-body-profile">
                 <nav class="nav main-nav-line card">
                     <a class="nav-link show active" data-toggle="tab" href="#about_company">About Company</a>
-                    <a class="nav-link" data-toggle="tab" href="#company_owner_information">Company Owner Information</a>
+                    <a class="nav-link" data-toggle="tab" href="#company_owner_information">Owner Information</a>
                     <a class="nav-link" data-toggle="tab" href="#authorized_officers">Authorized Officers</a>
-                    {{-- <a class="nav-link" data-toggle="tab" href="#">Following</a> --}}
-                    <a class="nav-link" data-toggle="tab" href="#">Account Settings</a>
+                    <a class="nav-link" data-toggle="tab" href="#agency_chats">Chats</a>
+                    <a class="nav-link" data-toggle="tab" href="#account_settings">Settings</a>
                 </nav>
                 <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
@@ -508,6 +508,118 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card mg-b-20 tab-pane fade" id="account_settings">
+                                    <div class="card-body h-100">
+                                        <label class="main-content-label tx-13 mg-b-20">Agency Account Activation Status</label>
+                                        <form action="{{route('admin.agency.profile.activation')}}" method="POST">
+                                            @csrf
+
+                                            <input type="hidden" name="agency_id" value="{{ encrypt($get_agency_detail->agencyProfileStatus->user_id) }}">
+                                            
+                                            @if ($get_agency_detail->agencyProfileStatus->is_profile_approved == 1)
+
+                                                <input type="hidden" name="activation_status" value="0">
+                                                <h6 class="text-success">Agency Profile Is Active</h6>
+                                                <div class="form-group">
+                                                    <button class="btn btn-danger">Click To Deactive</button>
+                                                </div>
+                                            @else
+                                                <input type="hidden" name="activation_status" value="1">
+                                                <h6 class="text-danger">Agency Profile Is Inactive</h6>
+                                                <div class="form-group">
+                                                    <button class="btn btn-primary">Click To Active</button>
+                                                </div>
+                                            @endif
+                                        </form>
+
+                                        
+                                    </div>
+                                </div>
+                                <div class="card mg-b-20 tab-pane fade" id="agency_chats">
+                                    <div class="card-body">
+                                        <div class="table-responsive mb-0">
+                                            <table
+                                                class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Job</th>
+                                                        <th>Accepted By</th>
+                                                        <th>Posted On</th>
+                                                        <th>Closed On</th>
+                                                        <th>Expire On</th>
+                                                        <th>Download Chats</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Urgently Required Female Caregiver For Elderly Patients</td>
+                                                        <td>Jhon Doe</td>
+                                                        <td>June 5, 2023</td>
+                                                        <td><span class="badge badge-primary">Not Closed</span></td>
+                                                        <td>Oct 10, 2023</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Download 
+                                                                <i class="fas fa-file-pdf ml-2"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Urgently Required Caregiver For Baby Patients</td>
+                                                        <td>Jhon Doe</td>
+                                                        <td>June 5, 2023</td>
+                                                        <td><span class="badge badge-dark">Closed</span></td>
+                                                        <td>Oct 10, 2023</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Download 
+                                                                <i class="fas fa-file-pdf ml-2"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    {{-- @foreach ($get_agency_detail->authOfficer as $key => $officer)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="project-contain">
+                                                                    <h6 class="mb-1 tx-13">{{$key + 1}}</h6>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="project-contain">
+                                                                    <h6 class="mb-1 tx-13">{{$officer->name}}</h6>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                {{$officer->email}}
+                                                            </td>
+                                                            <td>{{$officer->phone}}</td>
+                                                            <td>{{$officer->role}}</td>
+                                                            <td>
+                                                                @if ($officer->status == 1)
+                                                                    <span class="badge bg-success-gradient text-white">Active</span>                                                                    
+                                                                @else
+                                                                    <span class="badge bg-danger-gradient text-white">Inactive</span> 
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                {{\Carbon\Carbon::parse($officer->created_at)->format('M d Y')}}
+                                                            </td>
+                                                            <td>
+                                                                @if ($officer->status == 1)
+                                                                    <button class="btn btn-primary btn-sm">Make Active</button> 
+                                                                @else
+                                                                    <button class="btn btn-primary btn-sm">Make Deactive</button>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach --}}
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -554,4 +666,20 @@
 
         });
     </script>
+
+<script>
+    @if (session('success'))
+        toastr.success('{{ session('success') }}', '', {
+            positionClass: 'toast-top-right',
+            timeOut: 3000 
+        });
+    @endif
+
+    @if (session('error'))
+        toastr.error('{{ session('error') }}', '', {
+            positionClass: 'toast-top-right',
+            timeOut: 3000 
+        });
+    @endif
+</script>
 @endsection
