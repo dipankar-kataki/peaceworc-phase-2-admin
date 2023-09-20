@@ -11,32 +11,34 @@
                         <h6 class="card-title mb-1">Edit Service</h6>
                     </div>
                     <div class="mb-4">
-                        <form id="serviceForm" class="form-horizontal" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label for="serviceMainImage">Edit Service Image</label>
+                        <div class="form-group">
 
-                                <div class="form-group img-prev-div bg-gray-100 ht-100p text-center p-4 bd">
-                                    <span class="text-muted text-small  img-prev-info d-none" style="float:right;">Choose File To Change Preview</span>
-                                    <img id="imagePreview" src="{{$service_details->image}}" class="ht-200" alt="Image Preview">
+                            <form class="form-horizontal" id="serviceForm">
+                                @csrf
+                                <div class="form-group">
+                                    <select name="service" id="service" class="form-control">
+                                        <option value="" disabled selected>- Select Service -</option>
+                                        @foreach ($list_of_services as $item)
+                                            <option value="{{$item->id}}">{{$item->services}}</option>
+                                        @endforeach
+                                    </select>
+                                </div> 
+                                <div class="enter-service-content-tab d-none">
+                                    <div class="form-group">
+                                        <label for="serviceDetails">Enter Service Details</label>
+                                        <textarea type="text" class="form-control" name="serviceDetails" id="serviceDetails" placeholder="Type here... Max characters allowed  520" maxlength="520" rows="5" style="resize: none;"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-main-primary pd-x-20 serviceSubmitBtn" type="submit">Submit</button>
+                                    </div>
                                 </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input form-control" name="serviceMainImage" id="serviceMainImage" accept=".png, .jpg, .jpeg">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="serviceName">Enter Service Name</label>
-                                <input type="text" class="form-control" name="serviceName" id="serviceName"  value="{{$service_details->name}}" placeholder="Type here..." maxlength="40">
-                            </div>
-                            <div class="form-group">
-                                <label for="serviceDetails">Enter Service Details</label>
-                                <textarea type="text" class="form-control" name="serviceDetails" id="serviceDetails" placeholder="Type here... Max characters allowed  520" maxlength="520" rows="5" style="resize: none;">{{$service_details->details}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-main-primary pd-x-20 serviceSubmitBtn" type="submit">Submit</button>
-                            </div>
-                        </form>
+                                
+                            </form>
+                            
+                        </div>
+                        {{-- <form  class="form-horizontal" enctype="multipart/form-data">
+                            
+                        </form> --}}
                     </div>
                     
                 </div>
@@ -45,7 +47,7 @@
     </div>
 @endsection
 @section('custom-scripts')
-    <script>
+    {{-- <script>
         const imageInput = document.getElementById('serviceMainImage');
         const imagePreview = document.getElementById('imagePreview');
 
@@ -64,6 +66,65 @@
                 $('.img-prev-info').removeClass('d-none');
             }
         });
+    </script> --}}
+
+    <script>
+
+        $(document).ready(function(){
+            $('#service').change(function(){
+                let selected_service = $('#service').val();
+
+                if(selected_service == ''  || selected_service == null){
+                    toastr.error('Please Select Atleast One Service.', 'Oops', {
+                        positionClass: 'toast-top-right',
+                        closeButton: true,
+                        progressBar: true,
+                        timeOut: 3000
+                    });
+                }else{
+
+                    $.ajax({
+                        url: "{{route('admin.get.selected.service.details')}}",
+                        type: "get",
+                        data:{service_id : selected_service},
+                        success:function(response){
+                            // console.log(response.data)
+                            if(response.status == 1){
+                                toastr.success(response.message, 'Great', {
+                                    positionClass: 'toast-top-right',
+                                    closeButton: true,
+                                    progressBar: true,
+                                    timeOut: 3000
+                                });
+
+                                $('#serviceDetails').text(response.data);
+                            }else{
+                                toastr.error(response.message, 'Error', {
+                                    positionClass: 'toast-top-right',
+                                    closeButton: true,
+                                    progressBar: true,
+                                    timeOut: 3000
+                                });
+                            }
+                        },error:function(xhr, error, status){
+
+                            toastr.error(error, 'Error', {
+                                    positionClass: 'toast-top-right',
+                                    closeButton: true,
+                                    progressBar: true,
+                                    timeOut: 3000
+                            });
+                            console.log(error)
+                        }
+                    });
+                    $('.enter-service-content-tab').removeClass('d-none');
+                    
+                }
+            });
+        });
+        
+
+
     </script>
 
     <script>
@@ -75,9 +136,9 @@
             $('.serviceSubmitBtn').attr('disabled', true);
             $('.serviceSubmitBtn').text('Please Wait...');
 
-            const serviceMainImage = $("#serviceMainImage")[0].files[0];
+            // const serviceMainImage = $("#serviceMainImage")[0].files[0];
             const formData = new FormData(this);
-            formData.append('serviceMainImage', serviceMainImage);
+            // formData.append('serviceMainImage', serviceMainImage);
 
             $.ajax({
                 url: "{{route('admin.save.service.details')}}",

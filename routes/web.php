@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'services'], function(){
         Route::get('manage', [ManageServiceController::class, 'getManageServicePage'])->name('admin.get.manage.service.page');
         Route::post('save-details', [ManageServiceController::class, 'saveServiceDetails'])->name('admin.save.service.details');
+        Route::get('get-selected-service-details', [ManageServiceController::class, 'getSelectedServiceDetails'])->name('admin.get.selected.service.details');
     });
 
     Route::group(['prefix' => 'become-caregiver'], function(){
