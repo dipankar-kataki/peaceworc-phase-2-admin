@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Agency\AgencyListController;
 use App\Http\Controllers\Agency\AgencyProfileController;
+use App\Http\Controllers\AgencyJobController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function(){
   
     Route::get('list', [AgencyListController::class, 'getAgencyList'])->name('admin.get.agency.list');
+
+    Route::get('jobs', [AgencyJobController::class, 'getAgencyPostedJobs'])->name('admin.get.agency.posted.jobs');
 
     Route::group(['prefix' => 'profile'], function(){
         Route::get('{id}', [AgencyProfileController::class, 'getAgencyProfile'])->name('admin.get.agency.profile');

@@ -94,8 +94,16 @@
                 </a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{route('admin.get.agency.list')}}">List</a></li>
+                    <li><a class="slide-item" href="{{route('admin.get.agency.posted.jobs')}}">Posted Jobs</a></li>
                 </ul>
             </li>
+            <li class="slide">
+                <a class=" {{Request::segment(1) == 'payout' ? 'side-menu__item active' : 'side-menu__item'}} " href="#">
+                    <i class="side-menu__icon fe fe-dollar-sign"></i>
+                    <span class="side-menu__label">Payout</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </aside>
