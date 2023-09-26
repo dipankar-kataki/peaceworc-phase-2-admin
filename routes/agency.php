@@ -21,7 +21,12 @@ Route::group(['middleware' => 'auth'], function(){
   
     Route::get('list', [AgencyListController::class, 'getAgencyList'])->name('admin.get.agency.list');
 
-    Route::get('jobs', [AgencyJobController::class, 'getAgencyPostedJobs'])->name('admin.get.agency.posted.jobs');
+    Route::group(['prefix' => 'job'], function(){
+        Route::get('list', [AgencyJobController::class, 'getAgencyPostedJobsList'])->name('admin.get.agency.posted.jobs.list');
+        Route::get('details/{id}', [AgencyJobController::class, 'getAgencyPostJobDetails'])->name('admin.get.agency.posted.job.details');
+    });
+
+    
 
     Route::group(['prefix' => 'profile'], function(){
         Route::get('{id}', [AgencyProfileController::class, 'getAgencyProfile'])->name('admin.get.agency.profile');

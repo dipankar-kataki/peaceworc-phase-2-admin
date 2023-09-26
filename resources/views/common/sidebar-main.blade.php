@@ -94,7 +94,7 @@
                 </a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{route('admin.get.agency.list')}}">List</a></li>
-                    <li><a class="slide-item" href="{{route('admin.get.agency.posted.jobs')}}">Posted Jobs</a></li>
+                    <li><a class="slide-item" href="{{route('admin.get.agency.posted.jobs.list')}}">Posted Jobs</a></li>
                 </ul>
             </li>
             <li class="slide">

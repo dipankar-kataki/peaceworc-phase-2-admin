@@ -21,15 +21,10 @@
                                     <th>Job Title</th>
                                     <th>Company Name</th>
                                     <th>Client Name</th>
-                                    <th>Care Type</th>
-                                    <th>Patient Details</th>
-                                    <th>Start Date</th>
-                                    <th>Start Time</th>
-                                    <th>End Date</th>
-                                    <th>End Time</th>
                                     <th>Amount</th>
-                                    <td>Full Address</td>
+                                    <th>Job Status</th>
                                     <td>Payment Status</td>
+                                    <td>Action</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,24 +36,26 @@
                                             <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->user_id) ])}}">{{ $item->agencyProfile->company_name ?? 'Not Found' }}</a>
                                         </td>
                                         <td>{{ $item->clientProfile->name ?? 'Not Found' }}</td>
-                                        <td>{{ $item->care_type ?? 'Not Found' }}</td>
-                                        <td> 
+                                        {{-- <td> 
 
                                             @php  
                                                 $data = json_decode($item->care_items, true);
                                                 echo 'Age : ' . $data[0]['age']; echo ', '; echo 'Gender : ' . $data[0]['gender']; echo ', '; echo 'Patient Name : ' . $data[0]['patient_name'];
                                             @endphp
                                             
-                                        </td>
-                                        <td>{{ \Carbon\Carbon::parse($item->start_date)->format('M d, Y') ?? 'Not Found' }}</td>
+                                        </td> --}}
+                                        {{-- <td>{{ \Carbon\Carbon::parse($item->start_date)->format('M d, Y') ?? 'Not Found' }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->start_time)->format('h:i A') ?? 'Not Found' }}</td>
                                         <td>{{  \Carbon\Carbon::parse($item->end_date)->format('M d, Y') ?? 'Not Found' }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($item->end_time)->format('h:i A') ?? 'Not Found' }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->end_time)->format('h:i A') ?? 'Not Found' }}</td> --}}
                                         <td>
-                                            $ {{$item->amount}}
+                                             <span style="font-weight:600;"><span class="text-success">$</span> {{$item->amount}}</span>
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                            {{$item->appartment_or_unit.', '}} {{$item->floor_no.', '}} {{$item->street}}, {{$item->city}}, {{$item->state}}, {{$item->country}}, {{$item->zip_code}}
+                                        </td> --}}
+                                        <td>
+                                            {{$item->status}}
                                         </td>
                                         <td>
                                             @if ($item->payment_status == 1)
@@ -66,6 +63,9 @@
                                             @else
                                                 <span class="badge bg-dark text-white">Pending</span>
                                             @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.get.agency.posted.job.details', ['id' => encrypt($item->id)])}}">View Job</a>
                                         </td>
                                     </tr>
                                 @endforeach
