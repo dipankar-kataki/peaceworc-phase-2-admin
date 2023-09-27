@@ -54,6 +54,15 @@ class User extends Authenticatable
         return $this->hasOne(AgencyProfileRegistration::class, 'user_id', 'id');
     }
 
+    public function caregiverProfile(){
+        return $this->hasOne(CaregiverProfileRegistration::class,'user_id');
+    }
+
+
+    public function caregiverProfileStatus(){
+        return $this->hasOne(CaregiverStatusInformation::class, 'user_id', 'id');
+        //->select(['user_id', 'is_basic_info_added', 'is_optional_info_added', 'is_documents_uploaded', 'is_profile_approved'])
+    }
     
     public function agencyProfileStatus(){
         return $this->hasOne(AgencyInformationStatus::class, 'user_id', 'id')->select(['user_id', 'is_business_info_complete', 'is_other_info_added', 'is_authorize_info_added', 'is_profile_approved']);

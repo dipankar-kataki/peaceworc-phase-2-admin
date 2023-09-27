@@ -97,15 +97,26 @@
                     <li><a class="slide-item" href="{{route('admin.get.agency.posted.jobs.list')}}">Posted Jobs</a></li>
                 </ul>
             </li>
+
             <li class="slide">
-                <a class=" {{Request::segment(1) == 'payout' ? 'side-menu__item active' : 'side-menu__item'}} " href="#">
+                <a class="side-menu__item" data-toggle="slide">
+                    <i class="side-menu__icon fe fe-user"></i>
+                    <span class="side-menu__label">Caregiver</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li><a class="slide-item" href="{{route('admin.get.caregiver.list')}}">List</a></li>
+                </ul>
+            </li>
+            <li class="slide">
+                <a class=" {{Request::segment(1) == 'payout' ? 'side-menu__item active' : 'side-menu__item'}} " href="{{route('admin.get.payout.list')}}">
                     <i class="side-menu__icon fe fe-dollar-sign"></i>
                     <span class="side-menu__label">Payout</span>
                 </a>
             </li>
 
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide">
+                <a class="{{Request::segment(1) == 'client' ? 'side-menu__item active' : 'side-menu__item'}}" data-toggle="slide">
                     <i class="side-menu__icon fe fe-users"></i>
                     <span class="side-menu__label">Clients</span>
                     <i class="angle fe fe-chevron-down"></i>

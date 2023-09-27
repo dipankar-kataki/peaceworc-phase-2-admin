@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Caregiver\CaregiverListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,3 +14,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "web" middleware group. Enjoy building your Routes!
 |
 */
+
+Route::group(['middleware' => 'auth'], function(){
+
+    Route::get('list', [CaregiverListController::class, 'getCaregiverList'])->name('admin.get.caregiver.list');
+    // Route::groups(['prefix' => 'job'], function(){
+        
+    // });
+});

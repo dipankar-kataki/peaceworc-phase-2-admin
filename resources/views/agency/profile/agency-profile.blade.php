@@ -252,6 +252,7 @@
                     <a class="nav-link" data-toggle="tab" href="#company_owner_information">Owner Information</a>
                     <a class="nav-link" data-toggle="tab" href="#authorized_officers">Authorized Officers</a>
                     <a class="nav-link" data-toggle="tab" href="#agency_chats">Chats</a>
+                    <a class="nav-link" data-toggle="tab" href="#feedback">Feedback</a>
                     <a class="nav-link" data-toggle="tab" href="#account_settings">Settings</a>
                 </nav>
                 <!-- main-profile-body -->
@@ -508,33 +509,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mg-b-20 tab-pane fade" id="account_settings">
-                                    <div class="card-body h-100">
-                                        <label class="main-content-label tx-13 mg-b-20">Agency Account Activation Status</label>
-                                        <form action="{{route('admin.agency.profile.activation')}}" method="POST">
-                                            @csrf
-
-                                            <input type="hidden" name="agency_id" value="{{ encrypt($get_agency_detail->agencyProfileStatus->user_id) }}">
-                                            
-                                            @if ($get_agency_detail->agencyProfileStatus->is_profile_approved == 1)
-
-                                                <input type="hidden" name="activation_status" value="0">
-                                                <h6 class="text-success">Agency Profile Is Active</h6>
-                                                <div class="form-group">
-                                                    <button class="btn btn-danger">Click To Deactive</button>
-                                                </div>
-                                            @else
-                                                <input type="hidden" name="activation_status" value="1">
-                                                <h6 class="text-danger">Agency Profile Is Inactive</h6>
-                                                <div class="form-group">
-                                                    <button class="btn btn-primary">Click To Active</button>
-                                                </div>
-                                            @endif
-                                        </form>
-
-                                        
-                                    </div>
-                                </div>
                                 <div class="card mg-b-20 tab-pane fade" id="agency_chats">
                                     <div class="card-body">
                                         <div class="table-responsive mb-0">
@@ -620,6 +594,56 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card mg-b-20 tab-pane fade" id="feedback">
+                                    <div class="card-body h-100">
+                                        <label class="main-content-label tx-13 mg-b-20">Send eedback</label>
+                                        <form action="{{route('admin.agency.profile.activation')}}" method="POST">
+                                            @csrf
+
+                                            <div class="form-group">
+                                                <select name="feedback_reason" class="form-control" id="feedback_reason">
+                                                    <option value="">- Select Feedback Reason-</option>
+                                                    <option value="invalid-document">Invalid Documents</option>
+                                                    <option value="missing-details">Missing Details</option>
+                                                    <option value="invalid-information">Invalid Information</option>
+                                                    <option value="expired-document">Documents Expired</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea name="feedback_text" class="form-control" id="feedback_text" cols="30" rows="4" placeholder="Please enter feedback here..."></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card mg-b-20 tab-pane fade" id="account_settings">
+                                    <div class="card-body h-100">
+                                        <label class="main-content-label tx-13 mg-b-20">Agency Account Activation Status</label>
+                                        <form action="{{route('admin.agency.profile.activation')}}" method="POST">
+                                            @csrf
+
+                                            <input type="hidden" name="agency_id" value="{{ encrypt($get_agency_detail->agencyProfileStatus->user_id) }}">
+                                            
+                                            @if ($get_agency_detail->agencyProfileStatus->is_profile_approved == 1)
+
+                                                <input type="hidden" name="activation_status" value="0">
+                                                <h6 class="text-success">Agency Profile Is Active</h6>
+                                                <div class="form-group">
+                                                    <button class="btn btn-danger">Click To Deactive</button>
+                                                </div>
+                                            @else
+                                                <input type="hidden" name="activation_status" value="1">
+                                                <h6 class="text-danger">Agency Profile Is Inactive</h6>
+                                                <div class="form-group">
+                                                    <button class="btn btn-primary">Click To Active</button>
+                                                </div>
+                                            @endif
+                                        </form>
+
+                                        
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
