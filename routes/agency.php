@@ -3,6 +3,7 @@
 use App\Http\Controllers\Agency\AgencyListController;
 use App\Http\Controllers\Agency\AgencyProfileController;
 use App\Http\Controllers\AgencyJobController;
+use App\Http\Controllers\Client\ClientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'profile'], function(){
         Route::get('{id}', [AgencyProfileController::class, 'getAgencyProfile'])->name('admin.get.agency.profile');
         Route::post('activation', [AgencyProfileController::class, 'agencyProfileActivation'])->name('admin.agency.profile.activation');
+    });
+
+    Route::group(['prefix' => 'client'], function(){
+        Route::get('list', [ClientController::class, 'getClientList'])->name('admin.get.client.list');
     });
 });

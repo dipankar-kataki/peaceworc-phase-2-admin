@@ -10,6 +10,9 @@
             <div class="main-content-body main-content-body-profile">
                 <nav class="nav main-nav-line card">
                     <a class="nav-link show active" data-toggle="tab" href="#about_company">Job Details</a>
+                    @if ($get_job_details->clientProfile != null)
+                        <a class="nav-link show" data-toggle="tab" href="#client_information">Client Information</a>                      
+                    @endif
                 </nav>
                 <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
@@ -18,10 +21,38 @@
                             <div class="tab-content">
                                 <div class="card mg-b-20 tab-pane fade show active" id="about_company">
                                     <div class="card-body">
-                                        <h6>Title:</h6>
-                                        <div class="main-profile-bio">
-                                            {{ $get_job_details->title ?? 'Not Found' }}
+                                        <div class="d-flex flex-row justify-content-between">
+                                            <div class="main-profile-bio">
+                                                <h6>Title:</h6>
+                                                {{ $get_job_details->title ?? 'Not Found' }}
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <div class="job-created-at mr-4">
+                                                    <h6>Posted By: </h6>
+                                                    <div class="media">
+                                                        <div class="media-user mr-2">
+                                                            <div class="main-img-user avatar-sm">
+                                                                <img alt="agency owner image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <a href="{{route('admin.get.agency.profile', ['id' => encrypt($get_job_details->user_id) ])}}">{{$get_job_details->agencyProfile->company_name}}</a>                                                                                                                
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="job-created-at mr-4">
+                                                    <h6>Posted On: </h6>
+                                                    <a href="javascript:void(0);" class="btn btn-outline-secondary">{{\Carbon\Carbon::parse($get_job_details->created_at)->format('M d, Y - h:i A')}}</a>                                                    
+                                                </div>
+                                                <div class="job-status">
+                                                    <h6>Job Status: </h6>
+                                                    <a href="javascript:void(0);" class="btn btn-outline-success">{{$get_job_details->status}}</a>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
+                                        
                                         <hr>
 
                                         <h6>Description:</h6>
@@ -78,7 +109,7 @@
                                                     $data = json_decode($get_job_details->medical_history, true);
                                                     if($data != null){
                                                         foreach ($data as $key => $value) {
-                                                            if($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15){
+                                                            if($key == 4 || $key == 8 || $key == 12 || $key == 16 || $key == 20){
                                                                 echo "<br />";
                                                             } 
                                                             echo ($key + 1). ') ' . '<span style="margin-right:10px; text-transform:capitalize;">'.$value.'</span>'; 
@@ -108,115 +139,128 @@
                                                 @endphp
                                                 
                                             </div>
+
+                                            <div class="other-requirements">
+                                                <h6>Other Requirements:</h6>
+                                                @php  
+                                                    
+                                                    $data = json_decode($get_job_details->other_requirements, true);
+
+                                                    if($data != null){
+                                                        foreach ($data as $key => $value) {
+                                                            if($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15){
+                                                                echo "<br />";
+                                                            } 
+                                                            echo ($key + 1). ') ' . '<span style="margin-right:10px; text-transform:capitalize;">'.$value.'</span>'; 
+                                                        }
+                                                    }else{
+                                                       echo "Not Found";
+                                                    }   
+                                                @endphp
+                                                
+                                            </div>
+
+                                            <div class="check-list">
+                                                <h6>Check List:</h6>
+                                                @php  
+                                                    
+                                                    $data = json_decode($get_job_details->check_list, true);
+
+                                                    if($data != null){
+                                                        foreach ($data as $key => $value) {
+                                                            if($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15){
+                                                                echo "<br />";
+                                                            } 
+                                                            echo ($key + 1). ') ' . '<span style="margin-right:10px; text-transform:capitalize;">'.$value.'</span>'; 
+                                                        }
+                                                    }else{
+                                                       echo "Not Found";
+                                                    }   
+                                                @endphp
+                                                
+                                            </div>
+
+                                            <div class="payment-status">
+                                                <h6>Payment Status:</h6>
+                                                <span class="text-success" style="font-weight:800;text-transform:uppercase;">{{$get_job_details->payment_status == 1 ? ' Complete' : 'Failed'}}</span>
+                                            </div>
                                             
                                         </div>
-                                        
-                                        
-                                        {{-- <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
-                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-get_job_detailss-center">
+                                    </div>
+                                </div>
+                                <div class="card mg-b-20 tab-pane fade show" id="client_information">
+                                    <div class="card-body">
+
+                                        <div class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
                                             <div class="media">
-                                                <div class="media-icon bg-gray-100 text-primary">
-                                                    <i class="fa fa-phone"></i>
+                                                <div class="media-user mr-2">
+                                                    <div class="main-img-user avatar-md">
+                                                        
+                                                        @if ($get_job_details->clientProfile != null)
+                                                            @if ($get_job_details->clientProfile->photo != null)
+                                                                <img alt="client image" class="rounded-circle" src="{{'peaceworc.com/'.$get_job_details->clientProfile->photo}}">                     
+                                                            @else
+                                                                <img alt="client image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">
+                                                            @endif                                                            
+                                                        @else
+                                                            <img alt="client image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">                                                            
+                                                        @endif
+                                                    </div>
                                                 </div>
                                                 <div class="media-body">
-                                                    <span>Phone</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->phone ?? 'Not Found' }}</a>
+                                                    <h6 class="mb-0 mg-t-9">{{ $get_job_details->clientProfile->name ?? 'Not Found'}}</h6>
+                                                    <span class="text-muted">Account created on : {{ $get_job_details->clientProfile != null ? Carbon\Carbon::parse($get_job_details->clientProfile->created_at)->format('M d Y, h:i A') : 'Not Found'}}</span>
                                                 </div>
                                             </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-gray-100 text-success">
-                                                    <i class="fa fa-envelope"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <span>Email</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->email ?? 'Not Found' }}</a>
-                                                </div>
-                                            </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-gray-100 text-warning">
-                                                    <i class="fa fa-map"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <span>Address</span>
-                                                    <a href="#">
-                                                        {{ $get_agency_detail->agencyProfile->appartment_or_unit ? $get_agency_detail->agencyProfile->appartment_or_unit.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->floor_no ? $get_agency_detail->agencyProfile->floor_no.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->street ? $get_agency_detail->agencyProfile->street.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->city_or_district ? $get_agency_detail->agencyProfile->city_or_district.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->zip_code ? $get_agency_detail->agencyProfile->zip_code.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->state ? $get_agency_detail->agencyProfile->state.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->country ? $get_agency_detail->agencyProfile->country : '' }}
-                                                    </a>
-                                                </div>
+                                            <div class="user-status-btn">
+                                                @if ($get_job_details->clientProfile != null)
+                                                    @if ($get_job_details->clientProfile->status == 1)
+                                                        <a href="javascript:void(0);" class="btn btn-success">User Active</a>
+                                                    @else
+                                                        <a href="javascript:void(0);" class="btn btn-danger">User Inactive</a>
+                                                    @endif
+                                                @endif
+                                                
                                             </div>
                                         </div>
                                         <hr>
-                                        <label class="main-content-label tx-13 mg-b-20">Other Information</label>
-                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-get_job_detailss-center">
-                                            <div class="media mr-4 mt-2">
-                                                <div class="media-icon bg-gray-100 text-primary">
-                                                    <i class="fas fa-file-contract"></i>
-                                                </div>
+                                        <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
+                                        <div class="main-profile-social-list d-flex flex-row flex-wrap">
+                                            <div class="mb-3">
                                                 <div class="media-body">
-                                                    <span>Legal Structure</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->legal_structure ?? 'Not Found' }}</a>
+                                                    <h6>Phone</h6>
+                                                    {{ $get_job_details->clientProfile->phone ?? 'Not Found' }}
                                                 </div>
                                             </div>
-                                            <div class="media mr-4 mt-2">
-                                                <div class="media-icon bg-gray-100 text-success">
-                                                    <i class="fas fa-sget_job_detailsap"></i>
-                                                </div>
+                                            <div class="mr-3 mb-3">
                                                 <div class="media-body">
-                                                    <span>Organization Type</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->organization_type ?? 'Not Found' }}</a>
+                                                    <h6>Email</h6>
+                                                    {{ $get_job_details->clientProfile->email ?? 'Not Found' }}
                                                 </div>
                                             </div>
-                                            <div class="media mr-4 mt-2">
-                                                <div class="media-icon bg-gray-100 text-warning">
-                                                    <i class="fas fa-id-card"></i>
-                                                </div>
+                                            <div class="mr-3 mb-3">
                                                 <div class="media-body">
-                                                    <span>Tax Id / EIN Id</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->tax_id_or_ein_id ?? 'Not Found' }}</a>
+                                                    <h6>Gender</h6>
+                                                    {{ $get_job_details->clientProfile->gender ?? 'Not Found' }}
                                                 </div>
                                             </div>
-                                            <div class="media mr-4 mt-2">
-                                                <div class="media-icon bg-gray-100 text-info">
-                                                    <i class="fas fa-user-cog"></i>
-                                                </div>
+                                            <div class="mr-3 mb-3">
                                                 <div class="media-body">
-                                                    <span>Total Employee</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->number_of_employee ?? 'Not Found' }}</a>
+                                                    <h6>Age</h6>
+                                                    {{ $get_job_details->clientProfile->age ?? 'Not Found' }}
                                                 </div>
                                             </div>
-                                            <div class="media mr-4 mt-2">
-                                                <div class="media-icon bg-gray-100 text-danger">
-                                                    <i class="far fa-calendar-alt"></i>
-                                                </div>
+                                            <div class="mr-3 mb-3">
                                                 <div class="media-body">
-                                                    <span>Active Years</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->years_in_business ?? 'Not Found' }}</a>
+                                                    <h6>Location</h6>
+                                                    @if ($get_job_details->clientProfile != null)
+                                                        Appartment/Unit: {{$get_job_details->clientProfile->appartment_or_unit.', ' ?? ''}} Floor: {{$get_job_details->clientProfile->floor_no.', ' ?? ''}} Street: {{$get_job_details->clientProfile->street ?? ' '}}, City: {{$get_job_details->clientProfile->city ?? ''}}, <br /> State: {{$get_job_details->clientProfile->state ?? ''}}, ZipCode: {{$get_job_details->clientProfile->zip_code ?? ''}}, Country: {{$get_job_details->clientProfile->country ?? ''}}
+                                                    @else
+                                                        <span>Not Found</span>
+                                                    @endif
                                                 </div>
                                             </div>
-                                            <div class="media mr-4 mt-4">
-                                                <div class="media-icon bg-gray-100 text-primary">
-                                                    <i class="fas fa-globe"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <span>Country Of Business</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->country_of_business ?? 'Not Found' }}</a>
-                                                </div>
-                                            </div>
-                                            <div class="media mr-4 mt-4">
-                                                <div class="media-icon bg-gray-100 text-success">
-                                                    <i class="fas fa-hand-holding-usd"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <span>Annual Revenue</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->annual_business_revenue ? '$ '.$get_agency_detail->agencyProfile->annual_business_revenue . ' USD' : 'Not Found' }}</a>
-                                                </div>
-                                            </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

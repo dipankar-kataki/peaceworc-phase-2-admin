@@ -66,7 +66,7 @@
                                         <span class="badge bg-danger-gradient text-white">Waiting For Payment</span>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger btn-sm">Not Initiated By Agency</button>
+                                        <button class="btn btn-danger btn-sm">Caregiver Bank Error</button>
                                     </td>
                                     <td>
                                         <button class="btn btn-dark">Make Payment</button>
@@ -95,7 +95,7 @@
                                         <span class="badge bg-danger-gradient text-white">Waiting For Payment</span>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger btn-sm">Not Initiated By Agency</button>
+                                        <button class="btn btn-danger btn-sm">Failed</button>
                                     </td>
                                     <td>
                                         <button class="btn btn-dark">Make Payment</button>
@@ -124,7 +124,7 @@
                                         <span class="badge bg-danger-gradient text-white">Waiting For Payment</span>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger btn-sm">Initiated By Agency</button>
+                                        <button class="btn btn-danger btn-sm">Network error</button>
                                     </td>
                                     <td>
                                         <button class="btn btn-dark">Make Payment</button>

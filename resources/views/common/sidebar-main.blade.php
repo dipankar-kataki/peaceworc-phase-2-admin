@@ -104,6 +104,18 @@
                 </a>
             </li>
 
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide">
+                    <i class="side-menu__icon fe fe-users"></i>
+                    <span class="side-menu__label">Clients</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li><a class="slide-item" href="{{route('admin.get.client.list')}}">List</a></li>
+                </ul>
+            </li>
+
+
         </ul>
     </div>
 </aside>
