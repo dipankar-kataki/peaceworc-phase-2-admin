@@ -599,7 +599,6 @@
                                         <label class="main-content-label tx-13 mg-b-20">Send eedback</label>
                                         <form action="{{route('admin.agency.profile.activation')}}" method="POST">
                                             @csrf
-
                                             <div class="form-group">
                                                 <select name="feedback_reason" class="form-control" id="feedback_reason">
                                                     <option value="">- Select Feedback Reason-</option>
