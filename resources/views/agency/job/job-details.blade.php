@@ -1,6 +1,17 @@
 @extends('welcome')
 @section('page-title', 'Job Details')
 @section('custom-css')
+    <style>
+        .main-content-body-profile .nav {
+            border-bottom: 1px solid #ffffff;
+        }
+
+        #ChatBody .content-inner{
+            height:400px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+    </style>
 @endsection
 @section('content')
 
@@ -11,10 +22,10 @@
                 <nav class="nav main-nav-line card">
                     <a class="nav-link show active" data-toggle="tab" href="#about_company">Job Details</a>
                     @if ($get_job_details->clientProfile != null)
-                        <a class="nav-link show" data-toggle="tab" href="#client_information">Client Information</a>                      
+                        <a class="nav-link show" data-toggle="tab" href="#client_information">Client Information</a>
                     @endif
-                    <a class="nav-link show" data-toggle="tab" href="#chat">Chats</a>
-                    <a class="nav-link show" data-toggle="tab" href="#timeline">Timeline</a>       
+                    <a class="nav-link show" data-toggle="tab" href="#chats">Chats</a>
+                    <a class="nav-link show" data-toggle="tab" href="#timeline">Timeline</a>
                 </nav>
                 <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
@@ -29,44 +40,50 @@
                                                 {{ $get_job_details->title ?? 'Not Found' }}
                                             </div>
                                             <div class="d-flex flex-row justify-content-between">
-                                                <div class="job-created-at mr-4">
+                                                <div class="job-created-at mr-5">
                                                     <h6>Accepted By: </h6>
                                                     <div class="media">
                                                         <div class="media-user mr-2">
                                                             <div class="main-img-user avatar-sm">
-                                                                <img alt="agency owner image" class="rounded-circle" src="{{asset('assets/img/faces/12.jpg')}}">
+                                                                <img alt="agency owner image" class="rounded-circle"
+                                                                    src="{{ asset('assets/img/faces/12.jpg') }}">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
-                                                            <a href="{{route('admin.get.agency.profile', ['id' => encrypt($get_job_accepted_by->id) ])}}">{{$get_job_accepted_by->name}}</a>                                                                                                                
+                                                            <a
+                                                                href="{{ route('admin.get.agency.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="job-created-at mr-4">
+                                                <div class="job-created-at mr-5">
                                                     <h6>Posted By: </h6>
                                                     <div class="media">
                                                         <div class="media-user mr-2">
                                                             <div class="main-img-user avatar-sm">
-                                                                <img alt="agency owner image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">
+                                                                <img alt="agency owner image" class="rounded-circle"
+                                                                    src="{{ asset('assets/img/photos/user-dummy-img.jpg') }}">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
-                                                            <a href="{{route('admin.get.agency.profile', ['id' => encrypt($get_job_details->user_id) ])}}">{{$get_job_details->agencyProfile->company_name}}</a>                                                                                                                
+                                                            <a
+                                                                href="{{ route('admin.get.agency.profile', ['id' => encrypt($get_job_details->user_id)]) }}">{{ $get_job_details->agencyProfile->company_name }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="job-created-at mr-4">
+                                                <div class="job-created-at mr-5">
                                                     <h6>Posted On: </h6>
-                                                    <a href="javascript:void(0);" class="btn btn-outline-secondary">{{\Carbon\Carbon::parse($get_job_details->created_at)->format('M d, Y - h:i A')}}</a>                                                    
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-outline-secondary">{{ \Carbon\Carbon::parse($get_job_details->created_at)->format('M d, Y - h:i A') }}</a>
                                                 </div>
                                                 <div class="job-status">
                                                     <h6>Job Status: </h6>
-                                                    <a href="javascript:void(0);" class="btn btn-outline-success">{{$get_job_details->status}}</a>
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-outline-success">{{ $get_job_details->status }}</a>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
-                                        
+
                                         <hr>
 
                                         <h6>Description:</h6>
@@ -74,61 +91,71 @@
                                             {{ $get_job_details->description ?? 'Not Found' }}
                                         </div>
                                         <hr>
-                                        
+
                                         <div class="d-flex flex-row justify-content-between flex-wrap">
                                             <div class="job-timing">
                                                 <h6>Timing:</h6>
-                                                <p style="margin-bottom:2px;">Start Date & Time: 
+                                                <p style="margin-bottom:2px;">Start Date & Time:
                                                     {{ \carbon\Carbon::parse($get_job_details->start_date)->format('M d, Y') ?? 'Not Found' }}
                                                     {{ \carbon\Carbon::parse($get_job_details->start_time)->format('h:i A') ?? 'Not Found' }}
                                                 </p>
-                                               
-                                                <p style="margin-bottom:2px;"> End Date & Time: 
+
+                                                <p style="margin-bottom:2px;"> End Date & Time:
                                                     {{ \carbon\Carbon::parse($get_job_details->end_date)->format('M d, Y') ?? 'Not Found' }}
                                                     {{ \carbon\Carbon::parse($get_job_details->end_time)->format('h:i A') ?? 'Not Found' }}
                                                 </p>
                                             </div>
                                             <div class="job-care-type">
                                                 <h6>Care Type:</h6>
-                                                {{$get_job_details->care_type}}
+                                                {{ $get_job_details->care_type }}
                                             </div>
                                             <div class="job-care-items">
                                                 <h6>Care Items:</h6>
 
-                                                    @php  
-                                                        $data = json_decode($get_job_details->care_items, true);
-                                                        foreach ($data as $key => $value) {
-                                                          echo 'Age: ' . $value['age']; echo ', '; echo 'Gender: ' . $value['gender']; echo ', '; echo 'Patient Name: ' . $value['patient_name']. "<br />"; 
-                                                        }
-                                                        
-                                                    @endphp
+                                                @php
+                                                    $data = json_decode($get_job_details->care_items, true);
+                                                    foreach ($data as $key => $value) {
+                                                        echo 'Age: ' . $value['age'];
+                                                        echo ', ';
+                                                        echo 'Gender: ' . $value['gender'];
+                                                        echo ', ';
+                                                        echo 'Patient Name: ' . $value['patient_name'] . '<br />';
+                                                    }
+                                                    
+                                                @endphp
                                             </div>
                                             <div class="job-amount">
                                                 <h6>Amount:</h6>
-                                                <span class="text-success">$</span> {{$get_job_details->amount}}
+                                                <span class="text-success">$</span> {{ $get_job_details->amount }}
                                             </div>
 
                                             <div class="job-adress">
                                                 <h6>Location:</h6>
-                                                {{'Appartment: '.$get_job_details->appartment_or_unit.', '}} {{'Floor: '.$get_job_details->floor_no.', '}} {{'Street: '.$get_job_details->street}}, {{'City: '.$get_job_details->city}}, {{'State: '.$get_job_details->state}}, <br /> {{'ZipCode: '.$get_job_details->zip_code}}, {{'Country: '.$get_job_details->country}}
+                                                {{ 'Appartment: ' . $get_job_details->appartment_or_unit . ', ' }}
+                                                {{ 'Floor: ' . $get_job_details->floor_no . ', ' }}
+                                                {{ 'Street: ' . $get_job_details->street }},
+                                                {{ 'City: ' . $get_job_details->city }},
+                                                {{ 'State: ' . $get_job_details->state }}, <br />
+                                                {{ 'ZipCode: ' . $get_job_details->zip_code }},
+                                                {{ 'Country: ' . $get_job_details->country }}
                                             </div>
-                                            
+
                                         </div>
                                         <hr>
                                         <div class="d-flex flex-row justify-content-between">
                                             <div class="medical-history">
                                                 <h6>Medical History:</h6>
 
-                                                @php  
+                                                @php
                                                     $data = json_decode($get_job_details->medical_history, true);
-                                                    if($data != null){
+                                                    if ($data != null) {
                                                         foreach ($data as $key => $value) {
-                                                            if($key == 4 || $key == 8 || $key == 12 || $key == 16 || $key == 20){
-                                                                echo "<br />";
-                                                            } 
-                                                            echo ($key + 1). ') ' . '<span style="margin-right:10px; text-transform:capitalize;">'.$value.'</span>'; 
+                                                            if ($key == 4 || $key == 8 || $key == 12 || $key == 16 || $key == 20) {
+                                                                echo '<br />';
+                                                            }
+                                                            echo $key + 1 . ') ' . '<span style="margin-right:10px; text-transform:capitalize;">' . $value . '</span>';
                                                         }
-                                                    }else{
+                                                    } else {
                                                         echo 'Not Found';
                                                     }
                                                 @endphp
@@ -136,105 +163,114 @@
 
                                             <div class="medical-history">
                                                 <h6>Expertise:</h6>
-                                                @php  
+                                                @php
                                                     
                                                     $data = json_decode($get_job_details->expertise, true);
-
-                                                    if($data != null){
+                                                    
+                                                    if ($data != null) {
                                                         foreach ($data as $key => $value) {
-                                                            if($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15){
-                                                                echo "<br />";
-                                                            } 
-                                                            echo ($key + 1). ') ' . '<span style="margin-right:10px; text-transform:capitalize;">'.$value.'</span>'; 
+                                                            if ($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15) {
+                                                                echo '<br />';
+                                                            }
+                                                            echo $key + 1 . ') ' . '<span style="margin-right:10px; text-transform:capitalize;">' . $value . '</span>';
                                                         }
-                                                    }else{
-                                                       echo "Not Found";
-                                                    }   
+                                                    } else {
+                                                        echo 'Not Found';
+                                                    }
                                                 @endphp
-                                                
+
                                             </div>
 
                                             <div class="other-requirements">
                                                 <h6>Other Requirements:</h6>
-                                                @php  
+                                                @php
                                                     
                                                     $data = json_decode($get_job_details->other_requirements, true);
-
-                                                    if($data != null){
+                                                    
+                                                    if ($data != null) {
                                                         foreach ($data as $key => $value) {
-                                                            if($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15){
-                                                                echo "<br />";
-                                                            } 
-                                                            echo ($key + 1). ') ' . '<span style="margin-right:10px; text-transform:capitalize;">'.$value.'</span>'; 
+                                                            if ($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15) {
+                                                                echo '<br />';
+                                                            }
+                                                            echo $key + 1 . ') ' . '<span style="margin-right:10px; text-transform:capitalize;">' . $value . '</span>';
                                                         }
-                                                    }else{
-                                                       echo "Not Found";
-                                                    }   
+                                                    } else {
+                                                        echo 'Not Found';
+                                                    }
                                                 @endphp
-                                                
+
                                             </div>
 
                                             <div class="check-list">
                                                 <h6>Check List:</h6>
-                                                @php  
+                                                @php
                                                     
                                                     $data = json_decode($get_job_details->check_list, true);
-
-                                                    if($data != null){
+                                                    
+                                                    if ($data != null) {
                                                         foreach ($data as $key => $value) {
-                                                            if($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15){
-                                                                echo "<br />";
-                                                            } 
-                                                            echo ($key + 1). ') ' . '<span style="margin-right:10px; text-transform:capitalize;">'.$value.'</span>'; 
+                                                            if ($key == 3 || $key == 6 || $key == 9 || $key == 12 || $key == 15) {
+                                                                echo '<br />';
+                                                            }
+                                                            echo $key + 1 . ') ' . '<span style="margin-right:10px; text-transform:capitalize;">' . $value . '</span>';
                                                         }
-                                                    }else{
-                                                       echo "Not Found";
-                                                    }   
+                                                    } else {
+                                                        echo 'Not Found';
+                                                    }
                                                 @endphp
-                                                
+
                                             </div>
 
                                             <div class="payment-status">
                                                 <h6>Payment Status:</h6>
-                                                <span class="text-success" style="font-weight:800;text-transform:uppercase;">{{$get_job_details->payment_status == 1 ? ' Complete' : 'Failed'}}</span>
+                                                <span class="text-success"
+                                                    style="font-weight:800;text-transform:uppercase;">{{ $get_job_details->payment_status == 1 ? ' Complete' : 'Failed' }}</span>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade show" id="client_information">
                                     <div class="card-body">
 
-                                        <div class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
+                                        <div
+                                            class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
                                             <div class="media">
                                                 <div class="media-user mr-2">
                                                     <div class="main-img-user avatar-md">
-                                                        
+
                                                         @if ($get_job_details->clientProfile != null)
                                                             @if ($get_job_details->clientProfile->photo != null)
-                                                                <img alt="client image" class="rounded-circle" src="{{'peaceworc.com/'.$get_job_details->clientProfile->photo}}">                     
+                                                                <img alt="client image" class="rounded-circle"
+                                                                    src="{{ 'peaceworc.com/' . $get_job_details->clientProfile->photo }}">
                                                             @else
-                                                                <img alt="client image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">
-                                                            @endif                                                            
+                                                                <img alt="client image" class="rounded-circle"
+                                                                    src="{{ asset('assets/img/photos/user-dummy-img.jpg') }}">
+                                                            @endif
                                                         @else
-                                                            <img alt="client image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">                                                            
+                                                            <img alt="client image" class="rounded-circle"
+                                                                src="{{ asset('assets/img/photos/user-dummy-img.jpg') }}">
                                                         @endif
                                                     </div>
                                                 </div>
                                                 <div class="media-body">
-                                                    <h6 class="mb-0 mg-t-9">{{ $get_job_details->clientProfile->name ?? 'Not Found'}}</h6>
-                                                    <span class="text-muted">Account created on : {{ $get_job_details->clientProfile != null ? Carbon\Carbon::parse($get_job_details->clientProfile->created_at)->format('M d Y, h:i A') : 'Not Found'}}</span>
+                                                    <h6 class="mb-0 mg-t-9">
+                                                        {{ $get_job_details->clientProfile->name ?? 'Not Found' }}</h6>
+                                                    <span class="text-muted">Account created on :
+                                                        {{ $get_job_details->clientProfile != null ? Carbon\Carbon::parse($get_job_details->clientProfile->created_at)->format('M d Y, h:i A') : 'Not Found' }}</span>
                                                 </div>
                                             </div>
                                             <div class="user-status-btn">
                                                 @if ($get_job_details->clientProfile != null)
                                                     @if ($get_job_details->clientProfile->status == 1)
-                                                        <a href="javascript:void(0);" class="btn btn-success">User Active</a>
+                                                        <a href="javascript:void(0);" class="btn btn-success">User
+                                                            Active</a>
                                                     @else
-                                                        <a href="javascript:void(0);" class="btn btn-danger">User Inactive</a>
+                                                        <a href="javascript:void(0);" class="btn btn-danger">User
+                                                            Inactive</a>
                                                     @endif
                                                 @endif
-                                                
+
                                             </div>
                                         </div>
                                         <hr>
@@ -268,10 +304,99 @@
                                                 <div class="media-body">
                                                     <h6>Location</h6>
                                                     @if ($get_job_details->clientProfile != null)
-                                                        Appartment/Unit: {{$get_job_details->clientProfile->appartment_or_unit.', ' ?? ''}} Floor: {{$get_job_details->clientProfile->floor_no.', ' ?? ''}} Street: {{$get_job_details->clientProfile->street ?? ' '}}, City: {{$get_job_details->clientProfile->city ?? ''}}, <br /> State: {{$get_job_details->clientProfile->state ?? ''}}, ZipCode: {{$get_job_details->clientProfile->zip_code ?? ''}}, Country: {{$get_job_details->clientProfile->country ?? ''}}
+                                                        Appartment/Unit:
+                                                        {{ $get_job_details->clientProfile->appartment_or_unit . ', ' ?? '' }}
+                                                        Floor: {{ $get_job_details->clientProfile->floor_no . ', ' ?? '' }}
+                                                        Street: {{ $get_job_details->clientProfile->street ?? ' ' }}, City:
+                                                        {{ $get_job_details->clientProfile->city ?? '' }}, <br /> State:
+                                                        {{ $get_job_details->clientProfile->state ?? '' }}, ZipCode:
+                                                        {{ $get_job_details->clientProfile->zip_code ?? '' }}, Country:
+                                                        {{ $get_job_details->clientProfile->country ?? '' }}
                                                     @else
                                                         <span>Not Found</span>
                                                     @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mg-b-20 tab-pane fade show" id="chats">
+                                    <div class="main-content-body main-content-body-chat">
+                                        <div class="main-chat-header">
+                                            <div class="main-img-user">
+                                                <img alt="" src="{{asset('assets/img/faces/9.jpg')}}">
+                                            </div>
+                                            <div class="main-chat-msg-name">
+                                                <h6>Reynante Labares</h6>
+                                                <small>Last seen: 2 minutes ago</small>
+                                            </div>
+                                            <nav class="nav">
+                                                <a class="nav-link" href="#">
+                                                    <i class="icon ion-md-more"></i>
+                                                </a>
+                                                <a class="nav-link" data-toggle="tooltip" href="#" title="Download Chat">
+                                                    <i class="icon ion-md-download"></i>
+                                                </a>
+                                            </nav>
+                                        </div><!-- main-chat-header -->
+                                        <div class="main-chat-body" id="ChatBody">
+                                            <div class="content-inner">
+                                                <label class="main-chat-time">
+                                                    <span>3 days ago</span>
+                                                </label>
+                                                <div class="media flex-row-reverse">
+                                                    <div class="main-img-user online">
+                                                        <img alt="" src="{{asset('assets/img/faces/9.jpg')}}">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="main-msg-wrapper">
+                                                            Nulla consequat massa quis enim. Donec pede justo, fringilla vel...
+                                                        </div>
+                                                        <div class="main-msg-wrapper">
+                                                            rhoncus ut, imperdiet a, venenatis vitae, justo...
+                                                        </div>
+                                                        <div class="main-msg-wrapper pd-0">
+                                                            <img alt="" class="wd-100 ht-100" src="{{asset('assets/img/ecommerce/01.jpg')}}">
+                                                        </div>
+                                                        <div>
+                                                            <span>9:48 am</span>
+                                                            <a href="#">
+                                                                <i class="icon ion-android-more-horizontal"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="main-img-user online">
+                                                        <img alt="" src="{{asset('assets/img/faces/6.jpg')}}">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="main-msg-wrapper">
+                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                                        </div>
+                                                        <div>
+                                                            <span>9:32 am</span>
+                                                            <a href="#">
+                                                                <i class="icon ion-android-more-horizontal"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="media flex-row-reverse">
+                                                    <div class="main-img-user online">
+                                                        <img alt="" src="{{asset('assets/img/faces/9.jpg')}}">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="main-msg-wrapper">
+                                                            Nullam dictum felis eu pede mollis pretium
+                                                        </div>
+                                                        <div>
+                                                            <span>11:22 am</span>
+                                                            <a href="#">
+                                                                <i class="icon ion-android-more-horizontal"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -288,19 +413,19 @@
 @endsection
 @section('custom-scripts')
 
-<script>
-    @if (session('success'))
-        toastr.success('{{ session('success') }}', '', {
-            positionClass: 'toast-top-right',
-            timeOut: 3000 
-        });
-    @endif
+    <script>
+        @if (session('success'))
+            toastr.success('{{ session('success') }}', '', {
+                positionClass: 'toast-top-right',
+                timeOut: 3000
+            });
+        @endif
 
-    @if (session('error'))
-        toastr.error('{{ session('error') }}', '', {
-            positionClass: 'toast-top-right',
-            timeOut: 3000 
-        });
-    @endif
-</script>
+        @if (session('error'))
+            toastr.error('{{ session('error') }}', '', {
+                positionClass: 'toast-top-right',
+                timeOut: 3000
+            });
+        @endif
+    </script>
 @endsection

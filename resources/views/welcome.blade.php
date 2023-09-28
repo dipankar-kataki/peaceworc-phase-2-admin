@@ -1020,6 +1020,12 @@
 		<!--- Internal Chartjs js -->
 		<script src="{{asset('assets/js/chart.chartjs.js')}}"></script>
 
+		<!--- Internal lightslider js -->
+		<script src="{{asset('assets/plugins/lightslider/js/lightslider.min.js')}}"></script>
+
+		<!--- Internal Chat js -->
+		<script src="{{asset('assets/js/chat.js')}}"></script>
+
 		<!--- Moment js -->
 		<script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
 
