@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-    {{-- @dd($get_agency_detail) --}}
+    {{-- @dd($get_job_accepted_by) --}}
     <div class="row row-sm">
         <div class="col-lg-12">
             <div class="main-content-body main-content-body-profile">
@@ -13,6 +13,8 @@
                     @if ($get_job_details->clientProfile != null)
                         <a class="nav-link show" data-toggle="tab" href="#client_information">Client Information</a>                      
                     @endif
+                    <a class="nav-link show" data-toggle="tab" href="#chat">Chats</a>
+                    <a class="nav-link show" data-toggle="tab" href="#timeline">Timeline</a>       
                 </nav>
                 <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
@@ -28,6 +30,19 @@
                                             </div>
                                             <div class="d-flex flex-row justify-content-between">
                                                 <div class="job-created-at mr-4">
+                                                    <h6>Accepted By: </h6>
+                                                    <div class="media">
+                                                        <div class="media-user mr-2">
+                                                            <div class="main-img-user avatar-sm">
+                                                                <img alt="agency owner image" class="rounded-circle" src="{{asset('assets/img/faces/12.jpg')}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <a href="{{route('admin.get.agency.profile', ['id' => encrypt($get_job_accepted_by->id) ])}}">{{$get_job_accepted_by->name}}</a>                                                                                                                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="job-created-at mr-4">
                                                     <h6>Posted By: </h6>
                                                     <div class="media">
                                                         <div class="media-user mr-2">
@@ -39,7 +54,6 @@
                                                             <a href="{{route('admin.get.agency.profile', ['id' => encrypt($get_job_details->user_id) ])}}">{{$get_job_details->agencyProfile->company_name}}</a>                                                                                                                
                                                         </div>
                                                     </div>
-                                                    
                                                 </div>
                                                 <div class="job-created-at mr-4">
                                                     <h6>Posted On: </h6>

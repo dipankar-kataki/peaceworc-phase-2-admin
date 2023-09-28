@@ -52,4 +52,8 @@ class AgencyPostJob extends Model
             return 'Deleted';
         }
     }
+
+    public function jobAcceptedBy(){
+        return $this->hasOne(AcceptJob::class, 'job_id', 'id');
+    }
 }
