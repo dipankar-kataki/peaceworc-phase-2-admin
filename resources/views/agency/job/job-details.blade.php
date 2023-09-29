@@ -11,6 +11,98 @@
             overflow-y: auto;
             scroll-behavior: smooth;
         }
+        
+        .timeline {
+            width: 100%;
+            height: 480px;
+            padding: 20px;
+            position:relative;
+            box-sizing: border-box;
+            background: #ffffff;
+            overflow: auto;
+            display: flex;
+        }
+        .timieline-title {
+            font-size: 1.5em;
+            font-weight: bold; 
+        }
+        .timeline-content {
+            max-width: 300px;
+            height: 200px;
+            padding: 20px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            align-self: flex-start;
+            /* background: #FFF; */
+            position: relative;
+            /* border-radius: 10px; */
+            margin-right: 10px;
+            /* box-shadow: 0px 0px 2px 2px rgba(0,0,0, 0.2); */
+        }
+        .timeline-content:before {
+            position: absolute;
+            width: calc(100% + 14px);
+            height: 3px;
+            top: calc(100% + 21px);
+            background: #d1d4e4;
+            content: "";
+            left: -7px;
+            border-radius: 0px;
+        }
+
+        .timeline-content:after {
+            position: absolute;
+            width: 4px;
+            height: 25px;
+            border-radius:10px;
+            top: 100%;
+            left: calc(50% - 10px);
+            background: #156ef3;
+            content: "";
+            font-weight: 900;
+        }
+        .timeline-period {
+            position: absolute;
+            top: calc(100% + 25px);
+            background: #FFF;
+            padding: 10px;
+            width: 100px;
+            text-align:center;
+            border-radius: 10px;
+            left: calc(50% - 60px);
+            /* box-shadow: 0px 0px 2px 2px rgba(0,0,0, 0.2); */
+        }
+        .timeline-period:before {
+            width: 15px;
+            height: 15px;
+            background: #2636a1;
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            top: -9px;
+            left: calc(50% - 6px);
+            z-index: 2;
+        }
+
+        .timeline-content:nth-child(even) {
+            align-self: flex-end;
+        }
+        .timeline-content:nth-child(even):before {
+            top: -15px; 
+        }
+        .timeline-content:nth-child(even):after {
+            top: -13px;
+        }
+        .timeline-content:nth-child(even) .timeline-period {
+            top: -60px;
+        }
+        .timeline-content:nth-child(even) .timeline-period:before {
+            top: calc(100% + 20px);
+        }
+
+        .timeline:not(.timeline--horizontal):before {
+            display: none;
+        }
     </style>
 @endsection
 @section('content')
@@ -81,7 +173,6 @@
                                                         class="btn btn-outline-success">{{ $get_job_details->status }}</a>
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <hr>
@@ -232,9 +323,7 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade show" id="client_information">
                                     <div class="card-body">
-
-                                        <div
-                                            class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
+                                        <div class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
                                             <div class="media">
                                                 <div class="media-user mr-2">
                                                     <div class="main-img-user avatar-md">
@@ -277,31 +366,31 @@
                                         <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
                                         <div class="main-profile-social-list d-flex flex-row flex-wrap">
                                             <div class="mb-3">
-                                                <div class="media-body">
+                                                <div class="media-body mr-4">
                                                     <h6>Phone</h6>
                                                     {{ $get_job_details->clientProfile->phone ?? 'Not Found' }}
                                                 </div>
                                             </div>
                                             <div class="mr-3 mb-3">
-                                                <div class="media-body">
+                                                <div class="media-body mr-4">
                                                     <h6>Email</h6>
                                                     {{ $get_job_details->clientProfile->email ?? 'Not Found' }}
                                                 </div>
                                             </div>
                                             <div class="mr-3 mb-3">
-                                                <div class="media-body">
+                                                <div class="media-body mr-4">
                                                     <h6>Gender</h6>
                                                     {{ $get_job_details->clientProfile->gender ?? 'Not Found' }}
                                                 </div>
                                             </div>
                                             <div class="mr-3 mb-3">
-                                                <div class="media-body">
+                                                <div class="media-body mr-4">
                                                     <h6>Age</h6>
                                                     {{ $get_job_details->clientProfile->age ?? 'Not Found' }}
                                                 </div>
                                             </div>
                                             <div class="mr-3 mb-3">
-                                                <div class="media-body">
+                                                <div class="media-body mr-4">
                                                     <h6>Location</h6>
                                                     @if ($get_job_details->clientProfile != null)
                                                         Appartment/Unit:
@@ -400,6 +489,180 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="card mg-b-20 tab-pane fade show" id="timeline">
+                                    <div class="card-body">
+                                        <div class="timeline">
+                                            <div class="timeline-content">
+                                                <div class="timeline-period"></div>
+                                                <div class="card"> 
+                                                    <div class="card-body"> 
+                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
+                                                    </div>
+                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="timeline-content">
+                                                <div class="timeline-period"></div>
+                                                <div class="card"> 
+                                                    <div class="card-body"> 
+                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
+                                                    </div>
+                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="timeline-content">
+                                                <div class="timeline-period"></div>
+                                                <div class="card"> 
+                                                    <div class="card-body"> 
+                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
+                                                    </div>
+                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="timeline-content">
+                                                <div class="timeline-period"></div>
+                                                <div class="card"> 
+                                                    <div class="card-body"> 
+                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
+                                                    </div>
+                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="timeline-content">
+                                                <div class="timeline-period"></div>
+                                                <div class="card"> 
+                                                    <div class="card-body"> 
+                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
+                                                    </div>
+                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
+                                                </div>
+                                            </div>
+                                          </div>
+                                        {{-- <div class="vtimeline">
+                                            <div class="timeline-wrapper timeline-wrapper-primary">
+                                                <div class="timeline-badge"></div>
+                                                <div class="timeline-panel">
+                                                    <div class="timeline-heading">
+                                                        <h6 class="timeline-title">Art Ramadani posted a status update</h6>
+                                                    </div>
+                                                    <div class="timeline-body">
+                                                        <p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
+                                                    </div>
+                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                                        <i class="fe fe-heart  text-muted mr-1"></i>
+                                                        <span>19</span>
+                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>19 Oct 2019</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-wrapper timeline-inverted timeline-wrapper-secondary">
+                                                <div class="timeline-badge"></div>
+                                                <div class="timeline-panel">
+                                                    <div class="timeline-heading">
+                                                        <h6 class="timeline-title">Job Meeting</h6>
+                                                    </div>
+                                                    <div class="timeline-body">
+                                                        <p>You have a meeting at Laborator Office Today.</p>
+                                                    </div>
+                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                                        <i class="fe fe-heart  text-muted mr-1"></i>
+                                                        <span>25</span>
+                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>10th Oct 2019</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-wrapper timeline-wrapper-info">
+                                                <div class="timeline-badge"></div>
+                                                <div class="timeline-panel">
+                                                    <div class="timeline-heading">
+                                                        <h6 class="timeline-title">Arlind Nushi checked in at New York</h6>
+                                                    </div>
+                                                    <div class="timeline-body">
+                                                        <p>Alpha 5 has arrived just over a month after Alpha 4 with some major feature improvements and a boat load of bug fixes.</p>
+                                                    </div>
+                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                                        <i class="fe fe-heart  text-muted mr-1"></i>
+                                                        <span>19</span>
+                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>5th Oct 2019</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+                                                <div class="timeline-badge"></div>
+                                                <div class="timeline-panel">
+                                                    <div class="timeline-heading">
+                                                        <h6 class="timeline-title">Eroll Maxhuni uploaded 4 new photos to album Summer Trip</h6>
+                                                    </div>
+                                                    <div class="timeline-body">
+                                                        <p>Pianoforte principles our unaffected not for astonished travelling are particular.</p>
+                                                        <img src="assets/img/media/4.jpg" class="mb-3" alt="img">
+                                                    </div>
+                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                                        <i class="fe fe-heart  text-muted mr-1"></i>
+                                                        <span>19</span>
+                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>27th Sep 2017</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-wrapper timeline-wrapper-success">
+                                                <div class="timeline-badge"></div>
+                                                <div class="timeline-panel">
+                                                    <div class="timeline-heading">
+                                                        <h6 class="timeline-title">Support Team sent you an email</h6>
+                                                    </div>
+                                                    <div class="timeline-body">
+                                                        <p>Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo....</p>
+                                                        <a class="btn ripple btn-primary text-white mb-3">Read more</a>
+                                                    </div>
+                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                                        <i class="fe fe-heart  text-muted mr-1"></i>
+                                                        <span>25</span>
+                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>25th Sep 2017</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-wrapper timeline-inverted timeline-wrapper-warning">
+                                                <div class="timeline-badge"></div>
+                                                <div class="timeline-panel">
+                                                    <div class="timeline-heading">
+                                                        <h6 class="timeline-title">Mr. Doe shared a video</h6>
+                                                    </div>
+                                                    <div class="timeline-body">
+                                                        <div class="embed-responsive embed-responsive-16by9 mb-3">
+                                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XZmGGAbHqa0?rel=0&amp;controls=0&amp;showinfo=0"
+                                                             allowfullscreen></iframe>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                                        <i class="fe fe-heart  text-muted mr-1"></i>
+                                                        <span>32</span>
+                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>19th Sep 2017</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-wrapper timeline-wrapper-dark">
+                                                <div class="timeline-badge"></div>
+                                                <div class="timeline-panel">
+                                                    <div class="timeline-heading">
+                                                        <h6 class="timeline-title">Sarah Young accepted your friend request</h6>
+                                                    </div>
+                                                    <div class="timeline-body">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cupiditate, delectus deserunt doloribus earum eveniet explicabo fuga iste magni maxime</p>
+                                                    </div>
+                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                                        <i class="fe fe-heart text-muted mr-1"></i>
+                                                        <span>26</span>
+                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>15th Sep 2017</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
