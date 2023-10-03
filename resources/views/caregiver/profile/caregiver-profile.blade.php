@@ -124,15 +124,6 @@
                                         <span>Basic Information Added</span>
                                     </label>
 
-                                    {{-- <label class="ckbox pb-3">
-                                        @if ( $get_caregiver_detail->caregiverProfileStatus->is_other_info_added === 1 )
-                                            <input checked type="checkbox">   
-                                        @else
-                                            <input  type="checkbox">
-                                        @endif  
-                                        <span>Other Information Added</span>
-                                    </label> --}}
-
                                     <label class="ckbox pb-3">
                                         @if ($get_caregiver_detail->caregiverProfileStatus != null)
                                             @if ( $get_caregiver_detail->caregiverProfileStatus->is_documents_uploaded === 1 )
@@ -165,7 +156,7 @@
         <div class="col-lg-8">
             <div class="main-content-body main-content-body-profile">
                 <nav class="nav main-nav-line card">
-                    <a class="nav-link show active" data-toggle="tab" href="#about_company">About</a>
+                    <a class="nav-link show active" data-toggle="tab" href="#about">About</a>
                     {{-- <a class="nav-link" data-toggle="tab" href="#company_owner_information">Owner Information</a>
                     <a class="nav-link" data-toggle="tab" href="#authorized_officers">Authorized Officers</a> --}}
                     <a class="nav-link" data-toggle="tab" href="#caregiver_chats">Chats</a>
@@ -177,7 +168,7 @@
                     <div class="row row-sm">
                         <div class="col-12">
                             <div class="tab-content">
-                                <div class="card mg-b-20 tab-pane fade show active" id="about_company">
+                                <div class="card mg-b-20 tab-pane fade show active" id="about">
                                     <div class="card-body">
                                         <h6>Bio</h6>
                                         <div class="main-profile-bio">
@@ -292,6 +283,34 @@
                                                     <a href="#">{{ $get_caregiver_detail->caregiverProfile->education ? '$ '.$get_caregiver_detail->caregiverProfile->annual_business_revenue . ' USD' : 'Not Found' }}</a>
                                                 </div>
                                             </div> --}}
+                                        </div>
+
+                                        <hr>
+                                        <label class="main-content-label tx-13 mg-b-20">Education</label>
+                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
+                                            <div class="media mr-4 mt-2">
+                                                <div class="media-icon bg-gray-100 text-primary">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Education:</span>
+                                                    <a href="#">{{ $get_caregiver_detail->caregiverProfile->dob ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                        <label class="main-content-label tx-13 mg-b-20">Certificates</label>
+                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
+                                            <div class="media mr-4 mt-2">
+                                                <div class="media-icon bg-gray-100 text-primary">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>Education:</span>
+                                                    <a href="#">{{ $get_caregiver_detail->caregiverProfile->dob ?? 'Not Found' }}</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
