@@ -59,7 +59,7 @@
         right: auto;
         z-index: -1;
         transform: translateX(-50%);
-        animation: fillTop 2s forwards 4s ease-in-out;
+        animation: fillTop 0.8s forwards 4s ease-in-out;
     }
     .timeline__event:nth-child(2n + 1) .timeline__event__icon:after {
         content: "";
@@ -72,7 +72,7 @@
         top: 50%;
         left: auto;
         transform: translateY(-50%);
-        animation: fillLeft 2s forwards 4s ease-in-out;
+        animation: fillLeft 0.8s forwards 4s ease-in-out;
     }
     .timeline__event__title {
         font-size: 1.2rem;
@@ -134,7 +134,7 @@
         z-index: -1;
         left: 50%;
         transform: translateX(-50%);
-        animation: fillTop 2s forwards 4s ease-in-out;
+        animation: fillTop 0.8s forwards 4s ease-in-out;
     }
     .timeline__event__icon:after {
         content: "";
@@ -147,7 +147,7 @@
         z-index: -1;
         top: 50%;
         transform: translateY(-50%);
-        animation: fillLeftOdd 2s forwards 4s ease-in-out;
+        animation: fillLeftOdd 0.8s forwards 4s ease-in-out;
     }
     .timeline__event__description {
         flex-basis: 100%;

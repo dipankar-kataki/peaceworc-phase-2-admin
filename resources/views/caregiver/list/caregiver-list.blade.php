@@ -32,7 +32,7 @@
                                             <img alt="avatar" class="avatar-sm rounded-circle" src="{{asset('/assets/img/faces/2.jpg')}}">
                                         </th>
                                         <td>
-                                            <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->id) ])}}">{{ $item->name ?? 'Not Found' }}</a>
+                                            <a href="{{route('admin.get.caregiver.profile', ['id' => encrypt($item->id) ])}}">{{ $item->name ?? 'Not Found' }}</a>
                                         </td>
                                         <td>{{ $item->email ?? 'Not Found' }}</td>
                                         <td>{{ $item->caregiverProfile->phone ?? 'Not Found' }}</td>
@@ -45,7 +45,7 @@
                                             @endif
                                         </td> --}}
                                         <td>
-                                            <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->id) ])}}" class="btn btn-info btn-sm">View Profile</a>
+                                            <a href="{{route('admin.get.caregiver.profile', ['id' => encrypt($item->id) ])}}" class="btn btn-info btn-sm">View Profile</a>
                                         </td>
                                     </tr>
                                 @endforeach

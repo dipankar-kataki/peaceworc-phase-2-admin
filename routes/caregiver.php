@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Caregiver\CaregiverListController;
+use App\Http\Controllers\Caregiver\CaregiverProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function(){
 
     Route::get('list', [CaregiverListController::class, 'getCaregiverList'])->name('admin.get.caregiver.list');
-    // Route::groups(['prefix' => 'job'], function(){
-        
-    // });
+    Route::group(['prefix' => 'profile'], function(){
+        Route::get('{id}', [CaregiverProfileController::class, 'getCaregiverProfile'])->name('admin.get.caregiver.profile');
+        Route::post('activation', [CaregiverProfileController::class, 'caregiverProfileActivation'])->name('admin.caregiver.profile.activation');
+    });
 });
