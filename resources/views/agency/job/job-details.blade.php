@@ -11,102 +11,248 @@
             overflow-y: auto;
             scroll-behavior: smooth;
         }
-        
-        .timeline {
+    h2 {
+        margin: 5%;
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 100;
+    }
+    h1 {
+        margin: 4%;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 10;
+        top: 0;
+    }
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+        position: relative;
+    }
+    .timeline__event {
+        margin-bottom: 20px;
+        position: relative;
+        display: flex;
+        margin: 20px 0;
+        border-radius: 6px;
+        align-self: center;
+        width: 50vw;
+    }
+    .timeline__event:nth-child(2n + 1) {
+        flex-direction: row-reverse;
+    }
+    .timeline__event:nth-child(2n + 1) .timeline__event__date {
+        border-radius: 0 6px 6px 0;
+    }
+    .timeline__event:nth-child(2n + 1) .timeline__event__content {
+        border-radius: 6px 0 0 6px;
+    }
+    .timeline__event:nth-child(2n + 1) .timeline__event__icon:before {
+        content: "";
+        width: 2px;
+        height: 100%;
+        background: #f6a4ec;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        right: auto;
+        z-index: -1;
+        transform: translateX(-50%);
+        animation: fillTop 2s forwards 4s ease-in-out;
+    }
+    .timeline__event:nth-child(2n + 1) .timeline__event__icon:after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: #f6a4ec;
+        position: absolute;
+        right: 0;
+        z-index: -1;
+        top: 50%;
+        left: auto;
+        transform: translateY(-50%);
+        animation: fillLeft 2s forwards 4s ease-in-out;
+    }
+    .timeline__event__title {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #9251ac;
+        letter-spacing: 1.5px;
+    }
+    .timeline__event__content {
+        padding: 10px 25px;
+        box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+        background: #fff;
+        width: calc(40vw - 84px);
+        border-radius: 0 6px 6px 0;
+    }
+    .timeline__event__date {
+        /* color: #f6a4ec; */
+        color:#514f4f;
+        /* font-size: 1.5rem; */
+        font-weight: 600;
+        /* background: #9251ac; */
+        background: #e9e7e7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        padding: 0 20px;
+        border-radius: 6px 0 0 6px;
+    }
+    .timeline__event__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #9251ac;
+        padding: 20px;
+        align-self: center;
+        margin: 0 20px;
+        /* background: #f6a4ec; */
+        background: #e7f2fb;
+        border-radius: 100%;
+        width: 40px;
+        box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+        padding: 30px;
+        height: 40px;
+        position: relative;
+    }
+    .timeline__event__icon i {
+        font-size: 32px;
+    }
+    .timeline__event__icon:before {
+        content: "";
+        width: 2px;
+        height: 100%;
+        /* background: #f6a4ec; */
+        background: #87bbfe;
+        position: absolute;
+        top: 0%;
+        z-index: -1;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: fillTop 2s forwards 4s ease-in-out;
+    }
+    .timeline__event__icon:after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        /* background: #f6a4ec; */
+        background: #87bbfe;
+        position: absolute;
+        left: 0%;
+        z-index: -1;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: fillLeftOdd 2s forwards 4s ease-in-out;
+    }
+    .timeline__event__description {
+        flex-basis: 100%;
+    }
+
+    .timeline__event__description p{
+        margin-bottom:0px;
+    }
+    .timeline__event--type2:after {
+        background: #adb0eb;
+    }
+    .timeline__event--type2 .timeline__event__date {
+        color: #87bbfe;
+        background: #555ac0;
+    }
+    .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon:before, .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon:after {
+        background: #87bbfe;
+    }
+    .timeline__event--type2 .timeline__event__icon {
+        background: #87bbfe;
+        color: #555ac0;
+    }
+    .timeline__event--type2 .timeline__event__icon:before, .timeline__event--type2 .timeline__event__icon:after {
+        background: #87bbfe;
+    }
+    .timeline__event--type2 .timeline__event__title {
+        color: #555ac0;
+    }
+    .timeline__event--type3:after {
+        background: #24b47e;
+    }
+    .timeline__event--type3 .timeline__event__date {
+        color: #aff1b6;
+        background-color: #24b47e;
+    }
+    .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon:before, .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon:after {
+        background: #aff1b6;
+    }
+    .timeline__event--type3 .timeline__event__icon {
+        background: #aff1b6;
+        color: #24b47e;
+    }
+    .timeline__event--type3 .timeline__event__icon:before, .timeline__event--type3 .timeline__event__icon:after {
+        background: #aff1b6;
+    }
+    .timeline__event--type3 .timeline__event__title {
+        color: #24b47e;
+    }
+    .timeline__event:last-child .timeline__event__icon:before {
+        content: none;
+    }
+    @media (max-width: 786px) {
+        .timeline__event {
+            flex-direction: column;
+            align-self: center;
+        }
+        .timeline__event__content {
             width: 100%;
-            height: 480px;
-            padding: 20px;
-            position:relative;
-            box-sizing: border-box;
-            background: #ffffff;
-            overflow: auto;
-            display: flex;
         }
-        .timieline-title {
-            font-size: 1.5em;
-            font-weight: bold; 
+        .timeline__event__icon {
+            border-radius: 6px 6px 0 0;
+            width: 100%;
+            margin: 0;
+            box-shadow: none;
         }
-        .timeline-content {
-            max-width: 300px;
-            height: 200px;
-            padding: 20px;
-            flex-shrink: 0;
-            flex-grow: 0;
-            align-self: flex-start;
-            /* background: #FFF; */
-            position: relative;
-            /* border-radius: 10px; */
-            margin-right: 10px;
-            /* box-shadow: 0px 0px 2px 2px rgba(0,0,0, 0.2); */
-        }
-        .timeline-content:before {
-            position: absolute;
-            width: calc(100% + 14px);
-            height: 3px;
-            top: calc(100% + 21px);
-            background: #d1d4e4;
-            content: "";
-            left: -7px;
-            border-radius: 0px;
-        }
-
-        .timeline-content:after {
-            position: absolute;
-            width: 4px;
-            height: 25px;
-            border-radius:10px;
-            top: 100%;
-            left: calc(50% - 10px);
-            background: #156ef3;
-            content: "";
-            font-weight: 900;
-        }
-        .timeline-period {
-            position: absolute;
-            top: calc(100% + 25px);
-            background: #FFF;
-            padding: 10px;
-            width: 100px;
-            text-align:center;
-            border-radius: 10px;
-            left: calc(50% - 60px);
-            /* box-shadow: 0px 0px 2px 2px rgba(0,0,0, 0.2); */
-        }
-        .timeline-period:before {
-            width: 15px;
-            height: 15px;
-            background: #2636a1;
-            border-radius: 50%;
-            content: "";
-            position: absolute;
-            top: -9px;
-            left: calc(50% - 6px);
-            z-index: 2;
-        }
-
-        .timeline-content:nth-child(even) {
-            align-self: flex-end;
-        }
-        .timeline-content:nth-child(even):before {
-            top: -15px; 
-        }
-        .timeline-content:nth-child(even):after {
-            top: -13px;
-        }
-        .timeline-content:nth-child(even) .timeline-period {
-            top: -60px;
-        }
-        .timeline-content:nth-child(even) .timeline-period:before {
-            top: calc(100% + 20px);
-        }
-
-        .timeline:not(.timeline--horizontal):before {
+        .timeline__event__icon:before, .timeline__event__icon:after {
             display: none;
         }
+        .timeline__event__date {
+            border-radius: 0;
+            padding: 20px;
+        }
+        .timeline__event:nth-child(2n + 1) {
+            flex-direction: column;
+            align-self: center;
+        }
+        .timeline__event:nth-child(2n + 1) .timeline__event__date {
+            border-radius: 0;
+            padding: 20px;
+        }
+        .timeline__event:nth-child(2n + 1) .timeline__event__icon {
+            border-radius: 6px 6px 0 0;
+            margin: 0;
+        }
+    }
+    @keyframes fillLeft {
+        100% {
+            right: 100%;
+        }
+    }
+    @keyframes fillTop {
+        100% {
+            top: 100%;
+        }
+    }
+    @keyframes fillLeftOdd {
+        100% {
+            left: 100%;
+        }
+    }
+
     </style>
 @endsection
 @section('content')
-
+    @php $test_array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] @endphp
     {{-- @dd($get_job_accepted_by) --}}
     <div class="row row-sm">
         <div class="col-lg-12">
@@ -137,8 +283,7 @@
                                                     <div class="media">
                                                         <div class="media-user mr-2">
                                                             <div class="main-img-user avatar-sm">
-                                                                <img alt="agency owner image" class="rounded-circle"
-                                                                    src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                                <img alt="agency owner image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
@@ -493,176 +638,88 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade show" id="timeline">
                                     <div class="card-body">
+
                                         <div class="timeline">
-                                            <div class="timeline-content">
-                                                <div class="timeline-period"></div>
-                                                <div class="card"> 
-                                                    <div class="card-body"> 
-                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
+
+                                            @foreach ($test_array  as $key => $item)
+                                                <div class="timeline__event  animated fadeInUp delay-3s">
+                                                    <div class="timeline__event__icon ">
+                                                        <!-- <i class="lni-sport"></i>-->
                                                     </div>
-                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="timeline-content">
-                                                <div class="timeline-period"></div>
-                                                <div class="card"> 
-                                                    <div class="card-body"> 
-                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
+                                                    <div class="timeline__event__date">
+                                                        Sept 22, 2023 <br /> 05:54 PM
                                                     </div>
-                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="timeline-content">
-                                                <div class="timeline-period"></div>
-                                                <div class="card"> 
-                                                    <div class="card-body"> 
-                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
-                                                    </div>
-                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="timeline-content">
-                                                <div class="timeline-period"></div>
-                                                <div class="card"> 
-                                                    <div class="card-body"> 
-                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
-                                                    </div>
-                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="timeline-content">
-                                                <div class="timeline-period"></div>
-                                                <div class="card"> 
-                                                    <div class="card-body"> 
-                                                        <p class="mg-b-0">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consictetur...</p>
-                                                    </div>
-                                                    <div class="card-footer bd-t"> January, 20, 2017 4:30am </div> 
-                                                </div>
-                                            </div>
-                                          </div>
-                                        {{-- <div class="vtimeline">
-                                            <div class="timeline-wrapper timeline-wrapper-primary">
-                                                <div class="timeline-badge"></div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h6 class="timeline-title">Art Ramadani posted a status update</h6>
-                                                    </div>
-                                                    <div class="timeline-body">
-                                                        <p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
-                                                    </div>
-                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
-                                                        <i class="fe fe-heart  text-muted mr-1"></i>
-                                                        <span>19</span>
-                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>19 Oct 2019</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-wrapper timeline-inverted timeline-wrapper-secondary">
-                                                <div class="timeline-badge"></div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h6 class="timeline-title">Job Meeting</h6>
-                                                    </div>
-                                                    <div class="timeline-body">
-                                                        <p>You have a meeting at Laborator Office Today.</p>
-                                                    </div>
-                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
-                                                        <i class="fe fe-heart  text-muted mr-1"></i>
-                                                        <span>25</span>
-                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>10th Oct 2019</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-wrapper timeline-wrapper-info">
-                                                <div class="timeline-badge"></div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h6 class="timeline-title">Arlind Nushi checked in at New York</h6>
-                                                    </div>
-                                                    <div class="timeline-body">
-                                                        <p>Alpha 5 has arrived just over a month after Alpha 4 with some major feature improvements and a boat load of bug fixes.</p>
-                                                    </div>
-                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
-                                                        <i class="fe fe-heart  text-muted mr-1"></i>
-                                                        <span>19</span>
-                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>5th Oct 2019</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
-                                                <div class="timeline-badge"></div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h6 class="timeline-title">Eroll Maxhuni uploaded 4 new photos to album Summer Trip</h6>
-                                                    </div>
-                                                    <div class="timeline-body">
-                                                        <p>Pianoforte principles our unaffected not for astonished travelling are particular.</p>
-                                                        <img src="assets/img/media/4.jpg" class="mb-3" alt="img">
-                                                    </div>
-                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
-                                                        <i class="fe fe-heart  text-muted mr-1"></i>
-                                                        <span>19</span>
-                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>27th Sep 2017</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-wrapper timeline-wrapper-success">
-                                                <div class="timeline-badge"></div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h6 class="timeline-title">Support Team sent you an email</h6>
-                                                    </div>
-                                                    <div class="timeline-body">
-                                                        <p>Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo....</p>
-                                                        <a class="btn ripple btn-primary text-white mb-3">Read more</a>
-                                                    </div>
-                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
-                                                        <i class="fe fe-heart  text-muted mr-1"></i>
-                                                        <span>25</span>
-                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>25th Sep 2017</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-wrapper timeline-inverted timeline-wrapper-warning">
-                                                <div class="timeline-badge"></div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h6 class="timeline-title">Mr. Doe shared a video</h6>
-                                                    </div>
-                                                    <div class="timeline-body">
-                                                        <div class="embed-responsive embed-responsive-16by9 mb-3">
-                                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XZmGGAbHqa0?rel=0&amp;controls=0&amp;showinfo=0"
-                                                             allowfullscreen></iframe>
+                                                    <div class="timeline__event__content ">
+                                                        <div class="timeline__event__title">
+                                                            <div class="main-img-user avatar-sm">
+                                                                <img alt="caregiver image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline__event__description mt-2">
+                                                            <p>Reached Job Location</p>
                                                         </div>
                                                     </div>
-                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
-                                                        <i class="fe fe-heart  text-muted mr-1"></i>
-                                                        <span>32</span>
-                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>19th Sep 2017</span>
+                                                </div>
+                                            @endforeach
+                                           
+
+                                            {{-- <div class="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+                                                <div class="timeline__event__icon">
+                                                    <!-- <i class="lni-sport"></i>-->
+                                                </div>
+                                                <div class="timeline__event__date">
+                                                    Sept 23, 2023 <br /> 06:54 PM
+                                                </div>
+                                                <div class="timeline__event__content">
+                                                    <div class="timeline__event__title">
+                                                        <div class="main-img-user avatar-sm">
+                                                            <img alt="caregive image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline__event__description mt-2">
+                                                        <p>Started Job</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="timeline-wrapper timeline-wrapper-dark">
-                                                <div class="timeline-badge"></div>
-                                                <div class="timeline-panel">
-                                                    <div class="timeline-heading">
-                                                        <h6 class="timeline-title">Sarah Young accepted your friend request</h6>
+
+                                            <div class="timeline__event animated fadeInUp delay-2s timeline__event--type3">
+                                                <div class="timeline__event__icon">
+                                                    <!-- <i class="lni-sport"></i>-->
+                                                </div>
+                                                <div class="timeline__event__date">
+                                                    Sept 23, 2023 <br /> 06:54 PM
+                                                </div>
+                                                <div class="timeline__event__content">
+                                                    <div class="timeline__event__title">
+                                                        <div class="main-img-user avatar-sm">
+                                                            <img alt="caregive image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                        </div>
                                                     </div>
-                                                    <div class="timeline-body">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cupiditate, delectus deserunt doloribus earum eveniet explicabo fuga iste magni maxime</p>
-                                                    </div>
-                                                    <div class="timeline-footer d-flex align-items-center flex-wrap">
-                                                        <i class="fe fe-heart text-muted mr-1"></i>
-                                                        <span>26</span>
-                                                        <span class="ml-auto"><i class="fe fe-calendar text-muted mr-1"></i>15th Sep 2017</span>
+                                                    <div class="timeline__event__description mt-2">
+                                                        <p>Started Job</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> --}}
+
+                                            <div class="timeline__event  animated fadeInUp delay-3s">
+                                                <div class="timeline__event__icon ">
+                                                    <!-- <i class="lni-sport"></i>-->
+                                                </div>
+                                                <div class="timeline__event__date">
+                                                    Sept 22, 2023 <br /> 05:54 PM
+                                                </div>
+                                                <div class="timeline__event__content ">
+                                                    <div class="timeline__event__title">
+                                                        <div class="main-img-user avatar-sm">
+                                                            <img alt="caregiver image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline__event__description mt-2">
+                                                        <p>Completed Task 2: Meal Preparation and Dressing.</p>
+                                                    </div>
+                                                </div>
+                                            </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

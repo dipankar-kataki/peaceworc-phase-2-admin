@@ -18,7 +18,7 @@
 		<!-- Owl-carousel css-->
         <link href="{{asset('assets/plugins/owl-carousel/owl.carousel.css')}}" rel="stylesheet"/>
 		<!--- Internal Timeline css-->
-		<link href="{{asset('assets/plugins/timeline/css/timeline.min.css')}}" rel="stylesheet">
+		{{-- <link href="{{asset('assets/plugins/timeline/css/timeline.min.css')}}" rel="stylesheet"> --}}
 		<!--- Right-sidemenu css -->
 		<link href="{{asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
 
