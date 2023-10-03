@@ -95,7 +95,7 @@
         /* font-size: 1.5rem; */
         font-weight: 600;
         /* background: #9251ac; */
-        background: #e9e7e7;
+        background: #f7f7f7;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -252,7 +252,7 @@
     </style>
 @endsection
 @section('content')
-    @php $test_array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] @endphp
+    @php $test_array = ['Reached Job Site','Job Started','Preparing Meal','Dressing Patient','Hanging Out With Patient','Task 2 Completed','Location Updated Successfully', 'Job Closed'] @endphp
     {{-- @dd($get_job_accepted_by) --}}
     <div class="row row-sm">
         <div class="col-lg-12">
@@ -656,7 +656,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="timeline__event__description mt-2">
-                                                            <p>Reached Job Location</p>
+                                                            <p>{{$item}}</p>
                                                         </div>
                                                     </div>
                                                 </div>
