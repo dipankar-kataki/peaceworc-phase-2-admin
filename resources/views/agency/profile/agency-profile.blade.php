@@ -57,6 +57,43 @@
             height:65px;
             width:65px;
         }
+
+        .bank-header{
+            background: #dedcfb ;
+            border-radius: 5px;
+            padding: 20px 20px;
+        }
+        .bank-transaction-filter{
+            background: #084cca;
+            border-radius: 5px;
+            padding: 10px 20px;
+            width: 65%;
+            color: white;
+            position: absolute;
+            top: 45%;
+            left: 18%;
+            transform: translate(-18px, 0px);
+            z-index: 3;
+            margin-right: 10px;
+
+        }
+        .bank-transactions{
+            background-color: #fbfbfb;
+            padding: 5px 25px;
+            border-radius: 5px;
+            border: 1px solid #e1e6f1;
+        }
+        .bank-transactions .recieved-from label{
+            margin-bottom: 2px;
+            font-size: 13px;
+            color: #9c9a9a;
+        }
+        .bank-transactions .recieved-from h6{
+            margin-bottom: 2px;
+        }
+        .all-transactions{
+            margin-top:70px;
+        }
     </style>
 @endsection
 @section('content')
@@ -111,16 +148,6 @@
                                         @endif  
                                         <span>Business Information Added</span>
                                     </label>
-
-                                    {{-- <label class="ckbox pb-3">
-                                        @if ( $get_agency_detail->agencyProfileStatus->is_other_info_added === 1 )
-                                            <input checked type="checkbox">   
-                                        @else
-                                            <input  type="checkbox">
-                                        @endif  
-                                        <span>Other Information Added</span>
-                                    </label> --}}
-
                                     <label class="ckbox pb-3">
                                         @if ( $get_agency_detail->agencyProfileStatus->is_authorize_info_added === 1 )
                                             <input checked type="checkbox">   
@@ -140,121 +167,24 @@
                                     </label>
                                 </div>
                             </div>
-                            <!-- main-profile-bio -->
-                            {{-- <div class="main-profile-work-list">
-                                <div class="media">
-                                    <div class="media-logo bg-success-transparent text-success">
-                                        <i class="fa fa-envelope"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6>{{$get_agency_detail->agencyProfile->email}}</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-logo bg-primary-transparent text-primary">
-                                        <i class="fa fa-phone"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6>{{$get_agency_detail->agencyProfile->phone}}</h6>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            <!-- main-profile-work-list -->
-                            {{-- <hr class="mg-y-30">
-                            <label class="main-content-label tx-13 mg-b-20">Social</label>
-                            <div class="main-profile-social-list">
-                                <div class="media">
-                                    <div class="media-icon bg-primary-transparent text-primary">
-                                        <i class="icon ion-logo-github"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <span>Github</span> <a href="#">github.com/spruko</a>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-icon bg-success-transparent text-success">
-                                        <i class="icon ion-logo-twitter"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <span>Twitter</span> <a href="#">twitter.com/spruko.me</a>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-icon bg-info-transparent text-info">
-                                        <i class="icon ion-logo-linkedin"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <span>Linkedin</span> <a href="#">linkedin.com/in/spruko</a>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-icon bg-danger-transparent text-danger">
-                                        <i class="icon ion-md-link"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <span>My Portfolio</span> <a href="#">spruko.com/</a>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            <!-- main-profile-social-list -->
                         </div>
                         <!-- main-profile-overview -->
                     </div>
                 </div>
             </div>
-            {{-- <div class="card mg-b-20">
-                <div class="card-body">
-                    <div class="main-content-label tx-13 mg-b-25">
-                        Conatct
-                    </div>
-                    <div class="main-profile-contact-list">
-                        <div class="media">
-                            <div class="media-icon bg-primary-transparent text-primary">
-                                <i class="icon ion-md-phone-portrait"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>Mobile</span>
-                                <div>
-                                    +245 354 654
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-icon bg-success-transparent text-success">
-                                <i class="icon ion-logo-slack"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>Slack</span>
-                                <div>
-                                    @spruko.w
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-icon bg-info-transparent text-info">
-                                <i class="icon ion-md-locate"></i>
-                            </div>
-                            <div class="media-body">
-                                <span>Current Address</span>
-                                <div>
-                                    San Francisco, CA
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- main-profile-contact-list -->
-                </div>
-            </div> --}}
         </div>
         <div class="col-lg-8">
             <div class="main-content-body main-content-body-profile">
-                <nav class="nav main-nav-line card">
-                    <a class="nav-link show active" data-toggle="tab" href="#about_company">About Company</a>
-                    <a class="nav-link" data-toggle="tab" href="#company_owner_information">Owner Information</a>
-                    <a class="nav-link" data-toggle="tab" href="#authorized_officers">Authorized Officers</a>
+                <nav class="nav main-nav-line card ">
+                    <a class="nav-link show active" data-toggle="tab" href="#about_company">About</a>
+                    <a class="nav-link" data-toggle="tab" href="#company_owner_information">Owner</a>
+                    <a class="nav-link" data-toggle="tab" href="#authorized_officers">Officers</a>
                     <a class="nav-link" data-toggle="tab" href="#agency_chats">Chats</a>
                     <a class="nav-link" data-toggle="tab" href="#feedback">Feedback</a>
-                    <a class="nav-link" data-toggle="tab" href="#account_settings">Settings</a>
+                    <a class="nav-link" data-toggle="tab" href="#bank_account">Bank</a>
+                    <a class="nav-link" data-toggle="tab" href="#account_settings">Setting</a>
                 </nav>
+                
                 <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
                     <div class="row row-sm">
@@ -596,7 +526,7 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="feedback">
                                     <div class="card-body h-100">
-                                        <label class="main-content-label tx-13 mg-b-20">Send eedback</label>
+                                        <label class="main-content-label tx-13 mg-b-20">Send Feedback</label>
                                         <form action="{{route('admin.agency.profile.activation')}}" method="POST">
                                             @csrf
                                             <div class="form-group">
@@ -613,6 +543,74 @@
                                                 <textarea name="feedback_text" class="form-control" id="feedback_text" cols="30" rows="4" placeholder="Please enter feedback here..."></textarea>
                                             </div>
                                         </form>
+                                    </div>
+                                </div>
+                                <div class="card mg-b-20 tab-pane fade" id="bank_account">
+                                    <div class="card-body h-100">
+                                        <div class="bank-header">
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <div class="mg-b-10">
+                                                    <label class="main-content-label tx-13 mg-b-10">Bank Name</label>
+                                                    <p>MUFG Americas Holdings Corporation</p>
+                                                </div>
+                                                <div class="mg-b-10">
+                                                    <a href="javascript:void(0);" class="btn btn-danger">Delete Bank</a>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex flex-rowflex-wrap">
+                                                <div class="mg-b-10">
+                                                    <label class="main-content-label tx-13 mg-b-10">Routing Number</label>
+                                                    <p>123456789</p>
+                                                </div>
+                                                <div class="ml-5 mg-b-10">
+                                                    <label class="main-content-label tx-13 mg-b-10">Account Number</label>
+                                                    <p>XXXXXXXXXX6789</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bank-transaction-filter">
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <div class="my-earnings">
+                                                    <label for="">Total Earnings</label>
+                                                    <h4>$ 20000</h4>
+                                                </div>
+                                                <div class="filter">
+                                                    <select name="filter-month" id="filterByMonth" class="form-control">
+                                                        <option value="" selected disabled>- Filter -</option>
+                                                        <option value="january">January</option>
+                                                        <option value="february">February</option>
+                                                        <option value="march">March</option>
+                                                        <option value="april">April</option>
+                                                        <option value="may">May</option>
+                                                        <option value="june">June</option>
+                                                        <option value="july">July</option>
+                                                        <option value="august">August</option>
+                                                        <option value="september">September</option>
+                                                        <option value="october">October</option>
+                                                        <option value="november">November</option>
+                                                        <option value="december">December</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-transactions">
+                                            <label for="" class="mg-b-10 ">All Transactions</label>
+                                            <div class="bank-transactions">
+                                                
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 200</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="account_settings">
@@ -690,19 +688,25 @@
         });
     </script>
 
-<script>
-    @if (session('success'))
-        toastr.success('{{ session('success') }}', '', {
-            positionClass: 'toast-top-right',
-            timeOut: 3000 
+    <script>
+        $(document).ready(function(){
+            $(".owl-nav-slider").owlCarousel();
         });
-    @endif
+    </script>
 
-    @if (session('error'))
-        toastr.error('{{ session('error') }}', '', {
-            positionClass: 'toast-top-right',
-            timeOut: 3000 
-        });
-    @endif
-</script>
+    <script>
+        @if (session('success'))
+            toastr.success('{{ session('success') }}', '', {
+                positionClass: 'toast-top-right',
+                timeOut: 3000 
+            });
+        @endif
+
+        @if (session('error'))
+            toastr.error('{{ session('error') }}', '', {
+                positionClass: 'toast-top-right',
+                timeOut: 3000 
+            });
+        @endif
+    </script>
 @endsection
