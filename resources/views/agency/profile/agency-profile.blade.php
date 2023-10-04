@@ -46,53 +46,61 @@
             stroke: #83e4e2;
         }
 
-        .main-profile-social-list .media + .media {
+        .main-profile-social-list .media+.media {
             margin-top: 10px;
         }
 
-        .profile-main-card-header{
-            max-height:120px;
-        }
-        .main-img-user {
-            height:65px;
-            width:65px;
+        .profile-main-card-header {
+            max-height: 120px;
         }
 
-        .bank-header{
-            background: #dedcfb ;
+        .main-img-user {
+            height: 65px;
+            width: 65px;
+        }
+
+        .bank-header {
+            background: #dedcfb;
             border-radius: 5px;
             padding: 20px 20px;
         }
-        .bank-transaction-filter{
-            background: #084cca;
+
+        .bank-transaction-filter {
+            background: #0e7bc5;
             border-radius: 5px;
             padding: 10px 20px;
-            width: 65%;
             color: white;
-            position: absolute;
-            top: 45%;
-            left: 18%;
-            transform: translate(-18px, 0px);
-            z-index: 3;
-            margin-right: 10px;
+            margin-top: 10px;
 
         }
-        .bank-transactions{
+
+        .bank-transactions {
             background-color: #fbfbfb;
             padding: 5px 25px;
             border-radius: 5px;
             border: 1px solid #e1e6f1;
         }
-        .bank-transactions .recieved-from label{
+
+        .bank-transactions .recieved-from label {
             margin-bottom: 2px;
             font-size: 13px;
             color: #9c9a9a;
         }
-        .bank-transactions .recieved-from h6{
+
+        .bank-transactions .recieved-from h6 {
             margin-bottom: 2px;
         }
-        .all-transactions{
-            margin-top:70px;
+
+        .all-transactions {
+            margin-top: 20px;
+            height: 400px;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            padding: 10px;
+        }
+
+        .amount-recieved h5 {
+            color: rgb(1, 68, 1);
         }
     </style>
 @endsection
@@ -116,11 +124,11 @@
                                 {{ $get_agency_detail->agencyProfile->company_name ?? 'Not Found' }}
                             </h1>
 
-                            @if ( $get_agency_detail->agencyProfileStatus->is_profile_approved === 1 )
-                                <span class="badge  bg-success text-white">Profile Active</span>  
+                            @if ($get_agency_detail->agencyProfileStatus->is_profile_approved === 1)
+                                <span class="badge  bg-success text-white">Profile Active</span>
                             @else
                                 <span class="badge bg-danger text-white">Approval Pending</span>
-                            @endif 
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -130,38 +138,39 @@
 
                             <h6>Agency Profile Completion Status</h6>
 
-                            <div class="main-profile-progress-bar d-flex flex-row flex-wrap justify-content-center align-items-center">
-                                <svg class="radial-progress" data-percentage="{{$total_percentage}}" viewBox="0 0 80 80">
+                            <div
+                                class="main-profile-progress-bar d-flex flex-row flex-wrap justify-content-center align-items-center">
+                                <svg class="radial-progress" data-percentage="{{ $total_percentage }}" viewBox="0 0 80 80">
                                     <circle class="incomplete" cx="40" cy="40" r="35"></circle>
                                     <circle class="complete" cx="40" cy="40" r="35"
                                         style="stroke-dashoffset: 39.58406743523136;"></circle>
                                     <text class="percentage" x="50%" y="57%"
-                                        transform="matrix(0, 1, -1, 0, 80, 0)">{{$total_percentage}}%</text>
+                                        transform="matrix(0, 1, -1, 0, 80, 0)">{{ $total_percentage }}%</text>
                                 </svg>
 
-                                <div class="d-flex flex-column p-3"> 
+                                <div class="d-flex flex-column p-3">
                                     <label class="ckbox  pb-3">
-                                        @if ( $get_agency_detail->agencyProfileStatus->is_business_info_complete === 1 )
-                                            <input checked type="checkbox">   
+                                        @if ($get_agency_detail->agencyProfileStatus->is_business_info_complete === 1)
+                                            <input checked type="checkbox">
                                         @else
-                                            <input  type="checkbox">
-                                        @endif  
+                                            <input type="checkbox">
+                                        @endif
                                         <span>Business Information Added</span>
                                     </label>
                                     <label class="ckbox pb-3">
-                                        @if ( $get_agency_detail->agencyProfileStatus->is_authorize_info_added === 1 )
-                                            <input checked type="checkbox">   
+                                        @if ($get_agency_detail->agencyProfileStatus->is_authorize_info_added === 1)
+                                            <input checked type="checkbox">
                                         @else
-                                            <input  type="checkbox">
+                                            <input type="checkbox">
                                         @endif
                                         <span>Authorize Officer Added</span>
                                     </label>
 
                                     <label class="ckbox pb-3">
-                                        @if ( $get_agency_detail->agencyProfileStatus->is_profile_approved === 1 )
-                                            <input checked type="checkbox">   
+                                        @if ($get_agency_detail->agencyProfileStatus->is_profile_approved === 1)
+                                            <input checked type="checkbox">
                                         @else
-                                            <input  type="checkbox">
+                                            <input type="checkbox">
                                         @endif
                                         <span>Profile Approved</span>
                                     </label>
@@ -180,11 +189,11 @@
                     <a class="nav-link" data-toggle="tab" href="#company_owner_information">Owner</a>
                     <a class="nav-link" data-toggle="tab" href="#authorized_officers">Officers</a>
                     <a class="nav-link" data-toggle="tab" href="#agency_chats">Chats</a>
-                    <a class="nav-link" data-toggle="tab" href="#feedback">Feedback</a>
+                    <a class="nav-link" data-toggle="tab" href="#feedback">Issue/ Feedback</a>
                     <a class="nav-link" data-toggle="tab" href="#bank_account">Bank</a>
                     <a class="nav-link" data-toggle="tab" href="#account_settings">Setting</a>
                 </nav>
-                
+
                 <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
                     <div class="row row-sm">
@@ -229,7 +238,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Phone</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->phone ?? 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->phone ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media ml-3">
@@ -238,7 +248,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Email</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->email ?? 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->email ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media ml-3">
@@ -248,12 +259,12 @@
                                                 <div class="media-body">
                                                     <span>Address</span>
                                                     <a href="#">
-                                                        {{ $get_agency_detail->agencyProfile->appartment_or_unit ? $get_agency_detail->agencyProfile->appartment_or_unit.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->floor_no ? $get_agency_detail->agencyProfile->floor_no.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->street ? $get_agency_detail->agencyProfile->street.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->city_or_district ? $get_agency_detail->agencyProfile->city_or_district.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->zip_code ? $get_agency_detail->agencyProfile->zip_code.', ' : '' }}
-                                                        {{ $get_agency_detail->agencyProfile->state ? $get_agency_detail->agencyProfile->state.', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->appartment_or_unit ? $get_agency_detail->agencyProfile->appartment_or_unit . ', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->floor_no ? $get_agency_detail->agencyProfile->floor_no . ', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->street ? $get_agency_detail->agencyProfile->street . ', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->city_or_district ? $get_agency_detail->agencyProfile->city_or_district . ', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->zip_code ? $get_agency_detail->agencyProfile->zip_code . ', ' : '' }}
+                                                        {{ $get_agency_detail->agencyProfile->state ? $get_agency_detail->agencyProfile->state . ', ' : '' }}
                                                         {{ $get_agency_detail->agencyProfile->country ? $get_agency_detail->agencyProfile->country : '' }}
                                                     </a>
                                                 </div>
@@ -268,7 +279,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Legal Structure</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->legal_structure ?? 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->legal_structure ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media mr-4 mt-2">
@@ -277,7 +289,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Organization Type</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->organization_type ?? 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->organization_type ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media mr-4 mt-2">
@@ -286,7 +299,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Tax Id / EIN Id</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->tax_id_or_ein_id ?? 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->tax_id_or_ein_id ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media mr-4 mt-2">
@@ -295,7 +309,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Total Employee</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->number_of_employee ?? 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->number_of_employee ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media mr-4 mt-2">
@@ -304,7 +319,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Active Years</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->years_in_business ?? 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->years_in_business ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media mr-4 mt-4">
@@ -313,7 +329,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Country Of Business</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->country_of_business ?? 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->country_of_business ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media mr-4 mt-4">
@@ -322,7 +339,8 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Annual Revenue</span>
-                                                    <a href="#">{{ $get_agency_detail->agencyProfile->annual_business_revenue ? '$ '.$get_agency_detail->agencyProfile->annual_business_revenue . ' USD' : 'Not Found' }}</a>
+                                                    <a
+                                                        href="#">{{ $get_agency_detail->agencyProfile->annual_business_revenue ? '$ ' . $get_agency_detail->agencyProfile->annual_business_revenue . ' USD' : 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,16 +348,19 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="company_owner_information">
                                     <div class="card-body h-100">
-                                        <div class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
+                                        <div
+                                            class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
                                             <div class="media">
                                                 <div class="media-user mr-2">
                                                     <div class="main-img-user avatar-md">
-                                                        <img alt="agency owner image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">
+                                                        <img alt="agency owner image" class="rounded-circle"
+                                                            src="{{ asset('assets/img/photos/user-dummy-img.jpg') }}">
                                                     </div>
                                                 </div>
                                                 <div class="media-body">
                                                     <h6 class="mb-0 mg-t-9">{{ $get_agency_detail->name }}</h6>
-                                                    <span class="text-muted">Account created on : {{ Carbon\Carbon::parse($get_agency_detail->created_at)->format('M d Y, h:i A') }}</span>
+                                                    <span class="text-muted">Account created on :
+                                                        {{ Carbon\Carbon::parse($get_agency_detail->created_at)->format('M d Y, h:i A') }}</span>
                                                 </div>
                                             </div>
                                             <div class="user-status-btn">
@@ -353,7 +374,8 @@
 
                                         <hr>
                                         <label class="main-content-label tx-13 mg-b-20">Access Level</label>
-                                        <a href="#" class="d-block">{{ $get_agency_detail->role == 1 ? 'Web-Administrator' : (($get_agency_detail->role == 6) ? 'Web-Operator' : 'USER')}}</a>
+                                        <a href="#"
+                                            class="d-block">{{ $get_agency_detail->role == 1 ? 'Web-Administrator' : ($get_agency_detail->role == 6 ? 'Web-Operator' : 'USER') }}</a>
 
                                         <hr>
                                         <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
@@ -401,39 +423,43 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="project-contain">
-                                                                    <h6 class="mb-1 tx-13">{{$key + 1}}</h6>
+                                                                    <h6 class="mb-1 tx-13">{{ $key + 1 }}</h6>
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div class="project-contain">
-                                                                    <h6 class="mb-1 tx-13">{{$officer->name}}</h6>
+                                                                    <h6 class="mb-1 tx-13">{{ $officer->name }}</h6>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                {{$officer->email}}
+                                                                {{ $officer->email }}
                                                             </td>
-                                                            <td>{{$officer->phone}}</td>
-                                                            <td>{{$officer->role}}</td>
+                                                            <td>{{ $officer->phone }}</td>
+                                                            <td>{{ $officer->role }}</td>
                                                             <td>
                                                                 @if ($officer->status == 1)
-                                                                    <span class="badge bg-success-gradient text-white">Active</span>                                                                    
+                                                                    <span
+                                                                        class="badge bg-success-gradient text-white">Active</span>
                                                                 @else
-                                                                    <span class="badge bg-danger-gradient text-white">Inactive</span> 
+                                                                    <span
+                                                                        class="badge bg-danger-gradient text-white">Inactive</span>
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                {{\Carbon\Carbon::parse($officer->created_at)->format('M d Y')}}
+                                                                {{ \Carbon\Carbon::parse($officer->created_at)->format('M d Y') }}
                                                             </td>
                                                             <td>
                                                                 @if ($officer->status == 1)
-                                                                    <button class="btn btn-primary btn-sm">Make Active</button> 
+                                                                    <button class="btn btn-primary btn-sm">Make
+                                                                        Active</button>
                                                                 @else
-                                                                    <button class="btn btn-primary btn-sm">Make Deactive</button>
+                                                                    <button class="btn btn-primary btn-sm">Make
+                                                                        Deactive</button>
                                                                 @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
-                                                    
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -464,7 +490,7 @@
                                                         <td><span class="badge badge-primary">Not Closed</span></td>
                                                         <td>Oct 10, 2023</td>
                                                         <td>
-                                                            <button class="btn btn-sm btn-primary">Download 
+                                                            <button class="btn btn-sm btn-primary">Download
                                                                 <i class="fas fa-file-pdf ml-2"></i>
                                                             </button>
                                                         </td>
@@ -477,7 +503,7 @@
                                                         <td><span class="badge badge-dark">Closed</span></td>
                                                         <td>Oct 10, 2023</td>
                                                         <td>
-                                                            <button class="btn btn-sm btn-primary">Download 
+                                                            <button class="btn btn-sm btn-primary">Download
                                                                 <i class="fas fa-file-pdf ml-2"></i>
                                                             </button>
                                                         </td>
@@ -518,7 +544,7 @@
                                                             </td>
                                                         </tr>
                                                     @endforeach --}}
-                                                    
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -526,8 +552,76 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="feedback">
                                     <div class="card-body h-100">
+                                        {{-- <div class="issue-div">
+                                            <label class="main-content-label tx-13 mg-b-20">Issue</label>
+                                            <div class="task-stat pb-0 mg-b-20">
+                                                <div class="tasks d-flex justify-content-between align-items-center mb-0">
+                                                    <div class="h6 fs-15 mb-0">
+                                                        <i class="far fa-dot-circle text-primary me-2"></i>
+                                                        Business Information
+                                                    </div>
+                                                    <span class="float-end ms-auto text-success">Resolved</span>
+                                                </div> 
+                                                <div class="tasks d-flex justify-content-between align-items-center mb-0">
+                                                    <div class="h6 fs-15 mb-0">
+                                                        <i class="far fa-dot-circle text-primary me-2"></i>
+                                                        Basic Information
+                                                    </div>
+                                                    <span class="float-end ms-auto text-danger">Pending</span>
+                                                </div> 
+                                                <div class="tasks d-flex justify-content-between align-items-center mb-0">
+                                                    <div class="h6 fs-15 mb-0">
+                                                        <i class="far fa-dot-circle text-primary me-2"></i>
+                                                        Document Expired
+                                                    </div>
+                                                    <span class="float-end ms-auto text-danger">Pending</span>
+                                                </div> 
+                                            </div>
+                                        </div> --}}
+                                        <label class="main-content-label tx-13 mg-b-20">Issue/Ticket</label>
+                                        <div class="table-responsive mb-0">
+                                            <table  class="table table-hover table-bordered mb-3 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Ticket</th>
+                                                        <th>Status</th>
+                                                        <th>Created On</th>
+                                                        <th>Updated On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Business Information</td>
+                                                        <td>
+                                                            <span class="badge bg-warning-gradient text-dark">Pending</span>
+                                                        </td>
+                                                        <td>3 Jun 2023</td>
+                                                        <td>-</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-success">Mark As Resolved</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Certificate Not Uploaded</td>
+                                                        <td>
+                                                            <span class="badge bg-success-gradient text-white">Resolved</span>
+                                                        </td>
+                                                        <td>12 Jun 2023</td>
+                                                        <td>15 Jun 2023</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Close Ticket</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
                                         <label class="main-content-label tx-13 mg-b-20">Send Feedback</label>
-                                        <form action="{{route('admin.agency.profile.activation')}}" method="POST">
+                                        <form action="#" method="POST">
                                             @csrf
                                             <div class="form-group">
                                                 <select name="feedback_reason" class="form-control" id="feedback_reason">
@@ -540,7 +634,11 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="feedback_text" class="form-control" id="feedback_text" cols="30" rows="4" placeholder="Please enter feedback here..."></textarea>
+                                                <textarea name="feedback_text" class="form-control" id="feedback_text" cols="30" rows="4"
+                                                    placeholder="Please enter feedback here..."></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary">Submit</button>
                                             </div>
                                         </form>
                                     </div>
@@ -554,10 +652,11 @@
                                                     <p>MUFG Americas Holdings Corporation</p>
                                                 </div>
                                                 <div class="mg-b-10">
-                                                    <a href="javascript:void(0);" class="btn btn-danger">Delete Bank</a>
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-danger task-box danger  mb-0">Delete Bank</a>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="d-flex flex-rowflex-wrap">
                                                 <div class="mg-b-10">
                                                     <label class="main-content-label tx-13 mg-b-10">Routing Number</label>
@@ -595,9 +694,8 @@
                                             </div>
                                         </div>
                                         <div class="all-transactions">
-                                            <label for="" class="mg-b-10 ">All Transactions</label>
-                                            <div class="bank-transactions">
-                                                
+                                            <h6 class="mb-10">Transaction History</h6>
+                                            <div class="bank-transactions mg-b-10">
                                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                                     <div class="recieved-from">
                                                         <label for="">Recieved From</label>
@@ -605,24 +703,97 @@
                                                         <label for="">2 hours ago</label>
                                                     </div>
                                                     <div class="amount-recieved">
-                                                        <h5>$ 200</h5>
+                                                        <h5>$ 4000</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 100</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 6300</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 300</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 2000</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 400</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 3000</h5>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="account_settings">
                                     <div class="card-body h-100">
-                                        <label class="main-content-label tx-13 mg-b-20">Agency Account Activation Status</label>
-                                        <form action="{{route('admin.agency.profile.activation')}}" method="POST">
+                                        <label class="main-content-label tx-13 mg-b-20">Agency Account Activation
+                                            Status</label>
+                                        <form action="{{ route('admin.agency.profile.activation') }}" method="POST">
                                             @csrf
 
-                                            <input type="hidden" name="agency_id" value="{{ encrypt($get_agency_detail->agencyProfileStatus->user_id) }}">
-                                            
-                                            @if ($get_agency_detail->agencyProfileStatus->is_profile_approved == 1)
+                                            <input type="hidden" name="agency_id"
+                                                value="{{ encrypt($get_agency_detail->agencyProfileStatus->user_id) }}">
 
+                                            @if ($get_agency_detail->agencyProfileStatus->is_profile_approved == 1)
                                                 <input type="hidden" name="activation_status" value="0">
                                                 <h6 class="text-success">Agency Profile Is Active</h6>
                                                 <div class="form-group">
@@ -637,10 +808,10 @@
                                             @endif
                                         </form>
 
-                                        
+
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -665,7 +836,7 @@
                     // If svg.radial-progress is approximately 25% vertically into the window when scrolling from the top or the bottom
                     if (
                         $(window).scrollTop() > $(this).offset().top - ($(window).height() *
-                        0.75) &&
+                            0.75) &&
                         $(window).scrollTop() < $(this).offset().top + $(this).height() - ($(window)
                             .height() * 0.25)
                     ) {
@@ -689,7 +860,7 @@
     </script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             $(".owl-nav-slider").owlCarousel();
         });
     </script>
@@ -698,14 +869,14 @@
         @if (session('success'))
             toastr.success('{{ session('success') }}', '', {
                 positionClass: 'toast-top-right',
-                timeOut: 3000 
+                timeOut: 3000
             });
         @endif
 
         @if (session('error'))
             toastr.error('{{ session('error') }}', '', {
                 positionClass: 'toast-top-right',
-                timeOut: 3000 
+                timeOut: 3000
             });
         @endif
     </script>
