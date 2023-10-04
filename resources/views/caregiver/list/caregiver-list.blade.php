@@ -20,7 +20,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    {{-- <th>Profile Status</th> --}}
+                                    <th>Created On</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -36,14 +36,7 @@
                                         </td>
                                         <td>{{ $item->email ?? 'Not Found' }}</td>
                                         <td>{{ $item->caregiverProfile->phone ?? 'Not Found' }}</td>
-                                        {{-- <td>
-                                            {{$item->caregiverProfileStatus->is_profile_approved}}
-                                            @if ($item->caregiverProfileStatus->is_profile_approved == 1)
-                                                <span class="text-success">Active</span>
-                                            @else
-                                                <span class="text-danger">Inactive</span>
-                                            @endif
-                                        </td> --}}
+                                        <td>{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') ?? 'Not Found' }}</td>
                                         <td>
                                             <a href="{{route('admin.get.caregiver.profile', ['id' => encrypt($item->id) ])}}" class="btn btn-info btn-sm">View Profile</a>
                                         </td>

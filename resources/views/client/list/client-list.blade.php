@@ -68,6 +68,7 @@
                                             <th>Gender</th>
                                             <th>Age</th>
                                             <th>Address</th>
+                                            <th>Created By</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -76,18 +77,19 @@
                                             <tr>
                                                 <th scope="row"># {{$key + 1}}</th>
                                                 <td>
-                                                    <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->id) ])}}">{{ $item->name ?? 'Not Found' }}</a>
+                                                    <img alt="avatar" class="avatar-md rounded-circle" src="{{asset('/assets/img/faces/2.jpg')}}">
                                                 </td>
                                                 <td>
-                                                    <img alt="avatar" class="avatar-md rounded-circle" src="{{asset('/assets/img/faces/2.jpg')}}">
+                                                    <a href="#">{{ $item->name ?? 'Not Found' }}</a>
                                                 </td>
                                                 <td>{{ $item->email ?? 'Not Found' }}</td>
                                                 <td>{{ $item->phone ?? 'Not Found' }}</td>
                                                 <td>{{ $item->gender ?? 'Not Found' }}</td>
                                                 <td>{{ $item->age ?? 'Not Found' }}</td>
                                                 <td>{{ $item->address ?? 'Not Found' }}</td>
+                                                <td> <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->agency_id) ])}}">{{$item->agencyProfile->company_name}}</a></td>
                                                 <td>
-                                                    <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->id) ])}}" class="btn btn-info btn-sm">View Profile</a>
+                                                    <a href="#" class="btn btn-outline-danger btn-sm">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

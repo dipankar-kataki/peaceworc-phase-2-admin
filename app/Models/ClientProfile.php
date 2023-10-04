@@ -12,4 +12,8 @@ class ClientProfile extends Model
     protected $table = 'client_profiles';
 
     protected $guarded = [];
+
+    public function agencyProfile(){
+        return $this->belongsTo(AgencyProfileRegistration::class, 'agency_id', 'user_id');
+    }
 }

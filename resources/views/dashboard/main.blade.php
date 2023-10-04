@@ -38,7 +38,7 @@
                                     <th>Posted On</th>
                                     <th>Job Status</th>
                                     <th>Payment Status</th>
-                                    <th>Automatic Payout</th>
+                                    <th>Payment Error</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

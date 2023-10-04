@@ -61,6 +61,50 @@
         .bg-custom{
            background-color:#024177e8;
         }
+
+        .bank-header {
+            background: #dedcfb;
+            border-radius: 5px;
+            padding: 20px 20px;
+        }
+
+        .bank-transaction-filter {
+            background: #0e7bc5;
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: white;
+            margin-top: 10px;
+
+        }
+
+        .bank-transactions {
+            background-color: #fbfbfb;
+            padding: 5px 25px;
+            border-radius: 5px;
+            border: 1px solid #e1e6f1;
+        }
+
+        .bank-transactions .recieved-from label {
+            margin-bottom: 2px;
+            font-size: 13px;
+            color: #9c9a9a;
+        }
+
+        .bank-transactions .recieved-from h6 {
+            margin-bottom: 2px;
+        }
+
+        .all-transactions {
+            margin-top: 20px;
+            height: 400px;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            padding: 10px;
+        }
+
+        .amount-recieved h5 {
+            color: rgb(1, 68, 1);
+        }
     </style>
 @endsection
 @section('content')
@@ -116,34 +160,34 @@
                                         @if ($get_caregiver_detail->caregiverProfileStatus != null)
                                             @if ( $get_caregiver_detail->caregiverProfileStatus->is_basic_info_added === 1 )
                                                 <input checked type="checkbox"> 
+                                            @else
+                                                <input  type="checkbox">
                                             @endif
-                                        @else
-                                            <input  type="checkbox">
                                         @endif
                                           
-                                        <span>Basic Information Added</span>
+                                        <span class="ml-2">Basic Information Added</span>
                                     </label>
 
                                     <label class="ckbox pb-3">
                                         @if ($get_caregiver_detail->caregiverProfileStatus != null)
                                             @if ( $get_caregiver_detail->caregiverProfileStatus->is_documents_uploaded === 1 )
-                                                <input checked type="checkbox"> 
+                                                <input checked type="checkbox">
+                                            @else
+                                                <input  type="checkbox">
                                             @endif
-                                        @else
-                                            <input  type="checkbox">
                                         @endif
-                                        <span>Required Documents Addedd</span>
+                                        <span class="ml-2">Required Documents Addedd</span>
                                     </label>
 
                                     <label class="ckbox pb-3">
                                         @if ($get_caregiver_detail->caregiverProfileStatus != null)
                                             @if ( $get_caregiver_detail->caregiverProfileStatus->is_profile_approved === 1 )
-                                                <input checked type="checkbox"> 
+                                                <input checked type="checkbox">
+                                            @else
+                                                <input  type="checkbox">
                                             @endif
-                                        @else
-                                            <input  type="checkbox">
                                         @endif
-                                        <span>Profile Approved</span>
+                                        <span class="ml-2">Profile Approved</span>
                                     </label>
                                 </div>
                             </div>
@@ -160,7 +204,8 @@
                     {{-- <a class="nav-link" data-toggle="tab" href="#company_owner_information">Owner Information</a>
                     <a class="nav-link" data-toggle="tab" href="#authorized_officers">Authorized Officers</a> --}}
                     <a class="nav-link" data-toggle="tab" href="#caregiver_chats">Chats</a>
-                    <a class="nav-link" data-toggle="tab" href="#feedback">Feedback</a>
+                    <a class="nav-link" data-toggle="tab" href="#bank_account">Bank</a>
+                    <a class="nav-link" data-toggle="tab" href="#feedback">Issue/ Feedback</a>
                     <a class="nav-link" data-toggle="tab" href="#account_settings">Settings</a>
                 </nav>
                 <!-- main-profile-body -->
@@ -287,144 +332,28 @@
 
                                         <hr>
                                         <label class="main-content-label tx-13 mg-b-20">Education</label>
-                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
-                                            <div class="media mr-4 mt-2">
-                                                <div class="media-icon bg-gray-100 text-primary">
-                                                    <i class="fas fa-calendar-alt"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <span>Education:</span>
-                                                    <a href="#">{{ $get_caregiver_detail->caregiverProfile->dob ?? 'Not Found' }}</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <ul>
+                                            <li>
+                                                Secondary School Of Eduation - june 25, 2023 -
+                                                <label class="text-muted tx-12">Guwahati</label>
+                                            </li>
+                                            <li>
+                                                Bachelors Degree - june 25, 1994 -
+                                                <label class="text-muted tx-12">USA</label>
+                                            </li>
+                                            <li>
+                                                Baal Education - june 25, 1846 -
+                                                <label class="text-muted tx-12">WAKANDA</label>
+                                            </li>
+                                        </ul>
 
                                         <hr>
                                         <label class="main-content-label tx-13 mg-b-20">Certificates</label>
                                         <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
-                                            <div class="media mr-4 mt-2">
-                                                <div class="media-icon bg-gray-100 text-primary">
-                                                    <i class="fas fa-calendar-alt"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <span>Education:</span>
-                                                    <a href="#">{{ $get_caregiver_detail->caregiverProfile->dob ?? 'Not Found' }}</a>
-                                                </div>
-                                            </div>
+                                            <label class="text-muted tx-14">- Not Found</label>
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="card mg-b-20 tab-pane fade" id="company_owner_information">
-                                    <div class="card-body h-100">
-                                        <div class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
-                                            <div class="media">
-                                                <div class="media-user mr-2">
-                                                    <div class="main-img-user avatar-md">
-                                                        <img alt="caregiver owner image" class="rounded-circle" src="{{asset('assets/img/photos/user-dummy-img.jpg')}}">
-                                                    </div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-0 mg-t-9">{{ $get_caregiver_detail->name }}</h6>
-                                                    <span class="text-muted">Account created on : {{ Carbon\Carbon::parse($get_caregiver_detail->created_at)->format('M d Y, h:i A') }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="user-status-btn">
-                                                @if ($get_caregiver_detail->status == 1)
-                                                    <a href="javascript:void(0);" class="btn btn-success">User Active</a>
-                                                @else
-                                                    <a href="javascript:void(0);" class="btn btn-danger">User Inactive</a>
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <hr>
-                                        <label class="main-content-label tx-13 mg-b-20">Access Level</label>
-                                        <a href="#" class="d-block">{{ $get_caregiver_detail->role == 1 ? 'Web-Administrator' : (($get_caregiver_detail->role == 6) ? 'Web-Operator' : 'USER')}}</a>
-
-                                        <hr>
-                                        <label class="main-content-label tx-13 mg-b-20">Contact Information</label>
-                                        <div class="main-profile-social-list d-flex flex-row flex-wrap align-items-center">
-                                            <div class="media">
-                                                <div class="media-icon bg-gray-100 text-primary">
-                                                    <i class="fa fa-phone"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <span>Phone</span>
-                                                    <a href="#">{{ $get_caregiver_detail->phone ?? 'Not Found' }}</a>
-                                                </div>
-                                            </div>
-                                            <div class="media ml-3">
-                                                <div class="media-icon bg-gray-100 text-success">
-                                                    <i class="fa fa-envelope"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <span>Email</span>
-                                                    <a href="#">{{ $get_caregiver_detail->email ?? 'Not Found' }}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mg-b-20 tab-pane fade" id="authorized_officers">
-                                    <div class="card-body">
-                                        <div class="table-responsive mb-0">
-                                            <table
-                                                class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped ">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Phone</th>
-                                                        <th>Role</th>
-                                                        <th>Status</th>
-                                                        <th>Created At</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($get_caregiver_detail->authOfficer as $key => $officer)
-                                                        <tr>
-                                                            <td>
-                                                                <div class="project-contain">
-                                                                    <h6 class="mb-1 tx-13">{{$key + 1}}</h6>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="project-contain">
-                                                                    <h6 class="mb-1 tx-13">{{$officer->name}}</h6>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                {{$officer->email}}
-                                                            </td>
-                                                            <td>{{$officer->phone}}</td>
-                                                            <td>{{$officer->role}}</td>
-                                                            <td>
-                                                                @if ($officer->status == 1)
-                                                                    <span class="badge bg-success-gradient text-white">Active</span>                                                                    
-                                                                @else
-                                                                    <span class="badge bg-danger-gradient text-white">Inactive</span> 
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                {{\Carbon\Carbon::parse($officer->created_at)->format('M d Y')}}
-                                                            </td>
-                                                            <td>
-                                                                @if ($officer->status == 1)
-                                                                    <button class="btn btn-primary btn-sm">Make Active</button> 
-                                                                @else
-                                                                    <button class="btn btn-primary btn-sm">Make Deactive</button>
-                                                                @endif
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div> --}}
                                 <div class="card mg-b-20 tab-pane fade" id="caregiver_chats">
                                     <div class="card-body">
                                         <div class="table-responsive mb-0">
@@ -510,10 +439,192 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card mg-b-20 tab-pane fade" id="bank_account">
+                                    <div class="card-body h-100">
+                                        <div class="bank-header">
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <div class="mg-b-10">
+                                                    <label class="main-content-label tx-13 mg-b-10">Bank Name</label>
+                                                    <p>MUFG Americas Holdings Corporation</p>
+                                                </div>
+                                                <div class="mg-b-10">
+                                                    <a href="javascript:void(0);"
+                                                        class="btn btn-danger task-box danger  mb-0">Delete Bank</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex flex-rowflex-wrap">
+                                                <div class="mg-b-10">
+                                                    <label class="main-content-label tx-13 mg-b-10">Routing Number</label>
+                                                    <p>123456789</p>
+                                                </div>
+                                                <div class="ml-5 mg-b-10">
+                                                    <label class="main-content-label tx-13 mg-b-10">Account Number</label>
+                                                    <p>XXXXXXXXXX6789</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bank-transaction-filter">
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <div class="my-earnings">
+                                                    <label for="">Total Earnings</label>
+                                                    <h4>$ 20000</h4>
+                                                </div>
+                                                <div class="filter">
+                                                    <select name="filter-month" id="filterByMonth" class="form-control">
+                                                        <option value="" selected disabled>- Filter -</option>
+                                                        <option value="january">January</option>
+                                                        <option value="february">February</option>
+                                                        <option value="march">March</option>
+                                                        <option value="april">April</option>
+                                                        <option value="may">May</option>
+                                                        <option value="june">June</option>
+                                                        <option value="july">July</option>
+                                                        <option value="august">August</option>
+                                                        <option value="september">September</option>
+                                                        <option value="october">October</option>
+                                                        <option value="november">November</option>
+                                                        <option value="december">December</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-transactions">
+                                            <h6 class="mb-10">Transaction History</h6>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 4000</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 100</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 6300</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 300</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 2000</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 400</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bank-transactions mg-b-10">
+                                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                                    <div class="recieved-from">
+                                                        <label for="">Recieved From</label>
+                                                        <h6>DK Industries</h6>
+                                                        <label for="">2 hours ago</label>
+                                                    </div>
+                                                    <div class="amount-recieved">
+                                                        <h5>$ 3000</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                                 <div class="card mg-b-20 tab-pane fade" id="feedback">
                                     <div class="card-body h-100">
-                                        <label class="main-content-label tx-13 mg-b-20">Send eedback</label>
-                                        <form action="{{route('admin.caregiver.profile.activation')}}" method="POST">
+                                        <label class="main-content-label tx-13 mg-b-20">Issue/Ticket</label>
+                                        <div class="table-responsive mb-0">
+                                            <table  class="table table-hover table-bordered mb-3 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Ticket</th>
+                                                        <th>Status</th>
+                                                        <th>Created On</th>
+                                                        <th>Updated On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Business Information</td>
+                                                        <td>
+                                                            <span class="badge bg-warning-gradient text-dark">Pending</span>
+                                                        </td>
+                                                        <td>3 Jun 2023</td>
+                                                        <td>-</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-success">Mark As Resolved</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Certificate Not Uploaded</td>
+                                                        <td>
+                                                            <span class="badge bg-success-gradient text-white">Resolved</span>
+                                                        </td>
+                                                        <td>12 Jun 2023</td>
+                                                        <td>15 Jun 2023</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-primary">Close Ticket</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <label class="main-content-label tx-13 mg-b-20">Send Feedback</label>
+                                        <form action="#" method="POST">
                                             @csrf
                                             <div class="form-group">
                                                 <select name="feedback_reason" class="form-control" id="feedback_reason">
@@ -526,7 +637,11 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="feedback_text" class="form-control" id="feedback_text" cols="30" rows="4" placeholder="Please enter feedback here..."></textarea>
+                                                <textarea name="feedback_text" class="form-control" id="feedback_text" cols="30" rows="4"
+                                                    placeholder="Please enter feedback here..."></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary">Submit</button>
                                             </div>
                                         </form>
                                     </div>

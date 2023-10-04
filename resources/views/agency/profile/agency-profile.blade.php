@@ -59,49 +59,7 @@
             width: 65px;
         }
 
-        .bank-header {
-            background: #dedcfb;
-            border-radius: 5px;
-            padding: 20px 20px;
-        }
-
-        .bank-transaction-filter {
-            background: #0e7bc5;
-            border-radius: 5px;
-            padding: 10px 20px;
-            color: white;
-            margin-top: 10px;
-
-        }
-
-        .bank-transactions {
-            background-color: #fbfbfb;
-            padding: 5px 25px;
-            border-radius: 5px;
-            border: 1px solid #e1e6f1;
-        }
-
-        .bank-transactions .recieved-from label {
-            margin-bottom: 2px;
-            font-size: 13px;
-            color: #9c9a9a;
-        }
-
-        .bank-transactions .recieved-from h6 {
-            margin-bottom: 2px;
-        }
-
-        .all-transactions {
-            margin-top: 20px;
-            height: 400px;
-            overflow-y: scroll;
-            scroll-behavior: smooth;
-            padding: 10px;
-        }
-
-        .amount-recieved h5 {
-            color: rgb(1, 68, 1);
-        }
+        
     </style>
 @endsection
 @section('content')
@@ -190,8 +148,8 @@
                     <a class="nav-link" data-toggle="tab" href="#authorized_officers">Officers</a>
                     <a class="nav-link" data-toggle="tab" href="#agency_chats">Chats</a>
                     <a class="nav-link" data-toggle="tab" href="#feedback">Issue/ Feedback</a>
-                    <a class="nav-link" data-toggle="tab" href="#bank_account">Bank</a>
-                    <a class="nav-link" data-toggle="tab" href="#account_settings">Setting</a>
+                    
+                    <a class="nav-link" data-toggle="tab" href="#account_settings">Settings</a>
                 </nav>
 
                 <!-- main-profile-body -->
@@ -552,32 +510,6 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="feedback">
                                     <div class="card-body h-100">
-                                        {{-- <div class="issue-div">
-                                            <label class="main-content-label tx-13 mg-b-20">Issue</label>
-                                            <div class="task-stat pb-0 mg-b-20">
-                                                <div class="tasks d-flex justify-content-between align-items-center mb-0">
-                                                    <div class="h6 fs-15 mb-0">
-                                                        <i class="far fa-dot-circle text-primary me-2"></i>
-                                                        Business Information
-                                                    </div>
-                                                    <span class="float-end ms-auto text-success">Resolved</span>
-                                                </div> 
-                                                <div class="tasks d-flex justify-content-between align-items-center mb-0">
-                                                    <div class="h6 fs-15 mb-0">
-                                                        <i class="far fa-dot-circle text-primary me-2"></i>
-                                                        Basic Information
-                                                    </div>
-                                                    <span class="float-end ms-auto text-danger">Pending</span>
-                                                </div> 
-                                                <div class="tasks d-flex justify-content-between align-items-center mb-0">
-                                                    <div class="h6 fs-15 mb-0">
-                                                        <i class="far fa-dot-circle text-primary me-2"></i>
-                                                        Document Expired
-                                                    </div>
-                                                    <span class="float-end ms-auto text-danger">Pending</span>
-                                                </div> 
-                                            </div>
-                                        </div> --}}
                                         <label class="main-content-label tx-13 mg-b-20">Issue/Ticket</label>
                                         <div class="table-responsive mb-0">
                                             <table  class="table table-hover table-bordered mb-3 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped">
@@ -641,146 +573,6 @@
                                                 <button class="btn btn-primary">Submit</button>
                                             </div>
                                         </form>
-                                    </div>
-                                </div>
-                                <div class="card mg-b-20 tab-pane fade" id="bank_account">
-                                    <div class="card-body h-100">
-                                        <div class="bank-header">
-                                            <div class="d-flex flex-row justify-content-between">
-                                                <div class="mg-b-10">
-                                                    <label class="main-content-label tx-13 mg-b-10">Bank Name</label>
-                                                    <p>MUFG Americas Holdings Corporation</p>
-                                                </div>
-                                                <div class="mg-b-10">
-                                                    <a href="javascript:void(0);"
-                                                        class="btn btn-danger task-box danger  mb-0">Delete Bank</a>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex flex-rowflex-wrap">
-                                                <div class="mg-b-10">
-                                                    <label class="main-content-label tx-13 mg-b-10">Routing Number</label>
-                                                    <p>123456789</p>
-                                                </div>
-                                                <div class="ml-5 mg-b-10">
-                                                    <label class="main-content-label tx-13 mg-b-10">Account Number</label>
-                                                    <p>XXXXXXXXXX6789</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="bank-transaction-filter">
-                                            <div class="d-flex flex-row justify-content-between align-items-center">
-                                                <div class="my-earnings">
-                                                    <label for="">Total Earnings</label>
-                                                    <h4>$ 20000</h4>
-                                                </div>
-                                                <div class="filter">
-                                                    <select name="filter-month" id="filterByMonth" class="form-control">
-                                                        <option value="" selected disabled>- Filter -</option>
-                                                        <option value="january">January</option>
-                                                        <option value="february">February</option>
-                                                        <option value="march">March</option>
-                                                        <option value="april">April</option>
-                                                        <option value="may">May</option>
-                                                        <option value="june">June</option>
-                                                        <option value="july">July</option>
-                                                        <option value="august">August</option>
-                                                        <option value="september">September</option>
-                                                        <option value="october">October</option>
-                                                        <option value="november">November</option>
-                                                        <option value="december">December</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="all-transactions">
-                                            <h6 class="mb-10">Transaction History</h6>
-                                            <div class="bank-transactions mg-b-10">
-                                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                                    <div class="recieved-from">
-                                                        <label for="">Recieved From</label>
-                                                        <h6>DK Industries</h6>
-                                                        <label for="">2 hours ago</label>
-                                                    </div>
-                                                    <div class="amount-recieved">
-                                                        <h5>$ 4000</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bank-transactions mg-b-10">
-                                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                                    <div class="recieved-from">
-                                                        <label for="">Recieved From</label>
-                                                        <h6>DK Industries</h6>
-                                                        <label for="">2 hours ago</label>
-                                                    </div>
-                                                    <div class="amount-recieved">
-                                                        <h5>$ 100</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bank-transactions mg-b-10">
-                                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                                    <div class="recieved-from">
-                                                        <label for="">Recieved From</label>
-                                                        <h6>DK Industries</h6>
-                                                        <label for="">2 hours ago</label>
-                                                    </div>
-                                                    <div class="amount-recieved">
-                                                        <h5>$ 6300</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bank-transactions mg-b-10">
-                                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                                    <div class="recieved-from">
-                                                        <label for="">Recieved From</label>
-                                                        <h6>DK Industries</h6>
-                                                        <label for="">2 hours ago</label>
-                                                    </div>
-                                                    <div class="amount-recieved">
-                                                        <h5>$ 300</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bank-transactions mg-b-10">
-                                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                                    <div class="recieved-from">
-                                                        <label for="">Recieved From</label>
-                                                        <h6>DK Industries</h6>
-                                                        <label for="">2 hours ago</label>
-                                                    </div>
-                                                    <div class="amount-recieved">
-                                                        <h5>$ 2000</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bank-transactions mg-b-10">
-                                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                                    <div class="recieved-from">
-                                                        <label for="">Recieved From</label>
-                                                        <h6>DK Industries</h6>
-                                                        <label for="">2 hours ago</label>
-                                                    </div>
-                                                    <div class="amount-recieved">
-                                                        <h5>$ 400</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="bank-transactions mg-b-10">
-                                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                                    <div class="recieved-from">
-                                                        <label for="">Recieved From</label>
-                                                        <h6>DK Industries</h6>
-                                                        <label for="">2 hours ago</label>
-                                                    </div>
-                                                    <div class="amount-recieved">
-                                                        <h5>$ 3000</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade" id="account_settings">

@@ -6,249 +6,294 @@
             border-bottom: 1px solid #ffffff;
         }
 
-        #ChatBody .content-inner{
-            height:400px;
+        #ChatBody .content-inner {
+            height: 400px;
             overflow-y: auto;
             scroll-behavior: smooth;
         }
-    h2 {
-        margin: 5%;
-        text-align: center;
-        font-size: 4rem;
-        font-weight: 100;
-    }
-    h1 {
-        margin: 4%;
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 10;
-        top: 0;
-    }
-    .timeline {
-        display: flex;
-        flex-direction: column;
-        margin: 20px auto;
-        position: relative;
-    }
-    .timeline__event {
-        margin-bottom: 20px;
-        position: relative;
-        display: flex;
-        margin: 20px 0;
-        border-radius: 6px;
-        align-self: center;
-        width: 50vw;
-    }
-    .timeline__event:nth-child(2n + 1) {
-        flex-direction: row-reverse;
-    }
-    .timeline__event:nth-child(2n + 1) .timeline__event__date {
-        border-radius: 0 6px 6px 0;
-    }
-    .timeline__event:nth-child(2n + 1) .timeline__event__content {
-        border-radius: 6px 0 0 6px;
-    }
-    .timeline__event:nth-child(2n + 1) .timeline__event__icon:before {
-        content: "";
-        width: 2px;
-        height: 100%;
-        background: #f6a4ec;
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        right: auto;
-        z-index: -1;
-        transform: translateX(-50%);
-        animation: fillTop 0.8s forwards 4s ease-in-out;
-    }
-    .timeline__event:nth-child(2n + 1) .timeline__event__icon:after {
-        content: "";
-        width: 100%;
-        height: 2px;
-        background: #f6a4ec;
-        position: absolute;
-        right: 0;
-        z-index: -1;
-        top: 50%;
-        left: auto;
-        transform: translateY(-50%);
-        animation: fillLeft 0.8s forwards 4s ease-in-out;
-    }
-    .timeline__event__title {
-        font-size: 1.2rem;
-        line-height: 1.4;
-        text-transform: uppercase;
-        font-weight: 600;
-        color: #9251ac;
-        letter-spacing: 1.5px;
-    }
-    .timeline__event__content {
-        padding: 10px 25px;
-        box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
-        background: #fff;
-        width: calc(40vw - 84px);
-        border-radius: 0 6px 6px 0;
-    }
-    .timeline__event__date {
-        /* color: #f6a4ec; */
-        color:#514f4f;
-        /* font-size: 1.5rem; */
-        font-weight: 600;
-        /* background: #9251ac; */
-        background: #f7f7f7;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        white-space: nowrap;
-        padding: 0 20px;
-        border-radius: 6px 0 0 6px;
-    }
-    .timeline__event__icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #9251ac;
-        padding: 20px;
-        align-self: center;
-        margin: 0 20px;
-        /* background: #f6a4ec; */
-        background: #e7f2fb;
-        border-radius: 100%;
-        width: 40px;
-        box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
-        padding: 30px;
-        height: 40px;
-        position: relative;
-    }
-    .timeline__event__icon i {
-        font-size: 32px;
-    }
-    .timeline__event__icon:before {
-        content: "";
-        width: 2px;
-        height: 100%;
-        /* background: #f6a4ec; */
-        background: #87bbfe;
-        position: absolute;
-        top: 0%;
-        z-index: -1;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: fillTop 0.8s forwards 4s ease-in-out;
-    }
-    .timeline__event__icon:after {
-        content: "";
-        width: 100%;
-        height: 2px;
-        /* background: #f6a4ec; */
-        background: #87bbfe;
-        position: absolute;
-        left: 0%;
-        z-index: -1;
-        top: 50%;
-        transform: translateY(-50%);
-        animation: fillLeftOdd 0.8s forwards 4s ease-in-out;
-    }
-    .timeline__event__description {
-        flex-basis: 100%;
-    }
 
-    .timeline__event__description p{
-        margin-bottom:0px;
-    }
-    .timeline__event--type2:after {
-        background: #adb0eb;
-    }
-    .timeline__event--type2 .timeline__event__date {
-        color: #87bbfe;
-        background: #555ac0;
-    }
-    .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon:before, .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon:after {
-        background: #87bbfe;
-    }
-    .timeline__event--type2 .timeline__event__icon {
-        background: #87bbfe;
-        color: #555ac0;
-    }
-    .timeline__event--type2 .timeline__event__icon:before, .timeline__event--type2 .timeline__event__icon:after {
-        background: #87bbfe;
-    }
-    .timeline__event--type2 .timeline__event__title {
-        color: #555ac0;
-    }
-    .timeline__event--type3:after {
-        background: #24b47e;
-    }
-    .timeline__event--type3 .timeline__event__date {
-        color: #aff1b6;
-        background-color: #24b47e;
-    }
-    .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon:before, .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon:after {
-        background: #aff1b6;
-    }
-    .timeline__event--type3 .timeline__event__icon {
-        background: #aff1b6;
-        color: #24b47e;
-    }
-    .timeline__event--type3 .timeline__event__icon:before, .timeline__event--type3 .timeline__event__icon:after {
-        background: #aff1b6;
-    }
-    .timeline__event--type3 .timeline__event__title {
-        color: #24b47e;
-    }
-    .timeline__event:last-child .timeline__event__icon:before {
-        content: none;
-    }
-    @media (max-width: 786px) {
+        h2 {
+            margin: 5%;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 100;
+        }
+
+        h1 {
+            margin: 4%;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 10;
+            top: 0;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            margin: 20px auto;
+            position: relative;
+        }
+
         .timeline__event {
-            flex-direction: column;
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            margin: 20px 0;
+            border-radius: 6px;
             align-self: center;
+            width: 50vw;
         }
-        .timeline__event__content {
-            width: 100%;
-        }
-        .timeline__event__icon {
-            border-radius: 6px 6px 0 0;
-            width: 100%;
-            margin: 0;
-            box-shadow: none;
-        }
-        .timeline__event__icon:before, .timeline__event__icon:after {
-            display: none;
-        }
-        .timeline__event__date {
-            border-radius: 0;
-            padding: 20px;
-        }
-        .timeline__event:nth-child(2n + 1) {
-            flex-direction: column;
-            align-self: center;
-        }
-        .timeline__event:nth-child(2n + 1) .timeline__event__date {
-            border-radius: 0;
-            padding: 20px;
-        }
-        .timeline__event:nth-child(2n + 1) .timeline__event__icon {
-            border-radius: 6px 6px 0 0;
-            margin: 0;
-        }
-    }
-    @keyframes fillLeft {
-        100% {
-            right: 100%;
-        }
-    }
-    @keyframes fillTop {
-        100% {
-            top: 100%;
-        }
-    }
-    @keyframes fillLeftOdd {
-        100% {
-            left: 100%;
-        }
-    }
 
+        .timeline__event:nth-child(2n + 1) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__date {
+            border-radius: 0 6px 6px 0;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__content {
+            border-radius: 6px 0 0 6px;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__icon:before {
+            content: "";
+            width: 2px;
+            height: 100%;
+            background: #f6a4ec;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            right: auto;
+            z-index: -1;
+            transform: translateX(-50%);
+            animation: fillTop 0.8s forwards 4s ease-in-out;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__icon:after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            background: #f6a4ec;
+            position: absolute;
+            right: 0;
+            z-index: -1;
+            top: 50%;
+            left: auto;
+            transform: translateY(-50%);
+            animation: fillLeft 0.8s forwards 4s ease-in-out;
+        }
+
+        .timeline__event__title {
+            font-size: 1.2rem;
+            line-height: 1.4;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #9251ac;
+            letter-spacing: 1.5px;
+        }
+
+        .timeline__event__content {
+            padding: 10px 25px;
+            box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+            background: #fff;
+            width: calc(40vw - 84px);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .timeline__event__date {
+            /* color: #f6a4ec; */
+            color: #514f4f;
+            /* font-size: 1.5rem; */
+            font-weight: 600;
+            /* background: #9251ac; */
+            background: #f7f7f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            padding: 0 20px;
+            border-radius: 6px 0 0 6px;
+        }
+
+        .timeline__event__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9251ac;
+            padding: 20px;
+            align-self: center;
+            margin: 0 20px;
+            /* background: #f6a4ec; */
+            background: #e7f2fb;
+            border-radius: 100%;
+            width: 40px;
+            box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+            padding: 30px;
+            height: 40px;
+            position: relative;
+        }
+
+        .timeline__event__icon i {
+            font-size: 32px;
+        }
+
+        .timeline__event__icon:before {
+            content: "";
+            width: 2px;
+            height: 100%;
+            /* background: #f6a4ec; */
+            background: #87bbfe;
+            position: absolute;
+            top: 0%;
+            z-index: -1;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fillTop 0.8s forwards 4s ease-in-out;
+        }
+
+        .timeline__event__icon:after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            /* background: #f6a4ec; */
+            background: #87bbfe;
+            position: absolute;
+            left: 0%;
+            z-index: -1;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: fillLeftOdd 0.8s forwards 4s ease-in-out;
+        }
+
+        .timeline__event__description {
+            flex-basis: 100%;
+        }
+
+        .timeline__event__description p {
+            margin-bottom: 0px;
+        }
+
+        .timeline__event--type2:after {
+            background: #adb0eb;
+        }
+
+        .timeline__event--type2 .timeline__event__date {
+            color: #87bbfe;
+            background: #555ac0;
+        }
+
+        .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon:before,
+        .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon:after {
+            background: #87bbfe;
+        }
+
+        .timeline__event--type2 .timeline__event__icon {
+            background: #87bbfe;
+            color: #555ac0;
+        }
+
+        .timeline__event--type2 .timeline__event__icon:before,
+        .timeline__event--type2 .timeline__event__icon:after {
+            background: #87bbfe;
+        }
+
+        .timeline__event--type2 .timeline__event__title {
+            color: #555ac0;
+        }
+
+        .timeline__event--type3:after {
+            background: #24b47e;
+        }
+
+        .timeline__event--type3 .timeline__event__date {
+            color: #aff1b6;
+            background-color: #24b47e;
+        }
+
+        .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon:before,
+        .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon:after {
+            background: #aff1b6;
+        }
+
+        .timeline__event--type3 .timeline__event__icon {
+            background: #aff1b6;
+            color: #24b47e;
+        }
+
+        .timeline__event--type3 .timeline__event__icon:before,
+        .timeline__event--type3 .timeline__event__icon:after {
+            background: #aff1b6;
+        }
+
+        .timeline__event--type3 .timeline__event__title {
+            color: #24b47e;
+        }
+
+        .timeline__event:last-child .timeline__event__icon:before {
+            content: none;
+        }
+
+        @media (max-width: 786px) {
+            .timeline__event {
+                flex-direction: column;
+                align-self: center;
+            }
+
+            .timeline__event__content {
+                width: 100%;
+            }
+
+            .timeline__event__icon {
+                border-radius: 6px 6px 0 0;
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .timeline__event__icon:before,
+            .timeline__event__icon:after {
+                display: none;
+            }
+
+            .timeline__event__date {
+                border-radius: 0;
+                padding: 20px;
+            }
+
+            .timeline__event:nth-child(2n + 1) {
+                flex-direction: column;
+                align-self: center;
+            }
+
+            .timeline__event:nth-child(2n + 1) .timeline__event__date {
+                border-radius: 0;
+                padding: 20px;
+            }
+
+            .timeline__event:nth-child(2n + 1) .timeline__event__icon {
+                border-radius: 6px 6px 0 0;
+                margin: 0;
+            }
+        }
+
+        @keyframes fillLeft {
+            100% {
+                right: 100%;
+            }
+        }
+
+        @keyframes fillTop {
+            100% {
+                top: 100%;
+            }
+        }
+
+        @keyframes fillLeftOdd {
+            100% {
+                left: 100%;
+            }
+        }
     </style>
 @endsection
 @section('content')
@@ -260,10 +305,14 @@
                 <nav class="nav main-nav-line card">
                     <a class="nav-link show active" data-toggle="tab" href="#about_company">Job Details</a>
                     @if ($get_job_details->clientProfile != null)
-                        <a class="nav-link show" data-toggle="tab" href="#client_information">Client Information</a>
+                        <a class="nav-link show" data-toggle="tab" href="#client_information">Client Details</a>
                     @endif
                     <a class="nav-link show" data-toggle="tab" href="#chats">Chats</a>
+                    <a class="nav-link show" data-toggle="tab" href="#dispute">Dispute 
+                        <span class="badge bg-success rounded-pill text-white me-2">New</span>
+                    </a>
                     <a class="nav-link show" data-toggle="tab" href="#timeline">Timeline</a>
+                    <a class="nav-link show" data-toggle="tab" href="#other_details">Other Details</a>
                 </nav>
                 <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
@@ -279,16 +328,17 @@
                                             </div>
                                             <div class="d-flex flex-row justify-content-between">
                                                 <div class="job-created-at mr-5">
-                                                    <h6>Accepted By: </h6>
+                                                    <h6>Awarded To: </h6>
                                                     <div class="media">
                                                         <div class="media-user mr-2">
                                                             <div class="main-img-user avatar-sm">
-                                                                <img alt="agency owner image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                                <img alt="agency owner image" class="rounded-circle"
+                                                                    src="{{ asset('assets/img/faces/12.jpg') }}">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
                                                             <a
-                                                                href="{{ route('admin.get.agency.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}</a>
+                                                                href="{{ route('admin.get.caregiver.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -302,8 +352,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
-                                                            <a
-                                                                href="{{ route('admin.get.agency.profile', ['id' => encrypt($get_job_details->user_id)]) }}">{{ $get_job_details->agencyProfile->company_name }}</a>
+                                                            <a href="{{ route('admin.get.agency.profile', ['id' => encrypt($get_job_details->user_id)]) }}">{{ $get_job_details->agencyProfile->company_name }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -468,7 +517,8 @@
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade show" id="client_information">
                                     <div class="card-body">
-                                        <div class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
+                                        <div
+                                            class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
                                             <div class="media">
                                                 <div class="media-user mr-2">
                                                     <div class="main-img-user avatar-md">
@@ -558,7 +608,7 @@
                                     <div class="main-content-body main-content-body-chat">
                                         <div class="main-chat-header">
                                             <div class="main-img-user">
-                                                <img alt="" src="{{asset('assets/img/faces/9.jpg')}}">
+                                                <img alt="" src="{{ asset('assets/img/faces/9.jpg') }}">
                                             </div>
                                             <div class="main-chat-msg-name">
                                                 <h6>Reynante Labares</h6>
@@ -568,7 +618,8 @@
                                                 <a class="nav-link" href="#">
                                                     <i class="icon ion-md-more"></i>
                                                 </a>
-                                                <a class="nav-link" data-toggle="tooltip" href="#" title="Download Chat">
+                                                <a class="nav-link" data-toggle="tooltip" href="#"
+                                                    title="Download Chat">
                                                     <i class="icon ion-md-download"></i>
                                                 </a>
                                             </nav>
@@ -580,17 +631,19 @@
                                                 </label>
                                                 <div class="media flex-row-reverse">
                                                     <div class="main-img-user online">
-                                                        <img alt="" src="{{asset('assets/img/faces/9.jpg')}}">
+                                                        <img alt="" src="{{ asset('assets/img/faces/9.jpg') }}">
                                                     </div>
                                                     <div class="media-body">
                                                         <div class="main-msg-wrapper">
-                                                            Nulla consequat massa quis enim. Donec pede justo, fringilla vel...
+                                                            Nulla consequat massa quis enim. Donec pede justo, fringilla
+                                                            vel...
                                                         </div>
                                                         <div class="main-msg-wrapper">
                                                             rhoncus ut, imperdiet a, venenatis vitae, justo...
                                                         </div>
                                                         <div class="main-msg-wrapper pd-0">
-                                                            <img alt="" class="wd-100 ht-100" src="{{asset('assets/img/ecommerce/01.jpg')}}">
+                                                            <img alt="" class="wd-100 ht-100"
+                                                                src="{{ asset('assets/img/ecommerce/01.jpg') }}">
                                                         </div>
                                                         <div>
                                                             <span>9:48 am</span>
@@ -602,11 +655,12 @@
                                                 </div>
                                                 <div class="media">
                                                     <div class="main-img-user online">
-                                                        <img alt="" src="{{asset('assets/img/faces/6.jpg')}}">
+                                                        <img alt="" src="{{ asset('assets/img/faces/6.jpg') }}">
                                                     </div>
                                                     <div class="media-body">
                                                         <div class="main-msg-wrapper">
-                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                                                            commodo ligula eget dolor.
                                                         </div>
                                                         <div>
                                                             <span>9:32 am</span>
@@ -618,7 +672,7 @@
                                                 </div>
                                                 <div class="media flex-row-reverse">
                                                     <div class="main-img-user online">
-                                                        <img alt="" src="{{asset('assets/img/faces/9.jpg')}}">
+                                                        <img alt="" src="{{ asset('assets/img/faces/9.jpg') }}">
                                                     </div>
                                                     <div class="media-body">
                                                         <div class="main-msg-wrapper">
@@ -636,12 +690,35 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card mg-b-20 tab-pane fade show" id="dispute">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                            <div>
+                                                <label class="main-content-label tx-13 mg-b-10">Dispute Reason:</label>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                                </p>
+                                            </div>
+                                            <button class="btn btn-outline-success">Mark As Resolved</button>
+                                        </div>
+                                        <label class="main-content-label tx-13 mg-b-20">Proof:</label>
+                                        <div class="bd pd-20 clearfix" style="width: max-content;">
+                                            <img alt="dispute image" class="rounded" style="max-height:200px; max-width:200px;" src="{{asset('assets/img/photos/2.jpg')}}">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="card mg-b-20 tab-pane fade show" id="timeline">
                                     <div class="card-body">
-
+                                        <div class="text-center">
+                                            <h4>Job Awarded To :
+                                                <a
+                                                    href="{{ route('admin.get.caregiver.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}</a>
+                                            </h4>
+                                            <label class="text-muted">Complete Timeline After Accepting The Job</label>
+                                        </div>
                                         <div class="timeline">
 
-                                            @foreach ($test_array  as $key => $item)
+                                            @foreach ($test_array as $key => $item)
                                                 <div class="timeline__event  animated fadeInUp delay-3s">
                                                     <div class="timeline__event__icon ">
                                                         <!-- <i class="lni-sport"></i>-->
@@ -652,73 +729,122 @@
                                                     <div class="timeline__event__content ">
                                                         <div class="timeline__event__title">
                                                             <div class="main-img-user avatar-sm">
-                                                                <img alt="caregiver image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                                <img alt="caregiver image" class="rounded-circle"
+                                                                    src="{{ asset('assets/img/faces/12.jpg') }}">
                                                             </div>
                                                         </div>
                                                         <div class="timeline__event__description mt-2">
-                                                            <p>{{$item}}</p>
+                                                            <p>{{ $item }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             @endforeach
-                                           
-
-                                            {{-- <div class="timeline__event animated fadeInUp delay-2s timeline__event--type2">
-                                                <div class="timeline__event__icon">
-                                                    <!-- <i class="lni-sport"></i>-->
-                                                </div>
-                                                <div class="timeline__event__date">
-                                                    Sept 23, 2023 <br /> 06:54 PM
-                                                </div>
-                                                <div class="timeline__event__content">
-                                                    <div class="timeline__event__title">
-                                                        <div class="main-img-user avatar-sm">
-                                                            <img alt="caregive image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline__event__description mt-2">
-                                                        <p>Started Job</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="timeline__event animated fadeInUp delay-2s timeline__event--type3">
-                                                <div class="timeline__event__icon">
-                                                    <!-- <i class="lni-sport"></i>-->
-                                                </div>
-                                                <div class="timeline__event__date">
-                                                    Sept 23, 2023 <br /> 06:54 PM
-                                                </div>
-                                                <div class="timeline__event__content">
-                                                    <div class="timeline__event__title">
-                                                        <div class="main-img-user avatar-sm">
-                                                            <img alt="caregive image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline__event__description mt-2">
-                                                        <p>Started Job</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="timeline__event  animated fadeInUp delay-3s">
-                                                <div class="timeline__event__icon ">
-                                                    <!-- <i class="lni-sport"></i>-->
-                                                </div>
-                                                <div class="timeline__event__date">
-                                                    Sept 22, 2023 <br /> 05:54 PM
-                                                </div>
-                                                <div class="timeline__event__content ">
-                                                    <div class="timeline__event__title">
-                                                        <div class="main-img-user avatar-sm">
-                                                            <img alt="caregiver image" class="rounded-circle" src="{{ asset('assets/img/faces/12.jpg') }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline__event__description mt-2">
-                                                        <p>Completed Task 2: Meal Preparation and Dressing.</p>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mg-b-20 tab-pane fade show" id="other_details">
+                                    <div class="card-body">
+                                        <div class="mg-b-10">
+                                            <h6>Complete Job Activity</h6>
+                                        </div>
+                                        <div class="table-responsive mb-0">
+                                            <table
+                                                class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Activities</th>
+                                                        <th>Date - Time</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="project-contain">
+                                                                <h6 class="mb-1 tx-13">
+                                                                    Job Posted By : 
+                                                                    <a href="{{ route('admin.get.agency.profile', ['id' => encrypt($get_job_details->user_id)]) }}">
+                                                                        {{ $get_job_details->agencyProfile->company_name }}
+                                                                    </a>
+                                                                </h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($get_job_details->created_at)->format('M d, Y - h:i A') }}</td>
+                                                        <td>Open</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="project-contain">
+                                                                <h6 class="mb-1 tx-13">
+                                                                    Job Posted By : 
+                                                                    <a href="{{ route('admin.get.agency.profile', ['id' => encrypt($get_job_details->user_id)]) }}">
+                                                                        {{ $get_job_details->agencyProfile->company_name }}
+                                                                    </a>
+                                                                </h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($get_job_details->created_at)->format('M d, Y - h:i A') }}</td>
+                                                        <td>Bidding Started</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="project-contain">
+                                                                <h6 class="mb-1 tx-13">Bidding Stopped</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>15 March 2023 5:09 PM</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="project-contain">
+                                                                <h6 class="mb-1 tx-13">Total Caregivers Selected : 100</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>15 March 2023 5:10 PM</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="project-contain">
+                                                                <h6 class="mb-1 tx-13">Job Awarded To Jhon Wick</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>15 March 2023 5:10 PM</td>
+                                                        <td>Not Accepted</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="project-contain">
+                                                                <h6 class="mb-1 tx-13">Job Awarded To : 
+                                                                    <a href="#">Sita Letri</a></h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>15 March 2023 5:10 PM</td>
+                                                        <td>Not Accepted</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="project-contain">
+                                                                <h6 class="mb-1 tx-13">Job Awarded To : 
+                                                                    <a href="#">Dinesh Kartik</a></h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>15 March 2023 5:10 PM</td>
+                                                        <td>Not Accepted</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="project-contain">
+                                                                <h6 class="mb-1 tx-13">Job Awarded To : 
+                                                                    <a href="#">Bhanu Pratap</a></h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>15 March 2023 5:10 PM</td>
+                                                        <td>Accepted</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
