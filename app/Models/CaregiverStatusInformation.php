@@ -11,4 +11,12 @@ class CaregiverStatusInformation extends Model
 
     protected $table = 'caregiver_status_information';
     protected $guarded = [];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function caregiverProfile(){
+        return $this->belongsTo(CaregiverProfileRegistration::class, 'user_id', 'user_id');
+    }
 }

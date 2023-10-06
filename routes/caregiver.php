@@ -20,7 +20,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('list', [CaregiverListController::class, 'getCaregiverList'])->name('admin.get.caregiver.list');
     Route::group(['prefix' => 'profile'], function(){
-        Route::get('{id}', [CaregiverProfileController::class, 'getCaregiverProfile'])->name('admin.get.caregiver.profile');
+        Route::get('get/{id}', [CaregiverProfileController::class, 'getCaregiverProfile'])->name('admin.get.caregiver.profile');
         Route::post('activation', [CaregiverProfileController::class, 'caregiverProfileActivation'])->name('admin.caregiver.profile.activation');
+        Route::get('pending', [CaregiverProfileController::class, 'pendingProfile'])->name('admin.get.caregiver.pending.profile');
     });
 });

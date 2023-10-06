@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
     Route::group(['prefix' => 'profile'], function(){
-        Route::get('{id}', [AgencyProfileController::class, 'getAgencyProfile'])->name('admin.get.agency.profile');
+        Route::get('get/{id}', [AgencyProfileController::class, 'getAgencyProfile'])->name('admin.get.agency.profile');
         Route::post('activation', [AgencyProfileController::class, 'agencyProfileActivation'])->name('admin.agency.profile.activation');
     });
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Caregiver;
 
 use App\Http\Controllers\Controller;
+use App\Models\CaregiverStatusInformation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,16 @@ class CaregiverProfileController extends Controller
             return view('caregiver.profile.caregiver-profile')->with(['get_caregiver_detail' => $get_caregiver_detail, 'total_percentage' => $total_percentage]);
         }catch(\Exception $e){
             echo 'Oops! Something Went Wrong.'. $e;
+        }
+    }
+
+    public function pendingProfile(){
+        try{
+            $get_all_pending_profile = CaregiverStatusInformation::with('user', 'caregiverProfile')->where('is_profile_approved', 0)->get();
+
+            return view('caregiver.profile.pending-caregiver')->with(['get_all_pending_profile' => $get_all_pending_profile]);
+        }catch(\Exception $e){
+            echo 'Oops! Something Went Wrong.';
         }
     }
 }
