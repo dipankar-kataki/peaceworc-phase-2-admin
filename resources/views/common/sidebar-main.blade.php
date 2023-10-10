@@ -1,16 +1,16 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="main-sidebar app-sidebar sidebar-scroll">
     <div class="main-sidebar-header">
-        <a class="desktop-logo logo-light active" href="/" class="text-center mx-auto">
+        <a class="desktop-logo logo-light active" href="{{route('admin.get.dashboard')}}" class="text-center mx-auto">
             <img src="{{asset('assets/img/brand/peaceworc-logo-main.png')}}" class="main-logo">
         </a>
-        <a class="desktop-logo icon-logo active"href="/">
+        <a class="desktop-logo icon-logo active"href="{{route('admin.get.dashboard')}}">
             <img src="{{asset('assets/img/brand/peaceworc-favicon.png')}}" class="logo-icon">
         </a>
-        <a class="desktop-logo logo-dark active" href="/">
+        <a class="desktop-logo logo-dark active" href="{{route('admin.get.dashboard')}}">
             <img src="{{asset('assets/img/brand/peaceworc-logo-main.png')}}" class="main-logo dark-theme" alt="logo">
         </a>
-        <a class="logo-icon mobile-logo icon-dark active" href="/">
+        <a class="logo-icon mobile-logo icon-dark active" href="{{route('admin.get.dashboard')}}">
             <img src="{{asset('assets/img/brand/peaceworc-favicon.png')}}" class="logo-icon dark-theme" alt="logo">
         </a>
     </div><!-- /logo -->

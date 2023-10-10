@@ -19,10 +19,8 @@
                             </li>
 
                             <li>
-                                <a href="{{route('admin.get.caregiver.pending.profile')}}">
-                                    <strong>Pending</strong>
-                                    <span>56</span>
-                                </a>
+                                <strong>Pending</strong>
+                                <span>56</span>
                             </li>
                         </ul>
                     </div>
