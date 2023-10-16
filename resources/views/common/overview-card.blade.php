@@ -1,7 +1,7 @@
 <div class="row row-sm">
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
         <div class="card overflow-hidden project-card">
-            <div class="card-body">
+            <div class="card-body card-animation">
                 <div class="d-flex">
                     <div class="my-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="user" class="mr-4 ht-60 wd-60 my-auto primary">
@@ -11,7 +11,10 @@
                         </svg>
                     </div>
                     <div class="project-content">
-                        <h6>Caregivers</h6>
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <h6>Caregivers</h6>
+                            <dotlottie-player src="https://lottie.host/8895c1dc-f917-44ed-b160-7f7cf6580eb7/uAkEpxyloL.json" background="transparent" speed="1" style="width: 38px; height: 38px;" loop autoplay></dotlottie-player>
+                        </div>
                         <ul>
                             <li>
                                 <strong>Approved</strong>
