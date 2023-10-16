@@ -1,7 +1,7 @@
 <div class="row row-sm">
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
         <div class="card overflow-hidden project-card">
-            <div class="card-body card-animation">
+            <div class="card-body">
                 <div class="d-flex">
                     <div class="my-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="user" class="mr-4 ht-60 wd-60 my-auto primary">
@@ -22,7 +22,10 @@
                             </li>
 
                             <li>
-                                <strong>Pending</strong>
+                                <strong>Pending 
+                                    <a href="#" style="font-weight: 700; margin-left:30px;">view Details 
+                                    </a>
+                                </strong>
                                 <span>56</span>
                             </li>
                         </ul>
