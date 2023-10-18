@@ -23,7 +23,7 @@
 
                             <li>
                                 <strong>Pending 
-                                    <a href="#" style="font-weight: 700; margin-left:30px;">view Details 
+                                    <a href="{{route('admin.get.caregiver.pending.profile')}}" style="font-weight: 700; margin-left:30px;">view Details 
                                     </a>
                                 </strong>
                                 <span>56</span>

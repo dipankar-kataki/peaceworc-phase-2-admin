@@ -44,9 +44,10 @@ class CaregiverProfileController extends Controller
 
     public function pendingProfile(){
         try{
-            $get_all_pending_profile = CaregiverStatusInformation::with('user', 'caregiverProfile')->where('is_profile_approved', 0)->get();
+            $get_pending_documents_verification = CaregiverStatusInformation::with('user', 'caregiverProfile')->where('is_verification_complete', 0)->get();
+            $get_pending_profile_approval = CaregiverStatusInformation::with('user', 'caregiverProfile')->where('is_profile_approved', 0)->get();
 
-            return view('caregiver.profile.pending-caregiver')->with(['get_all_pending_profile' => $get_all_pending_profile]);
+            return view('caregiver.profile.pending-caregiver')->with(['get_pending_profile_approval' => $get_pending_profile_approval, 'get_pending_documents_verification' => $get_pending_documents_verification]);
         }catch(\Exception $e){
             echo 'Oops! Something Went Wrong.';
         }
