@@ -45,7 +45,7 @@ class CaregiverProfileController extends Controller
     public function pendingProfile(){
         try{
             $get_pending_documents_verification = CaregiverStatusInformation::with('user', 'caregiverProfile')->where('is_verification_complete', 0)->get();
-            $get_pending_profile_approval = CaregiverStatusInformation::with('user', 'caregiverProfile')->where('is_profile_approved', 0)->get();
+            $get_pending_profile_approval = CaregiverStatusInformation::with('user', 'caregiverProfile')->where('is_verification_complete', 1)->where('is_profile_approved', 0)->get();
 
             return view('caregiver.profile.pending-caregiver')->with(['get_pending_profile_approval' => $get_pending_profile_approval, 'get_pending_documents_verification' => $get_pending_documents_verification]);
         }catch(\Exception $e){

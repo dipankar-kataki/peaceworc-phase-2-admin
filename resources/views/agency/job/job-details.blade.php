@@ -312,7 +312,6 @@
                         <span class="badge bg-success rounded-pill text-white me-2">New</span>
                     </a>
                     <a class="nav-link show" data-toggle="tab" href="#timeline">Timeline</a>
-                    <a class="nav-link show" data-toggle="tab" href="#other_details">Other Details</a>
                 </nav>
                 <!-- main-profile-body -->
                 <div class="main-profile-body p-0">
@@ -702,9 +701,23 @@
                                             <button class="btn btn-outline-success">Mark As Resolved</button>
                                         </div>
                                         <label class="main-content-label tx-13 mg-b-20">Proof:</label>
-                                        <div class="bd pd-20 clearfix" style="width: max-content;">
-                                            <img alt="dispute image" class="rounded" style="max-height:200px; max-width:200px;" src="{{asset('assets/img/photos/2.jpg')}}">
+                                        <div class="bd pd-10 clearfix mb-4" style="width: max-content;">
+                                            <a class="demo" href="{{asset('assets/img/photos/2.jpg')}}" data-lightbox="dispute image">
+                                                <img alt="dispute image" class="rounded" style="max-height:250px; max-width:250px;" src="{{asset('assets/img/photos/2.jpg')}}">
+                                            </a>
                                         </div>
+
+                                        
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="main-content-label tx-13 mg-b-20">Feedback</label>
+                                                <textarea class="form-control" name="disputeFeedback" rows="4" placeholder="Please enter feedback here..."></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+                                            
                                     </div>
                                 </div>
                                 <div class="card mg-b-20 tab-pane fade show" id="timeline">
@@ -714,40 +727,9 @@
                                                 <a
                                                     href="{{ route('admin.get.caregiver.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}</a>
                                             </h4>
-                                            <label class="text-muted">Complete Timeline After Accepting The Job</label>
+                                            <label class="text-muted">Complete Job Timeline</label>
                                         </div>
-                                        <div class="timeline">
-
-                                            @foreach ($test_array as $key => $item)
-                                                <div class="timeline__event  animated fadeInUp delay-3s">
-                                                    <div class="timeline__event__icon ">
-                                                        <!-- <i class="lni-sport"></i>-->
-                                                    </div>
-                                                    <div class="timeline__event__date">
-                                                        Sept 22, 2023 <br /> 05:54 PM
-                                                    </div>
-                                                    <div class="timeline__event__content ">
-                                                        <div class="timeline__event__title">
-                                                            <div class="main-img-user avatar-sm">
-                                                                <img alt="caregiver image" class="rounded-circle"
-                                                                    src="{{ asset('assets/img/faces/12.jpg') }}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="timeline__event__description mt-2">
-                                                            <p>{{ $item }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mg-b-20 tab-pane fade show" id="other_details">
-                                    <div class="card-body">
-                                        <div class="mg-b-10">
-                                            <h6>Complete Job Activity</h6>
-                                        </div>
-                                        <div class="table-responsive mb-0">
+                                        <div class="table-responsive mb-0 mt-4">
                                             <table
                                                 class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped ">
                                                 <thead>
