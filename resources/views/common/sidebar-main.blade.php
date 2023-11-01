@@ -84,6 +84,7 @@
                     <li><a class="slide-item" href="{{route('admin.get.become.agency.page')}}">Manage Become Agency</a></li>
                     <li><a class="slide-item" href="{{route('admin.get.manage.app.link.page')}}">Manage App Links</a></li>
                     <li><a class="slide-item" href="{{route('admin.terms.and.conditions')}}">Terms And Conditions</a></li>
+                    <li><a class="slide-item" href="{{route('admin.arbitration.agreement')}}">Arbitration Agreement</a></li>
                 </ul>
             </li>
 

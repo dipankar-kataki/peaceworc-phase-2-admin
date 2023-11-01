@@ -86,6 +86,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'docs'], function(){
         Route::get('terms-and-conditions', [WebDocsController::class,'termsAndConditions'])->name('admin.terms.and.conditions');
+        Route::get('arbitration-agreement', [WebDocsController::class,'arbitrationAgreement'])->name('admin.arbitration.agreement');
     });
 
 

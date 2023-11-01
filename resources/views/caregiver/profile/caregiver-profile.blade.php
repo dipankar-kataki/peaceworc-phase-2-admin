@@ -384,7 +384,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mg-b-20 tab-pane fade show active" id="documents">
+                                <div class="card mg-b-20 tab-pane fade" id="documents">
                                     <div class="card-body">
                                         <div class="d-flex flex-row justify-content-between align-items-center mg-b-20 strike-table-label-header">
                                             <label class="main-content-label tx-13 ">
@@ -730,17 +730,9 @@
                                         <div class="d-flex flex-row justify-content-center align-items-center rewards-bg flex-wrap">
                                             <img src="{{ asset('assets/img/photos/rewards-bg.jpg') }}" alt="rewards-bg">
                                             <h4>
-                                                Total Rewards Earned: 600
+                                                Total Rewards Earned: 15K
                                                 <span class="fa fa-star" style="color:#F4CE14;"></span>
                                             </h4>
-                                        </div>
-                                        <div class="rewards-note">
-                                            <p>
-                                                <span class="fa fa-info-circle"></span>
-                                                “Increase your chances of securing jobs by earning rewards through successful
-                                                caregiving – the more rewards you earn, the greater your advantage in
-                                                winning bids!”
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
