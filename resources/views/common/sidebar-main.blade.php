@@ -106,6 +106,7 @@
                 </a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{route('admin.get.caregiver.list')}}">List</a></li>
+                    <li><a class="slide-item" href="{{route('admin.get.caregiver.pending.profile')}}">Pending Profiles</a></li>
                 </ul>
             </li>
             <li class="slide">
