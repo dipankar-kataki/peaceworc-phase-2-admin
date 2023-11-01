@@ -4,6 +4,7 @@
     <style>
         .terms-and-conditions-header {
             border-bottom: 1px dashed #bbb9b9;
+            margin-top:20px;
         }
         .terms-points{
             padding-left:15px;
@@ -18,7 +19,7 @@
     <div class="row row-sm">
         <div class="col-lg-12 col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body container">
                     <div class="text-center terms-and-conditions-header">
                         <h4>Terms And Conditions</h4>
                     </div>

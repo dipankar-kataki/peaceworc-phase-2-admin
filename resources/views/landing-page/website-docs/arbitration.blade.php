@@ -4,6 +4,7 @@
     <style>
         .arbitration-header {
             border-bottom: 1px dashed #bbb9b9;
+            margin-top:20px;
         }
 
         .arbitration-points {
@@ -20,7 +21,7 @@
     <div class="row row-sm">
         <div class="col-lg-12 col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body container">
                     <div class="text-center arbitration-header">
                         <h4>Arbitration Agreement</h4>
                     </div>

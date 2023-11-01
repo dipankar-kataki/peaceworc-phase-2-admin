@@ -14,4 +14,8 @@ class WebDocsController extends Controller
     public function arbitrationAgreement(Request $request){
         return view('landing-page.website-docs.arbitration');
     }
+
+    public function refundPolicy(Request $request){
+        return view('landing-page.website-docs.refund-policy');
+    }
 }
