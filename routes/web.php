@@ -10,6 +10,7 @@ use App\Http\Controllers\LandingPage\Banner\ManageBannerController;
 use App\Http\Controllers\LandingPage\Caregiver\BecomeCaregiverController;
 use App\Http\Controllers\LandingPage\Layout\ManageLayoutController;
 use App\Http\Controllers\LandingPage\Service\ManageServiceController;
+use App\Http\Controllers\LandingPage\WebsiteDocuments\WebDocsController;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Logout\LogoutController;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +82,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'account'], function(){
         Route::get('manage', [AddAccountUserController::class, 'addAccountUserPage'])->name('admin.get.add.account.user.page');
+    });
+
+    Route::group(['prefix' => 'docs'], function(){
+        Route::get('terms-and-conditions', [WebDocsController::class,'termsAndConditions'])->name('admin.terms.and.conditions');
     });
 
 
