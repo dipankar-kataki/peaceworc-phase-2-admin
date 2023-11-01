@@ -415,6 +415,15 @@
                                                         <td>Jan 3, 2028</td>
                                                         <td> <button class="btn btn-sm btn-danger">Mark Invalid</button> </td>
                                                     </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Tuberculosis</td>
+                                                        <td> Jan 20, 2025 </td>
+                                                        <td><span class="badge bg-success rounded-pill text-white me-2">Valid</span></td>
+                                                        <td><button class="btn btn-sm btn-primary">View Doc</button></td>
+                                                        <td>Jan 3, 2028</td>
+                                                        <td> <button class="btn btn-sm btn-danger">Mark Invalid</button> </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
