@@ -16,24 +16,30 @@
                     <div class="project-content">
                         <div class="d-flex flex-row justify-content-between align-items-center">
                             <h6>Caregivers</h6>
-                            <dotlottie-player
-                                src="https://lottie.host/8895c1dc-f917-44ed-b160-7f7cf6580eb7/uAkEpxyloL.json"
-                                background="transparent" speed="1.5" style="width: 40px; height: 40px;" loop
-                                autoplay></dotlottie-player>
+                            @if ($total_pending_caregivers > 0)
+                                <dotlottie-player
+                                    src="https://lottie.host/8895c1dc-f917-44ed-b160-7f7cf6580eb7/uAkEpxyloL.json"
+                                    background="transparent" speed="1.5" style="width: 40px; height: 40px;" loop
+                                    autoplay>
+                                </dotlottie-player>
+                            @endif
+                            
                         </div>
                         <ul>
                             <li>
                                 <strong>Approved</strong>
-                                <span>5</span>
+                                <span>{{$total_approved_caregivers}}</span>
                             </li>
 
                             <li>
                                 <strong>Pending
-                                    <a href="{{ route('admin.get.caregiver.pending.profile') }}"
-                                        style="font-weight: 700; margin-left:30px;">View Details
-                                    </a>
+                                    @if ($total_pending_caregivers > 0)
+                                        <a href="{{ route('admin.get.caregiver.pending.profile') }}"
+                                            style="font-weight: 700; margin-left:30px;">View Details
+                                        </a>
+                                    @endif
                                 </strong>
-                                <span>56</span>
+                                <span>{{$total_pending_caregivers}}</span>
                             </li>
                         </ul>
                     </div>
@@ -57,17 +63,32 @@
                         </svg>
                     </div>
                     <div class="project-content">
-                        <h6>Agencies</h6>
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <h6>Agencies</h6>
+                            @if ($total_pending_agencies > 0)
+                                <dotlottie-player
+                                    src="https://lottie.host/8895c1dc-f917-44ed-b160-7f7cf6580eb7/uAkEpxyloL.json"
+                                    background="transparent" speed="1.5" style="width: 40px; height: 40px;" loop
+                                    autoplay>
+                                </dotlottie-player>
+                            @endif
+                        </div>
                         <ul>
                             <li>
                                 <strong>Approved</strong>
-                                <span>42</span>
+                                <span>{{$total_approved_agencies}}</span>
                             </li>
 
                             <li>
                                 <a href="#">
-                                    <strong>Pending</strong>
-                                    <span>23</span>
+                                    <strong>Pending
+                                        @if ($total_pending_agencies > 0)
+                                            <a href="{{ route('admin.get.agency.pending.profile') }}"
+                                                style="font-weight: 700; margin-left:30px;">View Details
+                                            </a>
+                                        @endif
+                                    </strong>
+                                    <span>{{$total_pending_agencies}}</span>
                                 </a>
 
                             </li>
@@ -133,12 +154,12 @@
                         <ul>
                             <li>
                                 <strong>Posted</strong>
-                                <span>2</span>
+                                <span>{{$total_posted_jobs}}</span>
                             </li>
 
                             <li>
                                 <strong>Closed</strong>
-                                <span>16</span>
+                                <span>{{$total_closed_jobs}}</span>
                             </li>
                         </ul>
                     </div>
@@ -165,11 +186,11 @@
                         <ul>
                             <li>
                                 <strong>Total Earnings</strong>
-                                <span>$15,425</span>
+                                <span>${{$total_peaceworc_earnings}}</span>
                             </li>
                             <li>
                                 <strong>Total Disbursed</strong>
-                                <span>$8,147</span>
+                                <span>$0</span>
                             </li>
                         </ul>
                     </div>

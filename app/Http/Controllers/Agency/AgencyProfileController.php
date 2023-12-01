@@ -66,4 +66,14 @@ class AgencyProfileController extends Controller
             echo 'Oops! Something Went Wrong.';
         }
     }
+
+    public function pendingProfile(){
+        try{
+            $get_pending_profile = AgencyInformationStatus::with('user', 'agencyProfile')->where('is_profile_approved', 0)->get();
+
+            return view('agency.profile.pending-agency')->with(['get_pending_profile' => $get_pending_profile]);
+        }catch(\Exception $e){
+            echo 'Oops! Something Went Wrong.';
+        }
+    }
 }

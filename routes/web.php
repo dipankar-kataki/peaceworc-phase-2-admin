@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'dashboard'], function(){
         Route::get('', [DashboardController::class, 'getDashboard'])->name('admin.get.dashboard');
+        Route::get('pending-caregiver',[DashboardController::class, 'getPendingCaregiversCount'])->name('admin.get.pending.caregivers.count');
     });
     Route::group(['prefix' => 'banner'], function(){
         Route::get('manage', [ManageBannerController::class, 'getManageBannerPage'])->name('admin.get.manage.banner.page');

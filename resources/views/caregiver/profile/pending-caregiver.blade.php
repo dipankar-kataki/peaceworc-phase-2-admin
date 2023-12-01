@@ -37,7 +37,7 @@
                                                 <span>NO</span>
                                             @else
                                                 <span>Yes</span>
-                                                <a href="{{route('admin.get.caregiver.profile', ['id' => encrypt($item->user_id) ])}}" class="btn btn-info btn-sm ml-2 text-white">View Details</a>
+                                                <a href="{{route('admin.get.caregiver.profile', ['id' => encrypt($item->user_id) ])}}" target="_blank" class="btn btn-info btn-sm ml-2 text-white">View Details</a>
                                             @endif
                                         </td>
                                         <td>

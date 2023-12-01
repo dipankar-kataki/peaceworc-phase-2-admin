@@ -24,6 +24,11 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('activation', [CaregiverProfileController::class, 'caregiverProfileActivation'])->name('admin.caregiver.profile.activation');
         Route::group(['prefix' => 'pending'], function(){
             Route::get('get', [CaregiverProfileController::class, 'pendingProfile'])->name('admin.get.caregiver.pending.profile');
+            
         });
     });
+
+    // Route::group(['prefix' => 'dashboard'], function(){
+    //     Route::get('')
+    // });
 });

@@ -31,6 +31,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'profile'], function(){
         Route::get('get/{id}', [AgencyProfileController::class, 'getAgencyProfile'])->name('admin.get.agency.profile');
         Route::post('activation', [AgencyProfileController::class, 'agencyProfileActivation'])->name('admin.agency.profile.activation');
+        Route::group(['prefix' => 'pending'], function(){
+            Route::get('get', [AgencyProfileController::class, 'pendingProfile'])->name('admin.get.agency.pending.profile');
+            
+        });
     });
 
     Route::group(['prefix' => 'client'], function(){
