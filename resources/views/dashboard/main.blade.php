@@ -5,6 +5,7 @@
 @section('content')
     @include('common.overview-card')
 
+    {{-- @dd( $month_wise_caregiver_report) --}}
     <div class="row row-sm">
         <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card mg-b-20 text-center">
@@ -274,23 +275,11 @@
                 <div class="col-sm-12 col-md-6 col-xl-6">
                     <div class="card overflow-hidden">
                         <div class="card-body">
-                            <div class="main-content-label tx-12 mg-b-15">Caregiver Registration - Month Wise Report - For
-                                The Year @php echo date('Y') ; @endphp</div>
-                            <div class="ht-200 ht-lg-250">
-                                <div class="chartjs-size-monitor"
-                                    style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                    <div class="chartjs-size-monitor-expand"
-                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                    </div>
-                                    <div class="chartjs-size-monitor-shrink"
-                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                    </div>
-                                </div>
-                                <canvas id="chartBar1" style="display: block; width: 589px; height: 200px;" width="589"
-                                    height="200" class="chartjs-render-monitor"></canvas>
+                            <div class="main-content-label tx-12 mg-b-15">
+                                Caregiver Registration - Month Wise Report - For
+                                The Year @php echo date('Y') ; @endphp
                             </div>
+                            <div id="registeredCaregiversBarChart"></div>
                         </div>
                     </div>
                 </div>
@@ -299,20 +288,7 @@
                         <div class="card-body">
                             <div class="main-content-label tx-12 mg-b-15">Agency Registration - Month Wise Report - For The
                                 Year @php echo date('Y') ; @endphp</div>
-                            <div class="ht-200 ht-lg-250">
-                                <div class="chartjs-size-monitor"
-                                    style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                    <div class="chartjs-size-monitor-expand"
-                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                    </div>
-                                    <div class="chartjs-size-monitor-shrink"
-                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                    </div>
-                                </div> <canvas id="chartBar2" style="display: block; width: 589px; height: 200px;"
-                                    width="589" height="200" class="chartjs-render-monitor"></canvas>
-                            </div>
+                            <div id="registeredAgencyBarChart"></div>
                         </div>
                     </div>
                 </div>
@@ -338,4 +314,74 @@
     </div>
 @endsection
 @section('custom-scripts')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+    let caregiverData = <?php echo json_encode($month_wise_caregiver_report)?>;
+
+    let caregiverMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    let caregiveMonthData = caregiverMonths.map(month => {
+        let monthData = caregiverData.find(item => item.month_name.substr(0, 3) == month);
+        return monthData ? monthData.count : 0;
+    });
+
+    let caregiverBarData = caregiveMonthData.map((count, index) => ({
+        y: count,
+        color: count > 0 ? '#00b4ff' : '#dddddd',
+    }));
+
+    Highcharts.chart('registeredCaregiversBarChart', {
+        chart: {
+            type: 'column'
+        },
+        xAxis: {
+            categories: caregiverMonths,
+            crosshair: true,
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Caregivers'
+            }
+        },
+        series: [{
+            name: 'Registered caregivers',
+            data: caregiverBarData
+        }]
+    });
+</script>
+<script>
+    let agencyData = <?php echo json_encode($month_wise_agency_report)?>;
+    let agencyMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    let agencyMonthData = agencyMonths.map(month => {
+        let monthData = agencyData.find(item => item.month_name.substr(0, 3) == month);
+        return monthData ? monthData.count : 0;
+    });
+
+    let agencyBarData = agencyMonthData.map((count, index) => ({
+        y: count,
+        color: count > 0 ? '#5e5c6a' : '#dddddd',
+    }));
+
+    Highcharts.chart('registeredAgencyBarChart', {
+        chart: {
+            type: 'column'
+        },
+        xAxis: {
+            categories: agencyMonths,
+            crosshair: true,
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Agencies'
+            }
+        },
+        series: [{
+            name: 'Registered Agencies',
+            data: agencyBarData
+        }]
+    });
+</script>
 @endsection
