@@ -531,7 +531,7 @@
                                                         @if ($get_job_details->clientProfile != null)
                                                             @if ($get_job_details->clientProfile->photo != null)
                                                                 <img alt="client image" class="rounded-circle"
-                                                                    src="{{ 'peaceworc.com/' . $get_job_details->clientProfile->photo }}">
+                                                                    src="{{ isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http'.'peaceworc.com/' . $get_job_details->clientProfile->photo }}">
                                                             @else
                                                                 <img alt="client image" class="rounded-circle"
                                                                     src="{{ asset('assets/img/photos/user-dummy-img.jpg') }}">
