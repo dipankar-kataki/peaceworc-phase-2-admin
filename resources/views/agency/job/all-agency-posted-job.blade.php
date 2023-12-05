@@ -83,6 +83,8 @@
         $(document).ready(function() {
             $('#agencyJobTable').dataTable({
                 dom: 'Bfrtip',
+                ordering: false,
+                searching: true,
                 buttons: [
                     'pdf',
                     'excel',
