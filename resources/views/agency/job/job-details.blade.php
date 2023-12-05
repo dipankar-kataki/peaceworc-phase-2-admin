@@ -367,7 +367,7 @@
                                                 <div class="job-status">
                                                     <h6>Job Status: </h6>
                                                     <a href="javascript:void(0);"
-                                                        class="{{$get_job_details->job_type == 1 ? 'btn btn-outline-success' : 'btn btn-outline-danger'}}">
+                                                        class="{{in_array($get_job_details->job_type, [1,2,3,6,7]) ? 'btn btn-outline-success' : 'btn btn-outline-danger'}}">
                                                         {{ $get_job_details->status }}
                                                     </a>
                                                 </div>
