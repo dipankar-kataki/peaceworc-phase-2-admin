@@ -1,6 +1,11 @@
 @extends('welcome')
 @section('page-title', 'Dashboard')
 @section('custom-css')
+    <style>
+        .highcharts-credits{
+            display:none;
+        }
+    </style>
 @endsection
 @section('content')
     @include('common.overview-card')
@@ -316,12 +321,12 @@
 @section('custom-scripts')
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script>
-    let caregiverData = <?php echo json_encode($month_wise_caregiver_report)?>;
+    let caregiverDetails = <?php echo json_encode($month_wise_caregiver_report)?>;
 
-    let caregiverMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const caregiverRegMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    let caregiveMonthData = caregiverMonths.map(month => {
-        let monthData = caregiverData.find(item => item.month_name.substr(0, 3) == month);
+    let caregiveMonthData = caregiverRegMonths.map(month => {
+        let monthData = caregiverDetails.find(item => item.month_name.substr(0, 3) == month);
         return monthData ? monthData.count : 0;
     });
 
@@ -332,30 +337,39 @@
 
     Highcharts.chart('registeredCaregiversBarChart', {
         chart: {
-            type: 'column'
+            type: 'column',
+        },
+        title: {
+            text: '',
+            align: 'center'
         },
         xAxis: {
-            categories: caregiverMonths,
+            categories: caregiverRegMonths,
             crosshair: true,
         },
         yAxis: {
             min: 0,
-            title: {
-                text: 'Caregivers'
+            // title: {
+            //     text: 'Caregivers'
+            // }
+        },
+        plotOptions: {
+            column: {
+                borderRadius: 5
             }
         },
         series: [{
-            name: 'Registered caregivers',
+            name: 'Reg. Caregivers',
             data: caregiverBarData
         }]
     });
 </script>
 <script>
-    let agencyData = <?php echo json_encode($month_wise_agency_report)?>;
-    let agencyMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let agencyDetails = <?php echo json_encode($month_wise_agency_report)?>;
+    const agencyRegMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    let agencyMonthData = agencyMonths.map(month => {
-        let monthData = agencyData.find(item => item.month_name.substr(0, 3) == month);
+    let agencyMonthData = agencyRegMonths.map(month => {
+        let monthData = agencyDetails.find(item => item.month_name.substr(0, 3) == month);
         return monthData ? monthData.count : 0;
     });
 
@@ -368,18 +382,27 @@
         chart: {
             type: 'column'
         },
+        title: {
+            text: '',
+            align: 'center'
+        },
         xAxis: {
-            categories: agencyMonths,
+            categories: agencyRegMonths,
             crosshair: true,
         },
         yAxis: {
             min: 0,
-            title: {
-                text: 'Agencies'
+            // title: {
+            //     text: 'Agencies'
+            // }
+        },
+        plotOptions: {
+            column: {
+                borderRadius: 5
             }
         },
         series: [{
-            name: 'Registered Agencies',
+            name: 'Reg. Agencies',
             data: agencyBarData
         }]
     });
