@@ -526,7 +526,7 @@
                                             class="card-header d-flex flex-row align-items-center justify-content-between flex-wrap">
                                             <div class="media">
                                                 <div class="media-user mr-2">
-                                                    <div class="main-img-user avatar-md" style="1px solid gray;">
+                                                    <div class="main-img-user avatar-md" style="border:1px solid gray;">
 
                                                         @if ($get_job_details->clientProfile != null)
                                                             @if ($get_job_details->clientProfile->photo != null)
