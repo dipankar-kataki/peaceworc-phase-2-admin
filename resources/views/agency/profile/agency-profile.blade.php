@@ -578,7 +578,7 @@
                                 <div class="card mg-b-20 tab-pane fade" id="account_settings">
                                     <div class="card-body h-100">
                                         <label class="main-content-label tx-13 mg-b-20">Agency Account Activation
-                                            Status</label>
+                                            Status:</label>
                                         <form action="{{ route('admin.agency.profile.activation') }}" method="POST">
                                             @csrf
 
@@ -671,5 +671,10 @@
                 timeOut: 3000
             });
         @endif
+    </script>
+    <script>
+        $('.changeProfileStatusBtn').on('click', function(){
+            alert('Hello There!');
+        });
     </script>
 @endsection

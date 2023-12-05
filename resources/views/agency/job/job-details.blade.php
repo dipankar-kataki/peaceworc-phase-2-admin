@@ -326,21 +326,25 @@
                                                 {{ $get_job_details->title ?? 'Not Found' }}
                                             </div>
                                             <div class="d-flex flex-row justify-content-between">
-                                                <div class="job-created-at mr-5">
-                                                    <h6>Awarded To: </h6>
-                                                    <div class="media">
-                                                        <div class="media-user mr-2">
-                                                            <div class="main-img-user avatar-sm">
-                                                                <img alt="agency owner image" class="rounded-circle"
-                                                                    src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                @if ($get_job_accepted_by != null)
+                                                    <div class="job-created-at mr-5">
+                                                        <h6>Awarded To: </h6>
+                                                        <div class="media">
+                                                            <div class="media-user mr-2">
+                                                                <div class="main-img-user avatar-sm">
+                                                                    <img alt="agency owner image" class="rounded-circle"
+                                                                        src="{{ asset('assets/img/faces/12.jpg') }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <a
+                                                                    href="{{ route('admin.get.caregiver.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}
+                                                                </a>
                                                             </div>
                                                         </div>
-                                                        <div class="media-body">
-                                                            <a
-                                                                href="{{ route('admin.get.caregiver.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}</a>
-                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endif
+                                                
                                                 <div class="job-created-at mr-5">
                                                     <h6>Posted By: </h6>
                                                     <div class="media">
@@ -363,7 +367,9 @@
                                                 <div class="job-status">
                                                     <h6>Job Status: </h6>
                                                     <a href="javascript:void(0);"
-                                                        class="btn btn-outline-success">{{ $get_job_details->status }}</a>
+                                                        class="{{$get_job_details->job_type == 1 ? 'btn btn-outline-success' : 'btn btn-outline-danger'}}">
+                                                        {{ $get_job_details->status }}
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -723,10 +729,13 @@
                                 <div class="card mg-b-20 tab-pane fade show" id="timeline">
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <h4>Job Awarded To :
-                                                <a
-                                                    href="{{ route('admin.get.caregiver.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}</a>
-                                            </h4>
+                                            @if ($get_job_accepted_by != null)
+                                                <h4>Job Awarded To :
+                                                    <a
+                                                        href="{{ route('admin.get.caregiver.profile', ['id' => encrypt($get_job_accepted_by->id)]) }}">{{ $get_job_accepted_by->name }}</a>
+                                                </h4>
+                                            @endif
+                                            
                                             <label class="text-muted">Complete Job Timeline</label>
                                         </div>
                                         <div class="table-responsive mb-0 mt-4">
