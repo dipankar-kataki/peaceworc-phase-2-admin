@@ -44,7 +44,7 @@
                                             <td>{{ $item->address ?? 'Not Found' }}</td>
                                             <td> <a href="{{route('admin.get.agency.profile', ['id' => encrypt($item->agency_id) ])}}">{{$item->agencyProfile->company_name}}</a></td>
                                             <td>
-                                                <a href="#" class="btn btn-outline-danger btn-sm">Delete</a>
+                                                <a href="{{route('admin.get.client.details', ['id' => encrypt($item->id) ])}}" target="_blank" class="btn btn-outline-primary btn-sm">View</a>
                                             </td>
                                         </tr>
                                     @endforeach
