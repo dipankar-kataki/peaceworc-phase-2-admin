@@ -56,6 +56,8 @@
         $(document).ready(function() {
             $('#agencyListTable').dataTable({
                 dom: 'Bfrtip',
+                ordering: false,
+                searching: true,
                 buttons: [
                     'pdf',
                     'excel',

@@ -117,6 +117,10 @@
         $(document).ready(function() {
             $('#clientListTable').dataTable({
                 dom: 'Bfrtip',
+                ordering: false,
+                searching: true,
+                ordering: false,
+                searching: true,
                 buttons: [
                     'pdf',
                     'excel',

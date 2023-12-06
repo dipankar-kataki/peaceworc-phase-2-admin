@@ -46,6 +46,8 @@
         $(document).ready(function() {
             $('#activityLogTable').dataTable({
                 dom: 'Bfrtip',
+                ordering: false,
+                searching: true,
                 buttons: [
                     'pdf',
                     'excel',

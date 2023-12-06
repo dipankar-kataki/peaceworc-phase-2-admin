@@ -70,6 +70,8 @@
         $(document).ready(function() {
             $('#pendingProfileApprovalTable').dataTable({
                 dom: 'Bfrtip',
+                ordering: false,
+                searching: true,
                 buttons: [
                     'pdf',
                     'excel',
@@ -79,6 +81,8 @@
 
             $('#pendingDocumentVerificationTable').dataTable({
                 dom: 'Bfrtip',
+                ordering: false,
+                searching: true,
                 buttons: [
                     'pdf',
                     'excel',
