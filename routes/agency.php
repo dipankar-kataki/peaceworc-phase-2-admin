@@ -26,6 +26,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'job'], function(){
         Route::get('list', [AgencyJobController::class, 'getAgencyPostedJobsList'])->name('admin.get.agency.posted.jobs.list');
         Route::get('details/{id}', [AgencyJobController::class, 'getAgencyPostJobDetails'])->name('admin.get.agency.posted.job.details');
+        Route::group(['prefix' => 'payout'], function(){
+            Route:: get('list',[PaymentController::class, 'getPayoutList'])->name('admin.get.payout.list');
+        });
     });
 
     Route::group(['prefix' => 'profile'], function(){
@@ -39,9 +42,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['prefix' => 'client'], function(){
         Route::get('list', [ClientController::class, 'getClientList'])->name('admin.get.client.list');
+        Route::get('details/{id}', [ClientController::class, 'getClientDetails'])->name('admin.get.client.details');
+        Route::post('change-profile-status', [ClientController::class, 'changeProfileStatus'])->name('admin.change.client.profile.status');
     });
 
-    Route::group(['prefix' => 'payout'], function(){
-        Route:: get('list',[PaymentController::class, 'getPayoutList'])->name('admin.get.payout.list');
-    });
+    
 });

@@ -34,12 +34,12 @@
                                             <td>
                                                 <a href="{{route('admin.get.agency.posted.job.details', ['id' => encrypt($item->job_id) ])}}">{{ $item->job->title ?? 'Not Found' }}</a>
                                             </td>
-                                            <td>{{ $item->amount ?? 'Not Found' }}</td>
+                                            <td> <span class="text-success">$</span>{{ $item->amount ?? 'Not Found' }}</td>
                                             <td>{{ $item->customer_id ?? 'Not Found' }}</td>
                                             <td>{{ $item->payment_mode ?? 'Not Found' }}</td>
-                                            <td>{{ $item->caregiver_charge ?? 'Not Found' }}</td>
+                                            <td> <span class="text-success">$</span>{{ $item->caregiver_charge ?? 'Not Found' }}</td>
                                             <td>{{ $item->peaceworc_percentage ?? 'Not Found' }}</td>
-                                            <td>{{ $item->peaceworc_charge ?? 'Not Found' }}</td>
+                                            <td> <span class="text-success">$</span>{{ $item->peaceworc_charge ?? 'Not Found' }}</td>
                                             <td>
                                                 @if ($item->payment_status == 1)
                                                     <sapn class="text-success">Success</span>

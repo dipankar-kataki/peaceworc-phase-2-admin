@@ -10,8 +10,8 @@ class PaymentController extends Controller
 {
     public function getPayoutList(){
         try{
-            $get_payouts =  AgencyPayment::all();
-            return view('payout.list.payout-list')->with(['get_payouts' =>$get_payouts]);
+            $get_payouts =  AgencyPayment::latest()->get();
+            return view('agency.payout.list.payout-list')->with(['get_payouts' =>$get_payouts]);
         }catch(\Exception $e){
             echo 'Oops! Something Went Wrong';
         }
