@@ -35,7 +35,7 @@
                                 <strong>Pending
                                     @if ($total_pending_caregivers > 0)
                                         <a href="{{ route('admin.get.caregiver.pending.profile') }}"
-                                            style="font-weight: 700; margin-left:30px;">View Details
+                                            style="font-weight: 700; margin-left:10px;">View
                                         </a>
                                     @endif
                                 </strong>
@@ -84,7 +84,7 @@
                                     <strong>Pending
                                         @if ($total_pending_agencies > 0)
                                             <a href="{{ route('admin.get.agency.pending.profile') }}"
-                                                style="font-weight: 700; margin-left:30px;">View Details
+                                                style="font-weight: 700; margin-left:10px;">View
                                             </a>
                                         @endif
                                     </strong>
