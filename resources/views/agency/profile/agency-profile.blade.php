@@ -344,7 +344,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <span>Phone</span>
-                                                    <a href="#">{{ $get_agency_detail->phone ?? 'Not Found' }}</a>
+                                                    <a href="#">{{ $get_agency_detail->agencyProfile->phone ?? 'Not Found' }}</a>
                                                 </div>
                                             </div>
                                             <div class="media ml-3">
