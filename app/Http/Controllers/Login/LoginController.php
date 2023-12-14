@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityLog;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -24,6 +26,7 @@ class LoginController extends Controller
 
                     return $this->error('Login Failed. Credentials did not match with our records.', null, null, 400);
                 }else{
+
                     return response()->json(['message' => 'Great! Login Successful.', 'url' => "/dashboard", 'status' => 1]);
                 }
             }catch(\Exception $e){
